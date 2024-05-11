@@ -1,41 +1,52 @@
-import React, { useState } from 'react';
-import imgSub from '../../image/Homepage/R.jpeg';
-import { CiShoppingCart } from 'react-icons/ci';
-import { IoBagCheckOutline } from 'react-icons/io5';
-import { Link, useNavigate, useLocation } from 'react-router-dom';
+import React, { useState } from "react";
+import imgSub from "../../image/Homepage/R.jpeg";
+import { CiShoppingCart } from "react-icons/ci";
+import { IoBagCheckOutline } from "react-icons/io5";
+import { Link, useNavigate, useLocation } from "react-router-dom";
 import {
   AiOutlineHeart,
   AiOutlineClockCircle,
   AiFillHeart,
-} from 'react-icons/ai';
-import { BsPeople } from 'react-icons/bs';
-import { formatMoney } from '../../utils/lib';
-import { useAppDispatch } from '../../hooks/appHooks';
+} from "react-icons/ai";
+import { BsPeople } from "react-icons/bs";
+import { formatMoney } from "../../utils/lib";
+import { useAppDispatch } from "../../hooks/appHooks";
 import {
   addToCart,
   deleteCart,
   getCart,
-} from '../../store/actions/cart.action';
-import useQueryParams from '../../hooks/useSearchParams';
-import { LocalStorage } from '../../utils/LocalStorage';
-import { VscGoToFile } from 'react-icons/vsc';
-import { getWistList, postWishList } from '../../store/actions/wishlist.action';
-import { updateCartSub, updateIsBuyNow } from '../../store/reducers/cartSlice';
-import parse from 'html-react-parser';
+} from "../../store/actions/cart.action";
+import useQueryParams from "../../hooks/useSearchParams";
+import { LocalStorage } from "../../utils/LocalStorage";
+import { VscGoToFile } from "react-icons/vsc";
+import { getWistList, postWishList } from "../../store/actions/wishlist.action";
+import {
+  selectCartList,
+  selectCartListSub,
+  selectIsBuyNow,
+  updateCartSub,
+  updateIsBuyNow,
+} from "../../store/reducers/cartSlice";
+import parse from "html-react-parser";
+import { useSelector } from "react-redux";
+import { paymentCart } from "../../store/actions/payment.action";
 const Course = ({ item, getListCourse }: any) => {
+  const cartList: any = useSelector(selectCartList);
+  const cartListSub: any = useSelector(selectCartListSub);
+  const isBuyNow = useSelector(selectIsBuyNow);
   const userId = LocalStorage.getUserId();
   const navigate = useNavigate();
   const queryParam = useQueryParams(
     {
-      search: '',
-      categoryId: '',
-      subCategoryId: '',
-      startPrice: '',
-      endPrice: '',
+      search: "",
+      categoryId: "",
+      subCategoryId: "",
+      startPrice: "",
+      endPrice: "",
       page: 1,
-      userId: '',
-      startDuration: '',
-      endDuration: '',
+      userId: "",
+      startDuration: "",
+      endDuration: "",
     },
     window.location.href
   );
@@ -50,19 +61,19 @@ const Course = ({ item, getListCourse }: any) => {
       courseId: id,
     };
     const res = await dispatch(addToCart(payload));
-    if (res.payload && res.meta.requestStatus === 'fulfilled') {
-      console.log('🚀 ~ file: SidebarCourse.tsx:31 ~ addCart ~ res:', res);
+    if (res.payload && res.meta.requestStatus === "fulfilled") {
+      console.log("🚀 ~ file: SidebarCourse.tsx:31 ~ addCart ~ res:", res);
     }
   };
   const getCartList = async () => {
     const response = await dispatch(getCart({}));
-    if (response.meta.requestStatus === 'fulfilled' && response.payload) {
+    if (response.meta.requestStatus === "fulfilled" && response.payload) {
       console.log(response);
     }
   };
   const getWishLists = async () => {
     const response = await dispatch(getWistList({}));
-    if (response.meta.requestStatus === 'fulfilled' && response.payload) {
+    if (response.meta.requestStatus === "fulfilled" && response.payload) {
       console.log(response);
     }
   };
@@ -80,7 +91,7 @@ const Course = ({ item, getListCourse }: any) => {
       courseId: id,
     };
     const res = await dispatch(postWishList(payload));
-    if (res.payload && res.meta.requestStatus === 'fulfilled') {
+    if (res.payload && res.meta.requestStatus === "fulfilled") {
       getListCourse({
         ...queryParam.queryParams,
       });
@@ -88,14 +99,27 @@ const Course = ({ item, getListCourse }: any) => {
     }
   };
   const handleCart = () => {
-    navigate('/cart');
+    navigate("/cart");
   };
-  const handleBuy = () => {
+  const handleBuy = async () => {
     dispatch(updateIsBuyNow(true));
     dispatch(updateCartSub(item));
-    setTimeout(() => {
-      navigate('/cart/payment');
-    }, 500);
+    const payload = {
+      paymentMethod: "vnpay",
+      items: [
+        {
+          courseId: item?._id,
+          price: item?.price,
+        },
+      ],
+    };
+    const res: any = await dispatch(paymentCart(payload));
+    if (res.payload && res.meta.requestStatus === "fulfilled") {
+      window.open(res.payload.data);
+    }
+    // setTimeout(() => {
+    //   navigate("/cart/payment");
+    // }, 500);
   };
   return (
     <div className="course_re text-[#1D2026]">
@@ -121,7 +145,7 @@ const Course = ({ item, getListCourse }: any) => {
                 {item?.category.categoryName}
               </div>
               <p className="text-[12px] font-normal px-[6px] py-[4px] text-[#342F98] bg-[#EBEBFF] w-fit">
-                bởi {item?.courseName.split('-')[1]}
+                bởi {item?.courseName.split("-")[1]}
               </p>
 
               {/* <span className="text-[12px] font-normal px-[6px] py-[4px] text-[#15711F] bg-[#E1F7E3] w-fit">
@@ -139,7 +163,7 @@ const Course = ({ item, getListCourse }: any) => {
               <div className="flex gap-x-2">
                 <AiOutlineClockCircle className="text-[20px] text-[#23BD33]" />
                 <span className="text-[#8C94A3] font-normal text-[14px]">
-                  {Math.floor(+item?.totalDuration/60)} giờ học tất cả
+                  {Math.floor(+item?.totalDuration / 60)} giờ học tất cả
                 </span>
               </div>
             </div>
@@ -177,11 +201,11 @@ const Course = ({ item, getListCourse }: any) => {
                     className="flex items-center gap-x-2 px-[12px] py-[6px] bg-[#FF6636] rounded-md"
                   >
                     <IoBagCheckOutline />
-                    <span>Mua khóa học</span>
+                    <span>Đăng ký học ngay</span>
                   </button>
                 </>
               )}
-              {item?.isPaid === false && (
+              {/* {item?.isPaid === false && (
                 <>
                   {item?.isAddToCart ? (
                     <button
@@ -201,7 +225,7 @@ const Course = ({ item, getListCourse }: any) => {
                     </button>
                   )}
                 </>
-              )}
+              )} */}
             </div>
           )}
         </div>

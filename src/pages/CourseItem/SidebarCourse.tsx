@@ -1,44 +1,54 @@
-import React, { useEffect, useMemo, useState } from 'react';
-import { AiOutlineClockCircle } from 'react-icons/ai';
-import { BsPeople, BsFacebook } from 'react-icons/bs';
-import { SiGoogleclassroom } from 'react-icons/si';
-import { FiCopy } from 'react-icons/fi';
-import { Link, useLocation, useNavigate } from 'react-router-dom';
-import { formatMoney } from '../../utils/lib';
-import moment from 'moment';
-import { useAppDispatch } from '../../hooks/appHooks';
-import { getCategoryById } from '../../store/actions/user.action';
+import React, { useEffect, useMemo, useState } from "react";
+import { AiOutlineClockCircle } from "react-icons/ai";
+import { BsPeople, BsFacebook } from "react-icons/bs";
+import { SiGoogleclassroom } from "react-icons/si";
+import { FiCopy } from "react-icons/fi";
+import { Link, useLocation, useNavigate } from "react-router-dom";
+import { formatMoney } from "../../utils/lib";
+import moment from "moment";
+import { useAppDispatch } from "../../hooks/appHooks";
+import { getCategoryById } from "../../store/actions/user.action";
+import { addToCart, getCart } from "../../store/actions/cart.action";
+import { LocalStorage } from "../../utils/LocalStorage";
+import { getWistList, postWishList } from "../../store/actions/wishlist.action";
 import {
-  addToCart,
-  getCart,
-} from '../../store/actions/cart.action';
-import { LocalStorage } from '../../utils/LocalStorage';
-import { getWistList, postWishList } from '../../store/actions/wishlist.action';
-import { updateCartSub, updateIsBuyNow } from '../../store/reducers/cartSlice';
-import { useToast } from '@chakra-ui/react';
-import {FacebookIcon,FacebookShareButton} from 'react-share';
+  selectCartList,
+  selectCartListSub,
+  selectIsBuyNow,
+  updateCartSub,
+  updateIsBuyNow,
+} from "../../store/reducers/cartSlice";
+import { useToast } from "@chakra-ui/react";
+import { FacebookIcon, FacebookShareButton } from "react-share";
+import { useSelector } from "react-redux";
+import { paymentCart } from "../../store/actions/payment.action";
 const SidebarCourse = ({ courseDetail, getDetailCourse }: any) => {
+  const cartList: any = useSelector(selectCartList);
+  const cartListSub: any = useSelector(selectCartListSub);
+  const isBuyNow = useSelector(selectIsBuyNow);
   const [categoryID, setCategoryID] = useState<any>({});
-  const [description, setDescription] = useState<any>('');
+  const [description, setDescription] = useState<any>("");
   const dispatch = useAppDispatch();
   const navigate = useNavigate();
   const access_token = LocalStorage.getAccessToken();
   const toast = useToast();
   const location = useLocation();
-  console.log('🚀 ~ SidebarCourse ~ location:', location);
-  
+  console.log("🚀 ~ SidebarCourse ~ location:", location);
+
   const addCart = async (id: any) => {
     const payload = {
       courseId: id,
     };
     const res = await dispatch(addToCart(payload));
-    if (res.payload && res.meta.requestStatus === 'fulfilled') {
-      console.log('🚀 ~ file: SidebarCourse.tsx:31 ~ addCart ~ res:', res);
-    } else { /* empty */ }
+    if (res.payload && res.meta.requestStatus === "fulfilled") {
+      console.log("🚀 ~ file: SidebarCourse.tsx:31 ~ addCart ~ res:", res);
+    } else {
+      /* empty */
+    }
   };
   const getCartList = async () => {
     const res = await dispatch(getCart({}));
-    if (res.meta.requestStatus === 'fulfilled' && res.payload) {
+    if (res.meta.requestStatus === "fulfilled" && res.payload) {
       console.log(res);
     }
   };
@@ -47,13 +57,13 @@ const SidebarCourse = ({ courseDetail, getDetailCourse }: any) => {
       courseId: id,
     };
     const res = await dispatch(postWishList(payload));
-    if (res.payload && res.meta.requestStatus === 'fulfilled') {
+    if (res.payload && res.meta.requestStatus === "fulfilled") {
       console.log(res);
     }
   };
   const getWishListItem = async () => {
     const res = await dispatch(getWistList({}));
-    if (res.payload && res.meta.requestStatus === 'fulfilled') {
+    if (res.payload && res.meta.requestStatus === "fulfilled") {
       console.log(res);
     }
   };
@@ -62,9 +72,9 @@ const SidebarCourse = ({ courseDetail, getDetailCourse }: any) => {
       categoryId: id,
     });
     const res: any = await dispatch(getCategoryById(payload));
-    if (res.payload && res.meta.requestStatus === 'fulfilled') {
+    if (res.payload && res.meta.requestStatus === "fulfilled") {
       console.log(
-        '🚀 ~ file: SidebarCourse.tsx:27 ~ getCategoryId ~ res:',
+        "🚀 ~ file: SidebarCourse.tsx:27 ~ getCategoryId ~ res:",
         res
       );
       setCategoryID(res.payload.data);
@@ -92,7 +102,7 @@ const SidebarCourse = ({ courseDetail, getDetailCourse }: any) => {
     }, 500);
   };
   const handleDeleteCart = () => {
-    navigate('/cart');
+    navigate("/cart");
   };
   const handlePostWishList = (id: any) => {
     postWishListItem(id);
@@ -101,22 +111,37 @@ const SidebarCourse = ({ courseDetail, getDetailCourse }: any) => {
       getWishListItem();
     }, 500);
   };
-  const handleBuyNow = () => {
+  const handleBuyNow = async () => {
     dispatch(updateIsBuyNow(true));
     dispatch(updateCartSub(courseDetail));
-    setTimeout(() => {
-      navigate('/cart/payment');
-    }, 500);
+    const payload = {
+      paymentMethod: "vnpay",
+      items: [
+        {
+          courseId: courseDetail?._id,
+          price: courseDetail?.price,
+        },
+      ],
+    };
+    const res: any = await dispatch(paymentCart(payload));
+    if (res.payload && res.meta.requestStatus === "fulfilled") {
+      window.open(res.payload.data);
+    }
+    // setTimeout(() => {
+    //   navigate("/cart/payment");
+    // }, 500);
   };
-  const copyLink = async()=>{
-    await navigator.clipboard.writeText(`https://staging.primeedu.io.vn${location.pathname}`);
+  const copyLink = async () => {
+    await navigator.clipboard.writeText(
+      `https://staging.primeedu.io.vn${location.pathname}`
+    );
     toast({
-      title: 'Successfully',
-      description: 'Sao chép link thành công',
-      status: 'success',
+      title: "Successfully",
+      description: "Sao chép link thành công",
+      status: "success",
       duration: 4000,
       isClosable: true,
-      position:'top-right'
+      position: "top-right",
     });
   };
   useEffect(() => {
@@ -133,11 +158,11 @@ const SidebarCourse = ({ courseDetail, getDetailCourse }: any) => {
               {formatMoney(courseDetail?.price)}VND
             </h1>
             <span className="px-[6px] py-[4px] text-[12px] text-[#FF6636] bg-[#FFEEE8] font-medium">
-              {courseDetail?.courseName.split('-')[0]}
+              {courseDetail?.courseName.split("-")[0]}
             </span>
           </div>
           <span className="px-[6px] py-[4px] text-[12px] text-[#342F98] bg-[#EBEBFF] font-medium">
-            {courseDetail?.courseName.split('-')[1]}
+            {courseDetail?.courseName.split("-")[1]}
           </span>
         </div>
         <div className="px-[24px] py-[24px] text-[14px] flex flex-col gap-y-3">
@@ -147,7 +172,7 @@ const SidebarCourse = ({ courseDetail, getDetailCourse }: any) => {
               <span className="text-[#1D2026]">Tổng thời gian khóa học</span>
             </div>
             <span>
-              {moment.duration(sumTimeLecture, 'minutes').asHours().toFixed(0)}{' '}
+              {moment.duration(sumTimeLecture, "minutes").asHours().toFixed(0)}{" "}
               giờ
             </span>
           </div>
@@ -172,14 +197,14 @@ const SidebarCourse = ({ courseDetail, getDetailCourse }: any) => {
               to="/login"
               className="text-center h-[56px] text-white text-[18px] font-semibold bg-[#FF6636] block leading-[56px]"
             >
-              Đăng nhập để mua khóa học
+              Đăng nhập để đăng ký khóa học miễn phí
             </Link>
           ) : (
             <div className="flex flex-col gap-y-3">
               <div className="flex gap-x-3">
                 {courseDetail?.isPaid ? (
                   <button
-                    onClick={() => navigate('video')}
+                    onClick={() => navigate("video")}
                     className="text-center w-full h-[56px] text-white text-[14px] font-semibold bg-[#FF6636] block leading-[56px] hover:bg-[#fb5c2b] transition ease-in-out duration-200"
                   >
                     Đi tới bài học
@@ -189,27 +214,8 @@ const SidebarCourse = ({ courseDetail, getDetailCourse }: any) => {
                     onClick={handleBuyNow}
                     className="text-center w-full h-[56px] text-white text-[14px] font-semibold bg-[#FF6636] block leading-[56px] hover:bg-[#fb5c2b] transition ease-in-out duration-200"
                   >
-                    Mua ngay
+                    Đăng ký học ngay
                   </button>
-                )}
-                {courseDetail?.isPaid === false && (
-                  <>
-                    {courseDetail?.isAddToCart ? (
-                      <button
-                        onClick={handleDeleteCart}
-                        className="text-center w-full h-[56px] text-[#FF6636] text-[14px] font-semibold bg-[#FFEEE8] block leading-[56px] hover:bg-[#fde2d8] transition ease-in-out duration-200"
-                      >
-                        Đi đến giỏ hàng
-                      </button>
-                    ) : (
-                      <button
-                        onClick={addToMyCart}
-                        className="text-center w-full h-[56px] text-[#FF6636] text-[14px] font-semibold bg-[#FFEEE8] block leading-[56px] hover:bg-[#fde2d8] transition ease-in-out duration-200"
-                      >
-                        Thêm vào giỏ hàng
-                      </button>
-                    )}
-                  </>
                 )}
               </div>
               {courseDetail?.isPaid === false && (
@@ -218,8 +224,8 @@ const SidebarCourse = ({ courseDetail, getDetailCourse }: any) => {
                   className="text-center w-full border-[1px] border-[#E9EAF0] h-[56px] text-[#4E5566] text-[14px] font-semibold bg-[#fffff] block leading-[56px] hover:bg-[#FF6636] hover:text-white transition ease-in-out duration-200"
                 >
                   {courseDetail?.isBookmark
-                    ? 'Xóa khỏi yêu thích'
-                    : 'Thêm vào yêu thích'}
+                    ? "Xóa khỏi yêu thích"
+                    : "Thêm vào yêu thích"}
                 </button>
               )}
             </div>
@@ -252,13 +258,18 @@ const SidebarCourse = ({ courseDetail, getDetailCourse }: any) => {
             Chia sẻ khóa học này
           </h1>
           <div className="flex items-center gap-x-2">
-            <div onClick={copyLink} className="cursor-pointer flex gap-x-2 items-center bg-[#F5F7FA] text-[#4E5566] px-[20px] py-[12px] w-fit">
+            <div
+              onClick={copyLink}
+              className="cursor-pointer flex gap-x-2 items-center bg-[#F5F7FA] text-[#4E5566] px-[20px] py-[12px] w-fit"
+            >
               <FiCopy className="text-[18px]" />
               <span>Sao chép link</span>
             </div>
             <div>
               <div className="cursor-pointer flex gap-x-2 items-center bg-[#F5F7FA] text-[#4E5566] h-[45px] w-[45px] justify-center ">
-                <FacebookShareButton url={`https://staging.primeedu.io.vn${location.pathname}`}>
+                <FacebookShareButton
+                  url={`https://staging.primeedu.io.vn${location.pathname}`}
+                >
                   <BsFacebook className="text-[18px]" />
                 </FacebookShareButton>
               </div>
