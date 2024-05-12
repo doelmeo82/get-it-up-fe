@@ -92,9 +92,9 @@ const Navbar = () => {
           <Button
             ref={drawerRef}
             onClick={onOpen}
-            bg="none"
-            _hover={{ bg: "none" }}
+            bg="#0D6EFD"
             fontWeight="400"
+            borderRadius={"3xl"}
           >
             Category
           </Button>
@@ -128,7 +128,9 @@ const Navbar = () => {
               <SearchResult value={value} debouncedValue={debouncedValue} />
             )}
           </form>
-          <Link to="/teacher">Teacher</Link>
+          <Link className="bg-[#0D6EFD] rounded-3xl px-5 py-2" to="/teacher">
+            Teacher
+          </Link>
           {!userId ? (
             <div className="flex gap-x-3">
               <Link
