@@ -1,4 +1,4 @@
-import React, { useEffect, useMemo } from 'react';
+import React, { useEffect, useMemo } from "react";
 import {
   Accordion,
   AccordionItem,
@@ -6,16 +6,16 @@ import {
   AccordionPanel,
   AccordionIcon,
   Box,
-} from '@chakra-ui/react';
+} from "@chakra-ui/react";
 import {
   MdOndemandVideo,
   MdOutlineKeyboardArrowDown,
   MdOutlineKeyboardArrowUp,
-} from 'react-icons/md';
-import moment from 'moment';
-import { timeLecture } from '../../utils/lib';
-import ReactPlayer from 'react-player';
-const Topic = ({ courseDetail,isShow }: any) => {
+} from "react-icons/md";
+import moment from "moment";
+import { timeLecture } from "../../utils/lib";
+import ReactPlayer from "react-player";
+const Topic = ({ courseDetail, isShow }: any) => {
   const sumLecture = useMemo(() => {
     let sum = 0;
     let time = 0;
@@ -42,13 +42,13 @@ const Topic = ({ courseDetail,isShow }: any) => {
     <div className="flex flex-col gap-3">
       <div>
         <div className="flex gap-x-2 items-center text-[14px]">
-          <h1>{courseDetail?.sections?.length} chuyên đề</h1>
+          <h1>{courseDetail?.sections?.length} sections</h1>
           <div className="w-1 h-1 rounded-full bg-[#61677A]"></div>
           <h1>{sumLecture} bài giảng</h1>
           <div className="w-1 h-1 rounded-full bg-[#61677A]"></div>
           <h1>
-            Tổng thời lượng:{' '}
-            {moment.duration(sumTimeLecture, 'minutes').asHours().toFixed(0)}{' '}
+            Tổng thời lượng:{" "}
+            {moment.duration(sumTimeLecture, "minutes").asHours().toFixed(0)}{" "}
             giờ
           </h1>
         </div>
@@ -69,9 +69,9 @@ const Topic = ({ courseDetail,isShow }: any) => {
                   <div className="w-1 h-1 rounded-full bg-[#ffffff]"></div>
                   <h1>
                     {moment
-                      .duration(timeLecture(section?.lectures), 'minutes')
+                      .duration(timeLecture(section?.lectures), "minutes")
                       .asHours()
-                      .toFixed(0)}{' '}
+                      .toFixed(0)}{" "}
                     giờ
                   </h1>
                 </div>
@@ -87,12 +87,12 @@ const Topic = ({ courseDetail,isShow }: any) => {
                     </div>
                     <span className="text-[14px] text-[#61677A] w-[100px] text-end">
                       {moment
-                        .duration(lecture.duration, 'minutes')
+                        .duration(lecture.duration, "minutes")
                         .asHours()
                         .toFixed(0)}
                       h :
                       {moment
-                        .duration(lecture.duration, 'minutes')
+                        .duration(lecture.duration, "minutes")
                         .minutes()
                         .toFixed(0)}
                       m

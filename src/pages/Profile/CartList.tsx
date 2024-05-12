@@ -62,7 +62,7 @@ const CartList = () => {
         <Table variant="simple">
           <Thead>
             <Tr>
-              <Th>Khóa học</Th>
+              <Th>Course</Th>
               <Th>Giá</Th>
               <Th>Hành động</Th>
             </Tr>
@@ -115,7 +115,7 @@ const CartList = () => {
                       color="#1D2026"
                       fontSize="14px"
                     >
-                      Đăng ký học ngay
+                      Start learning
                     </Button>
                     <Button
                       bg="#FF6636"

@@ -1,13 +1,13 @@
-import React, { useEffect } from 'react';
-import { FaCheck } from 'react-icons/fa';
-import { useSelector } from 'react-redux';
+import React, { useEffect } from "react";
+import { FaCheck } from "react-icons/fa";
+import { useSelector } from "react-redux";
 import {
   selectCartList,
   selectCartListSub,
   selectIsBuyNow,
-} from '../../store/reducers/cartSlice';
-import ListCoursePayment from './ListCoursePayment';
-import { useNavigate } from 'react-router-dom';
+} from "../../store/reducers/cartSlice";
+import ListCoursePayment from "./ListCoursePayment";
+import { useNavigate } from "react-router-dom";
 
 const PaymentSuccess = () => {
   const navigation = useNavigate();
@@ -16,7 +16,7 @@ const PaymentSuccess = () => {
   const cartListSub: any = useSelector(selectCartListSub);
   useEffect(() => {
     const timeout = setTimeout(() => {
-      navigation('/');
+      navigation("/");
     }, 12000);
     return () => {
       clearTimeout(timeout);
@@ -25,7 +25,7 @@ const PaymentSuccess = () => {
   return (
     <div className="max-w-[1200px] w-full mx-auto text-[#1D2026]">
       <h1 className="font-semibold text-[24px] mb-5 text-center py-[40px] text-green-500">
-        Thanh toán khóa học thành công
+        Thanh toán Course thành công
       </h1>
       <div className="animate-bounce mx-auto h-[100px] w-[100px] border-[1px] border-green-500 rounded-full flex justify-center items-center">
         <FaCheck className="text-[40px] text-green-500" />
@@ -40,7 +40,7 @@ const PaymentSuccess = () => {
         </div>
       </div>
       <div className="text-center mx-auto">
-        Bạn sẽ về trang chủ trong vòng{' '}
+        Bạn sẽ về trang chủ trong vòng{" "}
         <span className="text-green-500">5 giây</span> nữa...
       </div>
     </div>

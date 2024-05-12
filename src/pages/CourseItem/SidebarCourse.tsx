@@ -80,7 +80,7 @@ const SidebarCourse = ({ courseDetail, getDetailCourse }: any) => {
       setCategoryID(res.payload.data);
       setDescription(
         res.payload.data.childs.filter((item: any) => item._id === subId)[0]
-          .description
+          ?.description
       );
     }
   };
@@ -169,27 +169,21 @@ const SidebarCourse = ({ courseDetail, getDetailCourse }: any) => {
           <div className="flex justify-between items-center text-[#6E7485]">
             <div className="flex gap-x-1 items-center">
               <AiOutlineClockCircle className=" text-[20px]" />
-              <span className="text-[#1D2026]">Tổng thời gian khóa học</span>
+              <span className="text-[#1D2026]">Duration</span>
             </div>
             <span>
               {moment.duration(sumTimeLecture, "minutes").asHours().toFixed(0)}{" "}
-              giờ
+              hours
             </span>
           </div>
           <div className="flex justify-between items-center text-[#6E7485]">
             <div className="flex gap-x-1 items-center">
               <BsPeople className=" text-[20px]" />
-              <span className="text-[#1D2026]">Tổng số học viên</span>
+              <span className="text-[#1D2026]">Students</span>
             </div>
-            <span>69,852,855</span>
+            <span>69.855</span>
           </div>
-          <div className="flex justify-between items-center text-[#6E7485]">
-            <div className="flex gap-x-1 items-center">
-              <SiGoogleclassroom className=" text-[20px]" />
-              <span className="text-[#1D2026]">Khối</span>
-            </div>
-            <span>{categoryID?.categoryName}</span>
-          </div>
+          Section{" "}
         </div>
         <div className="px-[24px] py-[24px]">
           {!access_token ? (
@@ -197,7 +191,7 @@ const SidebarCourse = ({ courseDetail, getDetailCourse }: any) => {
               to="/login"
               className="text-center h-[56px] text-white text-[18px] font-semibold bg-[#FF6636] block leading-[56px]"
             >
-              Đăng nhập để đăng ký khóa học miễn phí
+              Login to start free
             </Link>
           ) : (
             <div className="flex flex-col gap-y-3">
@@ -207,14 +201,14 @@ const SidebarCourse = ({ courseDetail, getDetailCourse }: any) => {
                     onClick={() => navigate("video")}
                     className="text-center w-full h-[56px] text-white text-[14px] font-semibold bg-[#FF6636] block leading-[56px] hover:bg-[#fb5c2b] transition ease-in-out duration-200"
                   >
-                    Đi tới bài học
+                    Go to lession
                   </button>
                 ) : (
                   <button
                     onClick={handleBuyNow}
                     className="text-center w-full h-[56px] text-white text-[14px] font-semibold bg-[#FF6636] block leading-[56px] hover:bg-[#fb5c2b] transition ease-in-out duration-200"
                   >
-                    Đăng ký học ngay
+                    Start learning
                   </button>
                 )}
               </div>
@@ -224,8 +218,8 @@ const SidebarCourse = ({ courseDetail, getDetailCourse }: any) => {
                   className="text-center w-full border-[1px] border-[#E9EAF0] h-[56px] text-[#4E5566] text-[14px] font-semibold bg-[#fffff] block leading-[56px] hover:bg-[#FF6636] hover:text-white transition ease-in-out duration-200"
                 >
                   {courseDetail?.isBookmark
-                    ? "Xóa khỏi yêu thích"
-                    : "Thêm vào yêu thích"}
+                    ? "Add to wish list"
+                    : "Remove from wish list"}
                 </button>
               )}
             </div>
@@ -233,7 +227,7 @@ const SidebarCourse = ({ courseDetail, getDetailCourse }: any) => {
         </div>
         <div className="px-[24px] py-[24px] text-[14px] flex-col gap-y-2 hidden lg:flex">
           <h1 className="text-[#1D2026] text-[16px] font-medium">
-            Khóa học này bao gồm
+            This course includes
           </h1>
           <p className="whitespace-break-spaces">{description}</p>
           {/* <div className="flex flex-col gap-y-3">
@@ -244,7 +238,7 @@ const SidebarCourse = ({ courseDetail, getDetailCourse }: any) => {
             <div className="flex items-center gap-x-2">
               <FiFileText className="text-[18px] text-[#FF6636]" />
               <span className="text-[#4E5566]">
-                Tệp bài tập miễn phí và tài nguyên có thể tải xuống
+                Tệp Quizz miễn phí và tài nguyên có thể tải xuống
               </span>
             </div>
             <div className="flex items-center gap-x-2">
@@ -255,7 +249,7 @@ const SidebarCourse = ({ courseDetail, getDetailCourse }: any) => {
         </div>
         <div className="px-[24px] py-[24px] text-[14px] hidden lg:flex flex-col gap-y-2 ">
           <h1 className="text-[#1D2026] text-[16px] font-medium">
-            Chia sẻ khóa học này
+            Share this course
           </h1>
           <div className="flex items-center gap-x-2">
             <div
@@ -263,7 +257,7 @@ const SidebarCourse = ({ courseDetail, getDetailCourse }: any) => {
               className="cursor-pointer flex gap-x-2 items-center bg-[#F5F7FA] text-[#4E5566] px-[20px] py-[12px] w-fit"
             >
               <FiCopy className="text-[18px]" />
-              <span>Sao chép link</span>
+              <span>Copy url</span>
             </div>
             <div>
               <div className="cursor-pointer flex gap-x-2 items-center bg-[#F5F7FA] text-[#4E5566] h-[45px] w-[45px] justify-center ">

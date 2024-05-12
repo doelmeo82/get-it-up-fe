@@ -1,19 +1,19 @@
-import React, { useState } from 'react';
-import Logo from '../../../image/Navbar/logo.svg';
-import { AiFillEyeInvisible, AiFillEye } from 'react-icons/ai';
-import { Button, useToast } from '@chakra-ui/react';
-import { useNavigate } from 'react-router-dom';
-import { useAppDispatch } from '../../../hooks/appHooks';
-import { loginSchema, loginTeacherSchema } from '../../../schema/schema';
-import { yupResolver } from '@hookform/resolvers/yup';
-import { useForm } from 'react-hook-form';
+import React, { useState } from "react";
+import Logo from "../../../image/Navbar/logo.svg";
+import { AiFillEyeInvisible, AiFillEye } from "react-icons/ai";
+import { Button, useToast } from "@chakra-ui/react";
+import { useNavigate } from "react-router-dom";
+import { useAppDispatch } from "../../../hooks/appHooks";
+import { loginSchema, loginTeacherSchema } from "../../../schema/schema";
+import { yupResolver } from "@hookform/resolvers/yup";
+import { useForm } from "react-hook-form";
 import {
   updateIsLogged,
   updateUserId,
   updateUserInfo,
-} from '../../../store/reducers/authSlice';
-import { LocalStorage } from '../../../utils/LocalStorage';
-import { login } from '../../../store/actions/auth.action';
+} from "../../../store/reducers/authSlice";
+import { LocalStorage } from "../../../utils/LocalStorage";
+import { login } from "../../../store/actions/auth.action";
 interface LoginTeacherProps {
   emailteacher: string;
   passwordteacher: string;
@@ -32,8 +32,8 @@ const Login = () => {
     formState: { errors, isSubmitting },
   } = useForm<LoginTeacherProps>({
     defaultValues: {
-      emailteacher: '',
-      passwordteacher: '',
+      emailteacher: "",
+      passwordteacher: "",
     },
     resolver: yupResolver(loginTeacherSchema),
   });
@@ -45,26 +45,26 @@ const Login = () => {
       password: data.passwordteacher,
     };
     const response: any = await dispatch(login(payload));
-    console.log('🚀 ~ file: Login.tsx:48 ~ onSubmit ~ response:', response);
-    if (response.meta.requestStatus === 'rejected') {
+    console.log("🚀 ~ file: Login.tsx:48 ~ onSubmit ~ response:", response);
+    if (response.meta.requestStatus === "rejected") {
       toast({
-        title: 'Lỗi đăng nhập',
+        title: "Lỗi Login",
         description: response?.payload?.message,
-        status: 'error',
+        status: "error",
         duration: 9000,
         isClosable: true,
-        position: 'top-right',
+        position: "top-right",
       });
     }
-    if (response.meta.requestStatus === 'fulfilled' && response?.payload) {
+    if (response.meta.requestStatus === "fulfilled" && response?.payload) {
       if (response?.payload?.error) {
         toast({
-          title: 'Lỗi đăng nhập',
+          title: "Lỗi Login",
           description: response?.payload?.message,
-          status: 'error',
+          status: "error",
           duration: 9000,
           isClosable: true,
-          position: 'top-right',
+          position: "top-right",
         });
       } else {
         // dispatch(updateIsLogged(true));
@@ -82,27 +82,27 @@ const Login = () => {
           console.log(LocalStorage.getAccessToken());
           dispatch(updateUserInfo(response?.payload.data?.infoUser));
           toast({
-            title: 'Đăng nhập thành công',
+            title: "Login thành công",
             description: response?.payload?.message,
-            status: 'success',
+            status: "success",
             duration: 9000,
             isClosable: true,
-            position: 'top-right',
+            position: "top-right",
           });
           setTimeout(() => {
-            navigate('/teacher/dashboard');
+            navigate("/teacher/dashboard");
           }, 1500);
         } else {
           toast({
-            title: 'Đăng nhập thành công',
+            title: "Login thành công",
             description: response?.payload?.message,
-            status: 'success',
+            status: "success",
             duration: 9000,
             isClosable: true,
-            position: 'top-right',
+            position: "top-right",
           });
           setTimeout(() => {
-            navigate('/admin/student');
+            navigate("/admin/student");
           }, 1500);
         }
       }
@@ -116,16 +116,16 @@ const Login = () => {
       >
         <img src={Logo} alt="" />
         <div className="text-[30px] font-semibold text-white">
-          Xin chào các thầy/cô giáo. Mời thầy cô đăng nhập
+          Xin chào các thầy/cô giáo. Mời thầy cô Login
         </div>
         <div className="w-full flex flex-col gap-y-4">
           <div className="flex flex-col gap-y-2">
             <span className="text-[14px] font-medium text-white">
-              Tên tài khoản
+              Tên Account
             </span>
 
             <input
-              {...register('emailteacher')}
+              {...register("emailteacher")}
               type="text"
               className="w-full px-[18px] py-[13px] outline-none"
             />
@@ -134,8 +134,8 @@ const Login = () => {
             <span className="text-[14px] font-medium text-white">Mật khẩu</span>
             <div className="flex gap-x-3 bg-white items-center px-[18px] py-[13px]">
               <input
-                {...register('passwordteacher')}
-                type={showPass ? 'text' : 'password'}
+                {...register("passwordteacher")}
+                type={showPass ? "text" : "password"}
                 className="w-full bg-transparent outline-none"
               />
               {showPass ? (
@@ -151,8 +151,8 @@ const Login = () => {
               )}
             </div>
           </div>
-          <Button type="submit">Đăng nhập</Button>
-          <Button type="button" onClick={() => navigate('/')}>
+          <Button type="submit">Login</Button>
+          <Button type="button" onClick={() => navigate("/")}>
             Trở lại trang chủ
           </Button>
         </div>

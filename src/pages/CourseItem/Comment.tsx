@@ -1,22 +1,22 @@
-import React, { useEffect, useRef, useState } from 'react';
-import { useSelector } from 'react-redux';
-import { selectCommentCourse } from '../../store/reducers/commentSlice';
-import { useParams } from 'react-router-dom';
-import { getCommentsCourse } from '../../store/actions/comment.action';
-import { useAppDispatch } from '../../hooks/appHooks';
-import { convertTimeToAgo } from '../../utils/lib';
-import ReactStars from 'react-rating-stars-component';
-import SunEditor from 'suneditor-react';
-import { buttonList } from '../../utils/type';
-import katex from 'katex';
-import 'katex/dist/katex.min.css';
-import { Button } from '@chakra-ui/react';
+import React, { useEffect, useRef, useState } from "react";
+import { useSelector } from "react-redux";
+import { selectCommentCourse } from "../../store/reducers/commentSlice";
+import { useParams } from "react-router-dom";
+import { getCommentsCourse } from "../../store/actions/comment.action";
+import { useAppDispatch } from "../../hooks/appHooks";
+import { convertTimeToAgo } from "../../utils/lib";
+import ReactStars from "react-rating-stars-component";
+import SunEditor from "suneditor-react";
+import { buttonList } from "../../utils/type";
+import katex from "katex";
+import "katex/dist/katex.min.css";
+import { Button } from "@chakra-ui/react";
 const Comment = () => {
   /**
    * @type {React.MutableRefObject<SunEditor>} get type definitions for editor
    */
   const editor: any = useRef();
-  const [valuesDesc, setValuesDesc] = useState('');
+  const [valuesDesc, setValuesDesc] = useState("");
   const [rate, setRate] = useState(0);
   const getSunEditorInstance = (sunEditor: any) => {
     editor.current = sunEditor;
@@ -24,18 +24,18 @@ const Comment = () => {
   const { idcourse } = useParams();
   const dispatch = useAppDispatch();
   const [page, setPage] = useState(1);
-  const ratingChanged = (newRating:any) => {
+  const ratingChanged = (newRating: any) => {
     setRate(newRating);
   };
-  
+
   const commentCourse = useSelector(selectCommentCourse);
   console.log(
-    '🚀 ~ file: Comment.tsx:13 ~ Comment ~ commentCourse:',
+    "🚀 ~ file: Comment.tsx:13 ~ Comment ~ commentCourse:",
     commentCourse
   );
   const getCommentCourseItem = async (id: any, page: number) => {
     const payload = new URLSearchParams({
-      limit: '27',
+      limit: "27",
       page: page.toString(),
     });
     const payloadItem = {
@@ -43,11 +43,11 @@ const Comment = () => {
       queryParam: payload,
     };
     const res = await dispatch(getCommentsCourse(payloadItem));
-    if (res.meta.requestStatus === 'fulfilled' && res.payload) { /* empty */ }
+    if (res.meta.requestStatus === "fulfilled" && res.payload) {
+      /* empty */
+    }
   };
-  const handleChange = ()=>{
-    
-  };
+  const handleChange = () => {};
   useEffect(() => {
     if (idcourse) {
       getCommentCourseItem(idcourse, page);
@@ -56,16 +56,18 @@ const Comment = () => {
   return (
     <div className="flex flex-col gap-y-3">
       {commentCourse.listData.length === 0 ? (
-        <div>Không có bình luận nào</div>
-      ):(
+        <div>No comment yet</div>
+      ) : (
         <>
           <div>
-
             {commentCourse.listData
               .slice(0, 28)
               .map((comment: any, index: number) => (
                 <div key={comment?._id}>
-                  <div className="grid grid-cols-[50px_1fr] gap-x-2" key={index}>
+                  <div
+                    className="grid grid-cols-[50px_1fr] gap-x-2"
+                    key={index}
+                  >
                     <div className="w-[50px] h-[50px] rounded-full overflow-hidden">
                       <img
                         className="w-full h-full object-cover"
@@ -77,7 +79,9 @@ const Comment = () => {
                       <span className="font-medium text-[16px] text-[#1D2026]">
                         {comment?.author}
                       </span>
-                      <p className="text-[14px] text-[#4E5566]">{comment?.content}</p>
+                      <p className="text-[14px] text-[#4E5566]">
+                        {comment?.content}
+                      </p>
                     </div>
                   </div>
                   <span className="text-[14px]">

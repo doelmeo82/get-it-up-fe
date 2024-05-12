@@ -1,19 +1,19 @@
-import React from 'react';
-import { Tabs, TabList, TabPanels, Tab, TabPanel } from '@chakra-ui/react';
-import { BiSolidLayer } from 'react-icons/bi';
-import { MdContentPaste, MdOutlineOndemandVideo } from 'react-icons/md';
-import { RiVideoUploadFill } from 'react-icons/ri';
-import BasicInformation from './BasicInformation';
-import { useSelector } from 'react-redux';
+import React from "react";
+import { Tabs, TabList, TabPanels, Tab, TabPanel } from "@chakra-ui/react";
+import { BiSolidLayer } from "react-icons/bi";
+import { MdContentPaste, MdOutlineOndemandVideo } from "react-icons/md";
+import { RiVideoUploadFill } from "react-icons/ri";
+import BasicInformation from "./BasicInformation";
+import { useSelector } from "react-redux";
 import {
   selectCreateCourse,
   selectIndexCreateStep,
   updateIndex,
-} from '../../../store/reducers/createCourseSlice';
-import { useAppDispatch } from '../../../hooks/appHooks';
-import AdvanceInformation from './AdvanceInformation';
-import VideoCreateCourses from './VideoCreateCourses';
-import PublishCourse from './PublishCourse';
+} from "../../../store/reducers/createCourseSlice";
+import { useAppDispatch } from "../../../hooks/appHooks";
+import AdvanceInformation from "./AdvanceInformation";
+import VideoCreateCourses from "./VideoCreateCourses";
+import PublishCourse from "./PublishCourse";
 const TabCreateCourse = () => {
   const dispatch = useAppDispatch();
   const selectTabCourse = useSelector(selectCreateCourse);
@@ -51,7 +51,7 @@ const TabCreateCourse = () => {
           >
             <div className="text-[#1D2026] flex items-center gap-x-2">
               <MdOutlineOndemandVideo className="text-[20px]" />
-              <span className="text-[16px] font-normal">Video khóa học</span>
+              <span className="text-[16px] font-normal">Video Course</span>
             </div>
           </Tab>
           <Tab
@@ -60,7 +60,7 @@ const TabCreateCourse = () => {
           >
             <div className="text-[#1D2026] flex items-center gap-x-2">
               <RiVideoUploadFill className="text-[20px]" />
-              <span className="text-[16px] font-normal">Đăng tải khóa học</span>
+              <span className="text-[16px] font-normal">Đăng tải Course</span>
             </div>
           </Tab>
         </TabList>

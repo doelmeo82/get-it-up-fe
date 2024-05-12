@@ -1,20 +1,20 @@
-import React from 'react';
+import React from "react";
 import {
   Navigation,
   Pagination,
   Scrollbar,
   A11y,
   Autoplay,
-} from 'swiper/modules';
+} from "swiper/modules";
 
-import { Swiper, SwiperSlide } from 'swiper/react';
-import 'swiper/css';
-import 'swiper/css/navigation';
-import 'swiper/css/pagination';
-import 'swiper/css/scrollbar';
-import { Link } from 'react-router-dom';
-import { BiSolidQuoteAltLeft } from 'react-icons/bi';
-import { AiFillPlayCircle } from 'react-icons/ai';
+import { Swiper, SwiperSlide } from "swiper/react";
+import "swiper/css";
+import "swiper/css/navigation";
+import "swiper/css/pagination";
+import "swiper/css/scrollbar";
+import { Link } from "react-router-dom";
+import { BiSolidQuoteAltLeft } from "react-icons/bi";
+import { AiFillPlayCircle } from "react-icons/ai";
 const ListComment = () => {
   return (
     <Swiper
@@ -49,11 +49,11 @@ const ListComment = () => {
             <div className="border-b-[1px] border-[#272829] pb-6">
               <BiSolidQuoteAltLeft className="text-[25px]" />
               <div className="text-[16px] font-normal text-[#61677A] mb-2">
-                Tôi tự hào nói rằng sau vài tháng tham gia khóa học này...
+                Tôi tự hào nói rằng sau vài tháng tham gia Course này...
                 <span className="font-semibold text-[#FF6636]">
                   tôi đã vượt qua kỳ thi và hiện là Người thực hành đám mây được
                   chứng nhận AWS!
-                </span>{' '}
+                </span>{" "}
                 Nội dung này chính xác là nội dung mà kỳ thi của ĐCSTQ đề cập.
               </div>
               <div className="flex gap-x-2 items-center">
@@ -78,11 +78,11 @@ const ListComment = () => {
             <div className="border-b-[1px] border-[#272829] pb-6">
               <BiSolidQuoteAltLeft className="text-[25px]" />
               <div className="text-[16px] font-normal text-[#61677A] mb-2">
-                Tôi tự hào nói rằng sau vài tháng tham gia khóa học này...
+                Tôi tự hào nói rằng sau vài tháng tham gia Course này...
                 <span className="font-semibold text-[#FF6636]">
                   tôi đã vượt qua kỳ thi và hiện là Người thực hành đám mây được
                   chứng nhận AWS!
-                </span>{' '}
+                </span>{" "}
                 Nội dung này chính xác là nội dung mà kỳ thi của ĐCSTQ đề cập.
               </div>
               <div className="flex gap-x-2 items-center">
@@ -107,11 +107,11 @@ const ListComment = () => {
             <div className="border-b-[1px] border-[#272829] pb-6">
               <BiSolidQuoteAltLeft className="text-[25px]" />
               <div className="text-[16px] font-normal text-[#61677A] mb-2">
-                Tôi tự hào nói rằng sau vài tháng tham gia khóa học này...
+                Tôi tự hào nói rằng sau vài tháng tham gia Course này...
                 <span className="font-semibold text-[#FF6636]">
                   tôi đã vượt qua kỳ thi và hiện là Người thực hành đám mây được
                   chứng nhận AWS!
-                </span>{' '}
+                </span>{" "}
                 Nội dung này chính xác là nội dung mà kỳ thi của ĐCSTQ đề cập.
               </div>
               <div className="flex gap-x-2 items-center">
@@ -136,11 +136,11 @@ const ListComment = () => {
             <div className="border-b-[1px] border-[#272829] pb-6">
               <BiSolidQuoteAltLeft className="text-[25px]" />
               <div className="text-[16px] font-normal text-[#61677A] mb-2">
-                Tôi tự hào nói rằng sau vài tháng tham gia khóa học này...
+                Tôi tự hào nói rằng sau vài tháng tham gia Course này...
                 <span className="font-semibold text-[#FF6636]">
                   tôi đã vượt qua kỳ thi và hiện là Người thực hành đám mây được
                   chứng nhận AWS!
-                </span>{' '}
+                </span>{" "}
                 Nội dung này chính xác là nội dung mà kỳ thi của ĐCSTQ đề cập.
               </div>
               <div className="flex gap-x-2 items-center">

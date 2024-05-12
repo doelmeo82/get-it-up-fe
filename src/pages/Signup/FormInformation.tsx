@@ -1,17 +1,17 @@
-import React, { FormEvent, useEffect, useState } from 'react';
-import { useForm } from 'react-hook-form';
-import DatePicker from 'react-datepicker';
+import React, { FormEvent, useEffect, useState } from "react";
+import { useForm } from "react-hook-form";
+import DatePicker from "react-datepicker";
 import {
   Flex,
   Radio,
   RadioGroup,
   Checkbox,
   CheckboxGroup,
-} from '@chakra-ui/react';
-import 'react-datepicker/dist/react-datepicker.css';
-import { Button } from '@chakra-ui/react';
-import { Select } from '@chakra-ui/react';
-import { useAppDispatch } from '../../hooks/appHooks';
+} from "@chakra-ui/react";
+import "react-datepicker/dist/react-datepicker.css";
+import { Button } from "@chakra-ui/react";
+import { Select } from "@chakra-ui/react";
+import { useAppDispatch } from "../../hooks/appHooks";
 import {
   getCategory,
   getDistrict,
@@ -19,9 +19,9 @@ import {
   getSubjects,
   getSubjetsGroup,
   userSetting,
-} from '../../store/actions/user.action';
-import moment from 'moment';
-import { useNavigate } from 'react-router-dom';
+} from "../../store/actions/user.action";
+import moment from "moment";
+import { useNavigate } from "react-router-dom";
 
 interface UserProps {
   name: string;
@@ -43,7 +43,7 @@ const FormInformation = () => {
   const [subjects, setSubjects] = useState([]);
   const [subjectGroup, setSubjectGroup] = useState([]);
   const [startDate, setStartDate] = useState(new Date());
-  const [value, setValue] = React.useState('Nam');
+  const [value, setValue] = React.useState("Nam");
   const [grade, setGrade] = useState([]);
   const navigate = useNavigate();
   const {
@@ -53,21 +53,21 @@ const FormInformation = () => {
     formState: { errors, isSubmitting },
   } = useForm<UserProps>({
     defaultValues: {
-      name: '',
-      phone: '',
+      name: "",
+      phone: "",
       dateofbirth: startDate,
-      gender: '',
-      province: '',
-      district: '',
-      address: '',
+      gender: "",
+      province: "",
+      district: "",
+      address: "",
       grade: 0,
       subjects: [],
-      interestSubject: '',
+      interestSubject: "",
     },
   });
   const getProvinces = async () => {
     const response: any = await dispatch(getProvince({}));
-    if (response.meta.requestStatus === 'fulfilled' && response.payload) {
+    if (response.meta.requestStatus === "fulfilled" && response.payload) {
       console.log(response);
       setProvince(response.payload?.data);
     } else {
@@ -76,10 +76,10 @@ const FormInformation = () => {
   };
   const getDistricts = async () => {
     const payload = new URLSearchParams({
-      'provinceId': watch('province').toString()
+      provinceId: watch("province").toString(),
     });
     const response: any = await dispatch(getDistrict(payload));
-    if (response.meta.requestStatus === 'fulfilled' && response.payload) {
+    if (response.meta.requestStatus === "fulfilled" && response.payload) {
       console.log(response);
       setDistrict(response.payload?.data);
     } else {
@@ -88,7 +88,7 @@ const FormInformation = () => {
   };
   const getAllSubject = async () => {
     const response: any = await dispatch(getSubjects({}));
-    if (response.meta.requestStatus === 'fulfilled' && response.payload) {
+    if (response.meta.requestStatus === "fulfilled" && response.payload) {
       console.log(response);
       setSubjects(response.payload?.data);
     } else {
@@ -97,7 +97,7 @@ const FormInformation = () => {
   };
   const getAllSubjectGroup = async () => {
     const response: any = await dispatch(getSubjetsGroup({}));
-    if (response.meta.requestStatus === 'fulfilled' && response.payload) {
+    if (response.meta.requestStatus === "fulfilled" && response.payload) {
       console.log(response);
       setSubjectGroup(response.payload?.data);
     } else {
@@ -106,7 +106,7 @@ const FormInformation = () => {
   };
   const getCategories = async () => {
     const response: any = await dispatch(getCategory({}));
-    if (response.meta.requestStatus === 'fulfilled' && response.payload) {
+    if (response.meta.requestStatus === "fulfilled" && response.payload) {
       console.log(response);
       setGrade(response.payload?.data);
     } else {
@@ -121,14 +121,14 @@ const FormInformation = () => {
   }, []);
   useEffect(() => {
     getDistricts();
-  }, [watch('province')]);
+  }, [watch("province")]);
   const onSubmit = async (data: UserProps) => {
     // const converSunb = data.subjects.map((item, index) => +item);
     const payload = {
       fullname: data.name,
       phone: data.phone,
-      gender: data.gender === 'Nam' ? true : false,
-      birthDate: moment(data.dateofbirth).format('YYYY-MM-DD'),
+      gender: data.gender === "Nam" ? true : false,
+      birthDate: moment(data.dateofbirth).format("YYYY-MM-DD"),
       address: {
         province: +data.province,
         district: +data.district,
@@ -139,11 +139,11 @@ const FormInformation = () => {
       subjectGroup: +data.interestSubject,
     };
     const res = await dispatch(userSetting(payload));
-    if (res.meta.requestStatus === 'fulfilled' && res.payload) {
+    if (res.meta.requestStatus === "fulfilled" && res.payload) {
       console.log(res);
-      navigate('/');
+      navigate("/");
     } else {
-      console.log('err');
+      console.log("err");
     }
   };
 
@@ -152,19 +152,19 @@ const FormInformation = () => {
       <form action="" onSubmit={handleSubmit(onSubmit)}>
         <div className="flex flex-col gap-y-3 mb-3">
           <input
-            {...register('name')}
+            {...register("name")}
             type="text"
             placeholder="Tên"
             className="focus:outline-none w-full px-3 py-3 outline-none border-[1px] border-[#E9EAF0] placeholder:text-[#8C94A3] placeholder:font-normal placeholder:text-[14px] "
           />
           <input
-            {...register('phone')}
+            {...register("phone")}
             type="text"
             placeholder="Số điện thoại"
             className="focus:outline-none w-full px-3 py-3 outline-none border-[1px] border-[#E9EAF0] placeholder:text-[#8C94A3] placeholder:font-normal placeholder:text-[14px] "
           />
           <DatePicker
-            {...register('dateofbirth')}
+            {...register("dateofbirth")}
             onChange={(date: any) => setStartDate(date)}
             selected={startDate}
             className="w-full px-3 py-3 outline-none border-[1px] border-[#E9EAF0] placeholder:text-[#8C94A3] placeholder:font-normal placeholder:text-[14px]"
@@ -173,26 +173,26 @@ const FormInformation = () => {
           <RadioGroup onChange={setValue} value={value}>
             <Flex direction="row" gap="3">
               <Radio
-                {...register('gender')}
+                {...register("gender")}
                 value="Nam"
                 colorScheme="orange"
                 borderColor="#E9EAF0"
               >
                 Nam
               </Radio>
-              <Radio {...register('gender')} value="Nữ" colorScheme="orange">
+              <Radio {...register("gender")} value="Nữ" colorScheme="orange">
                 Nữ
               </Radio>
             </Flex>
           </RadioGroup>
           <Select
-            _focus={{ borderColor: '#FF6636', outline: 'none' }}
+            _focus={{ borderColor: "#FF6636", outline: "none" }}
             borderRadius="none"
             height="45px"
             placeholder="Tỉnh"
             outline="none"
             bg="white"
-            {...register('province')}
+            {...register("province")}
             // onChange={handleChangeProvince}
           >
             {province.map((item: any, index: any) => (
@@ -202,13 +202,13 @@ const FormInformation = () => {
             ))}
           </Select>
           <Select
-            _focus={{ borderColor: '#FF6636', outline: 'none' }}
+            _focus={{ borderColor: "#FF6636", outline: "none" }}
             borderRadius="none"
             height="45px"
             placeholder="Quận"
             outline="none"
             bg="white"
-            {...register('district')}
+            {...register("district")}
           >
             {district?.map((item: any, index: any) => (
               <option value={item.district_id} key={item.district_id}>
@@ -217,19 +217,19 @@ const FormInformation = () => {
             ))}
           </Select>
           <input
-            {...register('address')}
+            {...register("address")}
             type="text"
             placeholder="Địa chỉ"
             className="focus:outline-none w-full px-3 py-3 outline-none border-[1px] border-[#E9EAF0] placeholder:text-[#8C94A3] placeholder:font-normal placeholder:text-[14px] "
           />
           <Select
-            _focus={{ borderColor: '#FF6636', outline: 'none' }}
+            _focus={{ borderColor: "#FF6636", outline: "none" }}
             borderRadius="none"
             height="45px"
             placeholder="Lớp"
             outline="none"
             bg="white"
-            {...register('grade')}
+            {...register("grade")}
           >
             {grade.map((item: any, index: any) => (
               <option value={item._id} key={item._id}>
@@ -248,7 +248,7 @@ const FormInformation = () => {
                   value={item.subjectName}
                   colorScheme="orange"
                   borderColor="#8C94A3"
-                  {...register('subjects')}
+                  {...register("subjects")}
                   fontSize="14px"
                 >
                   {item.subjectName}
@@ -258,13 +258,13 @@ const FormInformation = () => {
           </div>
 
           <Select
-            _focus={{ borderColor: '#FF6636', outline: 'none' }}
+            _focus={{ borderColor: "#FF6636", outline: "none" }}
             borderRadius="none"
             height="45px"
             placeholder="Khối thi"
             outline="none"
             bg="white"
-            {...register('interestSubject')}
+            {...register("interestSubject")}
           >
             {subjectGroup.map((item: any, index: any) => (
               <option value={item._id} key={item._id}>
@@ -274,7 +274,7 @@ const FormInformation = () => {
           </Select>
         </div>
         <Button
-          _hover={{ bg: '#fa5928' }}
+          _hover={{ bg: "#fa5928" }}
           w="100%"
           bg="#FF6636"
           color="white"
@@ -282,7 +282,7 @@ const FormInformation = () => {
           type="submit"
           isLoading={isSubmitting}
         >
-          Xác nhận
+          Submit
         </Button>
       </form>
     </div>

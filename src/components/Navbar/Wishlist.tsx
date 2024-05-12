@@ -88,9 +88,9 @@ const Wishlist = () => {
       <div className="modal_title_learn absolute top-[100%] lg:right-[50%] right-[-20px] w-[300px]  bg-white border-[1px] border-[#272829]">
         <div className="px-3 py-3 flex flex-col items-center text-[#ACADAE]">
           {/* khi nào rỗng thì hiện */}
-          {/* <h1>Các khóa học yêu thích đang trống</h1> */}
+          {/* <h1>Các Wish list đang trống</h1> */}
           {wishList.length === 0 ? (
-            <h1>Các khóa học yêu thích đang trống</h1>
+            <h1>Các Wish list đang trống</h1>
           ) : (
             <div className="flex flex-col gap-y-1 divide-y-2 max-h-[550px] h-fit overflow-y-scroll">
               {wishList?.map((wishlistItem: any, index: number) => (

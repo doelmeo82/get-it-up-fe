@@ -1,5 +1,5 @@
-import React from 'react';
-import { Link } from 'react-router-dom';
+import React from "react";
+import { Link } from "react-router-dom";
 const Learning = () => {
   return (
     <div className="title_learn text-[14px] cursor-pointer relative text-[#272829]">
@@ -13,7 +13,7 @@ const Learning = () => {
             to=""
             className="text-white px-2 py-3 text-center w-full block bg-[#272829] font-medium"
           >
-            Tới khóa học
+            Start learning
           </Link>
         </div>
       </div>

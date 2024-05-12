@@ -1,32 +1,36 @@
-import React from 'react';
-import { Tabs, TabList, TabPanels, Tab, TabPanel } from '@chakra-ui/react';
-import Dashboard from './Dashboard';
-import CoursesList from './CoursesList';
-import Message from './Message';
-import Teachers from './Teachers';
-import Favorite from './Favorite';
-import Cart from './Cart';
-import Settings from './Settings';
-import { useLocation, useNavigate } from 'react-router-dom';
-import BlogUser from '../BlogUser/BlogUser';
+import React from "react";
+import { Tabs, TabList, TabPanels, Tab, TabPanel } from "@chakra-ui/react";
+import Dashboard from "./Dashboard";
+import CoursesList from "./CoursesList";
+import Message from "./Message";
+import Teachers from "./Teachers";
+import Favorite from "./Favorite";
+import Cart from "./Cart";
+import Settings from "./Settings";
+import { useLocation, useNavigate } from "react-router-dom";
+import BlogUser from "../BlogUser/BlogUser";
 const TabProfile = () => {
   const navigation = useNavigate();
-  const pathnanme = useLocation(); 
-  const onClickTabs = ()=>{
+  const pathnanme = useLocation();
+  const onClickTabs = () => {
     navigation(`${pathnanme.pathname}`);
   };
   return (
     <div>
       <Tabs>
-        <TabList display="flex" justifyContent="space-between" flexWrap={'wrap'}>
+        <TabList
+          display="flex"
+          justifyContent="space-between"
+          flexWrap={"wrap"}
+        >
           <Tab onClick={onClickTabs}>Dashboard</Tab>
-          <Tab onClick={onClickTabs}>Khóa học</Tab>
-          <Tab onClick={onClickTabs}>Tin nhắn</Tab>
-          {/* <Tab onClick={onClickTabs}>Giáo viên</Tab> */}
-          <Tab onClick={onClickTabs}>Yêu thích</Tab>
+          <Tab onClick={onClickTabs}>Course</Tab>
+          <Tab onClick={onClickTabs}>Messages</Tab>
+          {/* <Tab onClick={onClickTabs}>Teacher</Tab> */}
+          <Tab onClick={onClickTabs}>Wish list</Tab>
           <Tab onClick={onClickTabs}>Blog</Tab>
           {/* <Tab>Giỏ hàng</Tab> */}
-          <Tab onClick={onClickTabs}>Tài khoản</Tab>
+          <Tab onClick={onClickTabs}>Account</Tab>
         </TabList>
 
         <TabPanels p={0}>
@@ -36,9 +40,7 @@ const TabProfile = () => {
           <TabPanel>
             <CoursesList />
           </TabPanel>
-          <TabPanel>
-            {/* <Message /> */}
-          </TabPanel>
+          <TabPanel>{/* <Message /> */}</TabPanel>
           {/* <TabPanel>
             <Teachers />
           </TabPanel> */}
@@ -46,7 +48,7 @@ const TabProfile = () => {
             <Favorite />
           </TabPanel>
           <TabPanel>
-            <BlogUser/>
+            <BlogUser />
           </TabPanel>
           <TabPanel>
             <Settings />

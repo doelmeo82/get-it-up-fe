@@ -1,25 +1,25 @@
-import React from 'react';
-import { BsThreeDotsVertical, BsPlayFill } from 'react-icons/bs';
-import { Link } from 'react-router-dom';
-import { Tabs, TabList, TabPanels, Tab, TabPanel } from '@chakra-ui/react';
-import Mycourse from './Mycourse';
-import CourseList from '../Homepage/CourseList';
-import { useSelector } from 'react-redux';
-import { selectCourseTab } from '../../store/reducers/courseTabSlice';
+import React from "react";
+import { BsThreeDotsVertical, BsPlayFill } from "react-icons/bs";
+import { Link } from "react-router-dom";
+import { Tabs, TabList, TabPanels, Tab, TabPanel } from "@chakra-ui/react";
+import Mycourse from "./Mycourse";
+import CourseList from "../Homepage/CourseList";
+import { useSelector } from "react-redux";
+import { selectCourseTab } from "../../store/reducers/courseTabSlice";
 const MyLearning = () => {
   const courseTab = useSelector(selectCourseTab);
   return (
     <div className="pt-[100px] pb-[60px]">
       <div className="bg-[#272829] text-white h-[150px] flex items-center">
         <div className="max-w-[1000px] w-full mx-auto">
-          <h1 className="text-3xl font-semibold">Khóa học của tôi</h1>
+          <h1 className="text-3xl font-semibold">My learning</h1>
         </div>
       </div>
       <div className="max-w-[1000px] w-full mx-auto mt-6">
         <Tabs index={courseTab}>
           <TabList>
-            <Tab>Khóa học của tôi</Tab>
-            <Tab>Khóa học yêu thích</Tab>
+            <Tab>My learning</Tab>
+            <Tab>Wish list</Tab>
           </TabList>
 
           <TabPanels p={0}>

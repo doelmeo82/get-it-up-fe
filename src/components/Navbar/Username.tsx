@@ -1,16 +1,16 @@
-import React, { useEffect } from 'react';
-import { Link, useNavigate } from 'react-router-dom';
-import { useAppDispatch } from '../../hooks/appHooks';
-import { updateTabCourse } from '../../store/reducers/courseTabSlice';
-import { LocalStorage } from '../../utils/LocalStorage';
+import React, { useEffect } from "react";
+import { Link, useNavigate } from "react-router-dom";
+import { useAppDispatch } from "../../hooks/appHooks";
+import { updateTabCourse } from "../../store/reducers/courseTabSlice";
+import { LocalStorage } from "../../utils/LocalStorage";
 import {
   selectAuthUserId,
   selectUserInfo,
   updateIsLogged,
   updateUserId,
-} from '../../store/reducers/authSlice';
-import { useSelector } from 'react-redux';
-import { getUserInfo } from '../../store/actions/user.action';
+} from "../../store/reducers/authSlice";
+import { useSelector } from "react-redux";
+import { getUserInfo } from "../../store/actions/user.action";
 
 const Username = () => {
   const dispatch = useAppDispatch();
@@ -26,12 +26,12 @@ const Username = () => {
     dispatch(updateIsLogged(false));
     dispatch(updateUserId({}));
     setTimeout(() => {
-      navigate('/');
+      navigate("/");
     }, 500);
   };
   const getUserInfoDetail = async () => {
     const res = await dispatch(getUserInfo({}));
-    if (res.meta.requestStatus === 'fulfilled' && res.payload) {
+    if (res.meta.requestStatus === "fulfilled" && res.payload) {
       console.log(res);
     }
   };
@@ -40,7 +40,7 @@ const Username = () => {
     dispatch(updateIsLogged(false));
     dispatch(updateUserId({}));
     setTimeout(() => {
-      navigate('/teacher');
+      navigate("/teacher");
     }, 500);
   };
   useEffect(() => {
@@ -77,20 +77,14 @@ const Username = () => {
               className="text-[14px] font-medium text-[#61677A] hover:text-[#272829] transition-all ease-in-out duration-200"
               onClick={() => handleClickToCourseTab(0)}
             >
-              Khóa học của tôi
+              My learning
             </Link>
             <Link
               to={`/profile/${userId?._id}`}
               className="text-[14px] font-medium text-[#61677A] hover:text-[#272829] transition-all ease-in-out duration-200"
               onClick={() => handleClickToCourseTab(1)}
             >
-              Khóa học yêu thích
-            </Link>
-            <Link
-              to={'/cart'}
-              className="text-[14px] font-medium text-[#61677A] hover:text-[#272829] transition-all ease-in-out duration-200"
-            >
-              Giỏ hàng của tôi
+              Wish list
             </Link>
           </div>
           <div className="flex flex-col py-3 gap-y-2">
@@ -98,13 +92,13 @@ const Username = () => {
               to=""
               className="text-[14px] font-medium text-[#61677A] hover:text-[#272829] transition-all ease-in-out duration-200"
             >
-              Thông báo
+              Notifications
             </Link>
             <Link
               to=""
               className="text-[14px] font-medium text-[#61677A] hover:text-[#272829] transition-all ease-in-out duration-200"
             >
-              Tin nhắn
+              Messages
             </Link>
           </div>
           <div className="flex flex-col py-3 gap-y-2">
@@ -112,19 +106,19 @@ const Username = () => {
               to={`/profile/${userId?._id}`}
               className="text-[14px] font-medium text-[#61677A] hover:text-[#272829] transition-all ease-in-out duration-200"
             >
-              Cài đặt tài khoản
+              Account settings
             </Link>
             <div
               onClick={handleTeacher}
               className="text-[14px] font-medium text-[#61677A] hover:text-[#272829] transition-all ease-in-out duration-200"
             >
-              Tới trang giáo viên
+              Go to teacher site
             </div>
             <div
               onClick={handleLogout}
               className="text-[14px] font-medium text-[#61677A] hover:text-[#272829] transition-all ease-in-out duration-200"
             >
-              Đăng xuất
+              Logout
             </div>
           </div>
         </div>

@@ -1,9 +1,9 @@
-import React from 'react';
-import { BiRightArrowAlt, BiLeftArrowAlt } from 'react-icons/bi';
-import Pagination from '../../components/Pagination/Pagination';
-import { useSelector } from 'react-redux';
-import { selectUserCourse } from '../../store/reducers/courseSlice';
-import { useNavigate } from 'react-router-dom';
+import React from "react";
+import { BiRightArrowAlt, BiLeftArrowAlt } from "react-icons/bi";
+import Pagination from "../../components/Pagination/Pagination";
+import { useSelector } from "react-redux";
+import { selectUserCourse } from "../../store/reducers/courseSlice";
+import { useNavigate } from "react-router-dom";
 
 const Courses = () => {
   const userCourse = useSelector(selectUserCourse);
@@ -25,7 +25,7 @@ const Courses = () => {
                 />
                 <div className="p-[16px] h-[100px] flex flex-col gap-y-[6px] bg-white border-[1px] border-[#E9EAF0]">
                   <span className="text-[#6E7485] text-[12px]">
-                    {course?.courseName.split('-')[0]}
+                    {course?.courseName.split("-")[0]}
                   </span>
                   <h1 className="text-[#1D2026] text-[14px] font-medium line-clamp-2">
                     {course?.courseName}
@@ -36,7 +36,7 @@ const Courses = () => {
                     onClick={() => navigate(`/courses/${course?._id}`)}
                     className="w-full py-[6px] px-[4px] text-[14px] font-semibold bg-[#FFEEE8] text-[#FF6636]"
                   >
-                    Xem bài giảng
+                    Start learning
                   </button>
                   {/* <div className="text-right text-[12px] text-[#23BD33]">
                     <span>0</span>% complete

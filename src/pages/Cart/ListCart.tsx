@@ -106,7 +106,7 @@ const ListCart = () => {
   return (
     <div className="flex flex-col gap-y-3">
       <h2 className="text-[20px] font-semibold">
-        Có {cartList?.carts?.length} khóa học trong giỏ hàng
+        Có {cartList?.carts?.length} Course trong giỏ hàng
       </h2>
       <div className="w-full h-[1px] bg-[#ACADAE]"></div>
       <div>
@@ -114,7 +114,7 @@ const ListCart = () => {
           <Table variant="simple">
             <Thead>
               <Tr>
-                <Th>Khóa học</Th>
+                <Th>Course</Th>
                 <Th>Giá</Th>
                 <Th>Hành động</Th>
               </Tr>
@@ -167,7 +167,7 @@ const ListCart = () => {
                         color="#1D2026"
                         fontSize="14px"
                       >
-                        Đăng ký học ngay
+                        Start learning
                       </Button>
                       <Button
                         bg="#FF6636"

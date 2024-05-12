@@ -157,7 +157,7 @@ const Course = ({ item, getListCourse }: any) => {
                 <BsPeople className="text-[20px] text-[#564FFD]" />
                 <span className="text-[14px] font-medium text-[#4E5566]">
                   236{" "}
-                  <span className="text-[#8C94A3] font-normal">học sinh</span>
+                  <span className="text-[#8C94A3] font-normal">Student</span>
                 </span>
               </div> */}
               <div className="flex gap-x-2">
@@ -182,7 +182,7 @@ const Course = ({ item, getListCourse }: any) => {
                   className="flex items-center gap-x-2 px-[12px] py-[6px] bg-[#FF6636] rounded-md"
                 >
                   <VscGoToFile />
-                  <span>Đi tới khóa học</span>
+                  <span>Đi Start learning</span>
                 </button>
               ) : (
                 <>
@@ -201,7 +201,7 @@ const Course = ({ item, getListCourse }: any) => {
                     className="flex items-center gap-x-2 px-[12px] py-[6px] bg-[#FF6636] rounded-md"
                   >
                     <IoBagCheckOutline />
-                    <span>Đăng ký học ngay</span>
+                    <span>Start learning</span>
                   </button>
                 </>
               )}

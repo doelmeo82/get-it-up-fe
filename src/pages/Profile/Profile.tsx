@@ -1,16 +1,16 @@
-import React, { useEffect } from 'react';
-import TabProfile from './TabProfile';
-import { useSelector } from 'react-redux';
-import { selectUserInfo } from '../../store/reducers/authSlice';
-import { useAppDispatch } from '../../hooks/appHooks';
-import { getUserInfo } from '../../store/actions/user.action';
+import React, { useEffect } from "react";
+import TabProfile from "./TabProfile";
+import { useSelector } from "react-redux";
+import { selectUserInfo } from "../../store/reducers/authSlice";
+import { useAppDispatch } from "../../hooks/appHooks";
+import { getUserInfo } from "../../store/actions/user.action";
 
 const Profile = () => {
   const userInfo: any = useSelector(selectUserInfo);
   const dispatch = useAppDispatch();
   const getUserInfoDetail = async () => {
     const res = await dispatch(getUserInfo({}));
-    if (res.meta.requestStatus === 'fulfilled' && res.payload) {
+    if (res.meta.requestStatus === "fulfilled" && res.payload) {
       console.log(res);
     }
   };
@@ -30,15 +30,15 @@ const Profile = () => {
             <h1 className="text-[24px] text-white font-semibold">
               {userInfo?.username} ({userInfo?.fullname})
             </h1>
-            <span className="text-white">Học sinh</span>
+            <span className="text-white">Student</span>
           </div>
         </div>
         <div>
           <div className="text-[18px] font-semibold px-[32px] py-[10px] w-[200px] text-center bg-[#FFEEE8] text-[#FF6636]">
             {userInfo &&
               userInfo.roles &&
-              userInfo?.roles[0].roleName === 'STUDENT' &&
-              'Học sinh'}
+              userInfo?.roles[0].roleName === "STUDENT" &&
+              "Student"}
           </div>
         </div>
       </div>

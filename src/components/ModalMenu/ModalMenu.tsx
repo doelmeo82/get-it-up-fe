@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState } from "react";
 import {
   Drawer,
   DrawerBody,
@@ -7,20 +7,20 @@ import {
   DrawerOverlay,
   DrawerContent,
   DrawerCloseButton,
-} from '@chakra-ui/react';
-import { navbar } from '../../dummydata/dummydata';
-import DropdownNavbar from '../DropdownNavbar/DropdownNavbar';
-import { Link } from 'react-router-dom';
-import { useAppDispatch } from '../../hooks/appHooks';
-import { getCategory } from '../../store/actions/user.action';
-import { BiSolidGridAlt } from 'react-icons/bi';
+} from "@chakra-ui/react";
+import { navbar } from "../../dummydata/dummydata";
+import DropdownNavbar from "../DropdownNavbar/DropdownNavbar";
+import { Link } from "react-router-dom";
+import { useAppDispatch } from "../../hooks/appHooks";
+import { getCategory } from "../../store/actions/user.action";
+import { BiSolidGridAlt } from "react-icons/bi";
 
 const ModalMenu = ({ isOpen, onClose, drawerRef }: any) => {
   const dispatch = useAppDispatch();
   const [category, setCategory] = useState<any>([]);
   const getCategorySidebar = async () => {
     const res: any = await dispatch(getCategory({}));
-    if (res.payload && res.meta.requestStatus === 'fulfilled') {
+    if (res.payload && res.meta.requestStatus === "fulfilled") {
       setCategory(res?.payload.data);
     }
   };
@@ -38,16 +38,20 @@ const ModalMenu = ({ isOpen, onClose, drawerRef }: any) => {
       <DrawerContent>
         <DrawerHeader borderBottomWidth="1px">
           <Link to="courses" onClick={() => onClose()}>
-            Danh mục khóa học
+            Category
           </Link>
         </DrawerHeader>
         <DrawerBody>
           {category?.map((item: any, index: number) => (
             <DropdownNavbar item={item} key={item?._id} onClose={onClose} />
           ))}
-          <Link to="/blog" onClick={() => onClose()} className=' rounded-lg gap-3 inline-flex items-center justify-center bg-[#FF6636] px-[16px] py-[8px] mt-[20px] text-white'>
-            <BiSolidGridAlt className='text-[24px]'/>
-            <span className='font-medium'>Bài viết</span>
+          <Link
+            to="/blog"
+            onClick={() => onClose()}
+            className=" rounded-lg gap-3 inline-flex items-center justify-center bg-[#FF6636] px-[16px] py-[8px] mt-[20px] text-white"
+          >
+            <BiSolidGridAlt className="text-[24px]" />
+            <span className="font-medium">Blog</span>
           </Link>
         </DrawerBody>
       </DrawerContent>

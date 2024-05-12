@@ -1,22 +1,22 @@
-import React from 'react';
-import { AiOutlinePlayCircle } from 'react-icons/ai';
-import { PiMonitorPlayFill } from 'react-icons/pi';
-import { Link, useLocation, useNavigate, useRoutes } from 'react-router-dom';
-import { useAppDispatch } from '../../hooks/appHooks';
+import React from "react";
+import { AiOutlinePlayCircle } from "react-icons/ai";
+import { PiMonitorPlayFill } from "react-icons/pi";
+import { Link, useLocation, useNavigate, useRoutes } from "react-router-dom";
+import { useAppDispatch } from "../../hooks/appHooks";
 import {
   updateCommentList,
   updatePage,
-} from '../../store/reducers/commentSlice';
-const ListVideoChapter = ({ id, code, lecture, index,slug }: any) => {
+} from "../../store/reducers/commentSlice";
+const ListVideoChapter = ({ id, code, lecture, index, slug }: any) => {
   const pathname = useLocation();
   const navigate = useNavigate();
   const dispatch = useAppDispatch();
   console.log(
-    '🚀 ~ file: ListVideoChapter.tsx:7 ~ ListVideoChapter ~ pathname:',
+    "🚀 ~ file: ListVideoChapter.tsx:7 ~ ListVideoChapter ~ pathname:",
     pathname
   );
   const handleOnClick = () => {
-    console.log('hekkk');
+    console.log("hekkk");
     dispatch(updateCommentList([]));
     dispatch(updatePage(1));
     setTimeout(() => {
@@ -37,7 +37,7 @@ const ListVideoChapter = ({ id, code, lecture, index,slug }: any) => {
         <div className="flex items-center gap-x-2">
           <PiMonitorPlayFill className="text-[20px]" />
           <div>
-            <p>Tài liệu</p>
+            <p>Document</p>
           </div>
         </div>
       </div>

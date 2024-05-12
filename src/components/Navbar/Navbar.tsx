@@ -1,21 +1,21 @@
-import React, { useEffect, useRef, useState } from 'react';
-import logo from '../../image/Navbar/logo.svg';
-import { AiOutlineSearch } from 'react-icons/ai';
-import { RxHamburgerMenu } from 'react-icons/rx';
-import { IoClose } from 'react-icons/io5';
-import { Link, useLocation, useNavigate } from 'react-router-dom';
-import SearchResult from '../SearchResult/SearchResult';
-import { useForm } from 'react-hook-form';
-import { useDebounce } from '../../hooks/useDebounce';
-import { Button, useDisclosure } from '@chakra-ui/react';
-import ModalMenu from '../ModalMenu/ModalMenu';
-import NavbarLogin from './NavbarLogin';
-import { useSelector } from 'react-redux';
+import React, { useEffect, useRef, useState } from "react";
+import logo from "../../image/Navbar/logo_main.png";
+import { AiOutlineSearch } from "react-icons/ai";
+import { RxHamburgerMenu } from "react-icons/rx";
+import { IoClose } from "react-icons/io5";
+import { Link, useLocation, useNavigate } from "react-router-dom";
+import SearchResult from "../SearchResult/SearchResult";
+import { useForm } from "react-hook-form";
+import { useDebounce } from "../../hooks/useDebounce";
+import { Button, useDisclosure } from "@chakra-ui/react";
+import ModalMenu from "../ModalMenu/ModalMenu";
+import NavbarLogin from "./NavbarLogin";
+import { useSelector } from "react-redux";
 import {
   selectAuthUserId,
   selectIsLogged,
-} from '../../store/reducers/authSlice';
-import { LocalStorage } from '../../utils/LocalStorage';
+} from "../../store/reducers/authSlice";
+import { LocalStorage } from "../../utils/LocalStorage";
 const Navbar = () => {
   const location = useLocation();
   const [isOpenNav, setIsOpenNav] = useState(false);
@@ -23,7 +23,7 @@ const Navbar = () => {
   const access_token = LocalStorage.getAccessToken();
   const userId = LocalStorage.getUserId();
   const { isOpen: isOpenMenu, onOpen, onClose } = useDisclosure();
-  const [value, setValue] = useState('');
+  const [value, setValue] = useState("");
   const [isOpen, setIsOpen] = useState(false);
   const navigation = useNavigate();
   const focusRef: any = useRef(null);
@@ -35,7 +35,7 @@ const Navbar = () => {
     formState: { errors },
   } = useForm({
     defaultValues: {
-      search: '',
+      search: "",
     },
   });
   const handleOnSubmit = (data: any) => {
@@ -52,7 +52,7 @@ const Navbar = () => {
     setIsOpen(!isOpen);
   };
   const handleRouterHome = () => {
-    navigation('/');
+    navigation("/");
   };
   useEffect(() => {
     const handler = (e: any) => {
@@ -60,56 +60,66 @@ const Navbar = () => {
         setIsOpen(false);
       }
     };
-    document.addEventListener('click', handler);
-    return () => document.addEventListener('click', handler);
+    document.addEventListener("click", handler);
+    return () => document.addEventListener("click", handler);
   }, []);
-  useEffect(()=>{
+  useEffect(() => {
     setIsOpenNav(false);
-  },[location.pathname]);
+  }, [location.pathname]);
   return (
     <div className="fixed top-0 left-0 w-full z-10 bg-white" ref={focusRef}>
-      <div className="flex items-center h-[72px] px-[24px] shadow-xl justify-between lg:justify-start">
+      <div className="flex items-center h-[72px] px-[24px] shadow-xl justify-between lg:justify-start bg-[#009933]">
         <img
           src={logo}
           alt="logo-icon"
           className="w-[130px] cursor-pointer "
           onClick={handleRouterHome}
         />
-        <RxHamburgerMenu onClick={()=>setIsOpenNav(true)} className='block lg:hidden text-[30px]'/>
+        <RxHamburgerMenu
+          onClick={() => setIsOpenNav(true)}
+          className="block lg:hidden text-[30px]"
+        />
 
-        <div className={`fixed p-[20px] shadow-xl lg:shadow-none lg:p-[0] h-full bg-white lg:bg-none top-0 right-0 lg:relative ${isOpenNav ? 'flex' : 'hidden'} lg:flex flex-col lg:flex-row items-end lg:items-center flex-1 justify-start lg:justify-around gap-y-3`}>
-          <IoClose onClick={()=>setIsOpenNav(false)} className='block lg:hidden'/>
+        <div
+          className={`fixed p-[20px] shadow-xl lg:shadow-none lg:p-[0] h-full bg-[#009933] lg:bg-none top-0 right-0 lg:relative ${
+            isOpenNav ? "flex" : "hidden"
+          } lg:flex flex-col lg:flex-row items-end lg:items-center flex-1 justify-start lg:justify-around gap-y-3`}
+        >
+          <IoClose
+            onClick={() => setIsOpenNav(false)}
+            className="block lg:hidden"
+          />
           <Button
             ref={drawerRef}
             onClick={onOpen}
             bg="none"
-            _hover={{ bg: 'none' }}
+            _hover={{ bg: "none" }}
             fontWeight="400"
           >
-            Danh mục
+            Category
           </Button>
           <form
             action=""
             className="w-full lg:w-[50%] relative"
             onSubmit={handleSubmit(handleOnSubmit)}
           >
-            <div className="flex items-center gap-4 bg-white py-3 px-4 rounded-full border-[1px] border-[#272829]">
+            <div className="flex items-center gap-4 bg-[#FF4500] py-3 px-4 rounded-full border-[1px] border-[#272829]">
               <button
-                type={value === '' ? 'button' : 'submit'}
+                type={value === "" ? "button" : "submit"}
                 className={`${
-                  value === '' ? 'cursor-default' : 'cursor-pointer'
+                  value === "" ? "cursor-default" : "cursor-pointer"
                 }`}
               >
-                <AiOutlineSearch className="text-[#ccd2d8] text-xl" />
+                <AiOutlineSearch className="text-[#272829] text-xl" />
               </button>
               <input
-                {...register('search')}
+                {...register("search")}
                 ref={focusRef}
                 type="text"
                 name="search"
                 id="search"
-                className="w-full bg-transparent outline-none text-[#272829]"
-                placeholder="Tìm các khóa học mà bạn quan tâm"
+                className="w-full bg-transparent outline-none text-[#272829] placeholder:text-white"
+                placeholder="Search for your content"
                 onChange={handleChange}
                 onClick={handleOpen}
               />
@@ -118,20 +128,20 @@ const Navbar = () => {
               <SearchResult value={value} debouncedValue={debouncedValue} />
             )}
           </form>
-          <Link to="/teacher">Giáo viên</Link>
+          <Link to="/teacher">Teacher</Link>
           {!userId ? (
             <div className="flex gap-x-3">
               <Link
                 to="/login"
-                className="bg-[#FFEEE8] px-5 py-3 text-[14px] font-semibold text-[#FF6636]"
+                className="bg-[#FFEEE8] px-5 py-3 text-[14px] font-semibold text-[#FF6636] rounded-3xl"
               >
-                Đăng nhập
+                Login
               </Link>
               <Link
                 to="/signup"
-                className="bg-[#FF6636] text-white px-5 py-3 text-[14px] font-semibold"
+                className="bg-[#FF6636] text-white px-5 py-3 text-[14px] font-semibold rounded-3xl"
               >
-                Đăng ký
+                Signup
               </Link>
             </div>
           ) : (
