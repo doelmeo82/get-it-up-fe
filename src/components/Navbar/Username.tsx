@@ -77,7 +77,7 @@ const Username = () => {
           <div className="flex flex-col py-3 gap-y-2">
             <Link
               to={`/profile/${userId?._id}`}
-              className="text-[14px] font-medium text-[#61677A] hover:text-[#272829] transition-all ease-in-out duration-200"
+              className="text-[14px] font-semibold text-[#61677A] hover:text-[#272829] transition-all ease-in-out duration-200"
               onClick={() => handleClickToCourseTab(0)}
             >
               My learning

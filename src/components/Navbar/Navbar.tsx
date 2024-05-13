@@ -68,7 +68,7 @@ const Navbar = () => {
   }, [location.pathname]);
   return (
     <div className="fixed top-0 left-0 w-full z-10 bg-white" ref={focusRef}>
-      <div className="flex items-center h-[72px] px-[24px] shadow-xl justify-between lg:justify-start bg-[#009933]">
+      <div className="flex items-center h-[72px] px-[24px] shadow-xl justify-between lg:justify-start bg-[#99FF33]">
         <img
           src={logo}
           alt="logo-icon"
@@ -81,7 +81,7 @@ const Navbar = () => {
         />
 
         <div
-          className={`fixed p-[20px] shadow-xl lg:shadow-none lg:p-[0] h-full bg-[#009933] lg:bg-none top-0 right-0 lg:relative ${
+          className={`fixed p-[20px] shadow-xl lg:shadow-none lg:p-[0] h-full bg-[#99FF33] lg:bg-none top-0 right-0 lg:relative ${
             isOpenNav ? "flex" : "hidden"
           } lg:flex flex-col lg:flex-row items-end lg:items-center flex-1 justify-start lg:justify-around gap-y-3`}
         >

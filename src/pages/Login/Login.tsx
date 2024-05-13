@@ -3,7 +3,7 @@ import Google from "./Google";
 import Facebook from "./Facebook";
 import LoginForm from "./LoginForm";
 import { Link } from "react-router-dom";
-import image from "../../image/Login/Illustrations.jpg";
+import image from "../../image/Login/login.png";
 const Login = () => {
   return (
     <div className="pt-[100px] lg:pt-[72px] pb-[60px] grid grid-cols-1 lg:grid-cols-2 h-screen px-[18px] lg:px-0">

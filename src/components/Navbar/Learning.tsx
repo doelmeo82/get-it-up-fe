@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 const Learning = () => {
   return (
     <div className="title_learn text-[14px] cursor-pointer relative text-[#272829]">
-      <h1 className="">My learning</h1>
+      <h1 className="font-semibold">My learning</h1>
       <div className="modal_title_learn absolute top-[100%] right-[50%] w-[280px] h-fit bg-white border-[1px] border-[#272829]">
         <div className="px-3 py-3 flex flex-col items-center">
           <h1>no data</h1>

@@ -1,5 +1,5 @@
 import React from "react";
-import banner from "../../image/Navbar/slide_main.2321b7cd2f56dec33db2.png";
+import banner from "../../image/Navbar/content-main.png";
 import Partner from "./Partner";
 import Courses from "./Courses";
 import Achivement from "./Achivement";

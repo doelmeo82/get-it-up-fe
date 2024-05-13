@@ -2,7 +2,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 import { useForm } from "react-hook-form";
 import SignupForm from "./SignupForm";
-import image from "../../image/Login/Illustrations1.jpg";
+import image from "../../image/Login/signup.png";
 const Signup = () => {
   return (
     <div className="pt-[100px] lg:pt-[74px] pb-[60px] grid grid-cols-1 lg:grid-cols-2 h-screen">
