@@ -16,12 +16,16 @@ const ListVideoChapter = ({ id, code, lecture, index, slug }: any) => {
     pathname
   );
   const handleOnClick = () => {
-    console.log("hekkk");
-    dispatch(updateCommentList([]));
-    dispatch(updatePage(1));
-    setTimeout(() => {
-      navigate(`${pathname.pathname}?idLecture=${id}&slug=${slug}`);
-    }, 500);
+    const lectureType = lecture?.lectureType;
+    if (lecture === "VIDEO") {
+      dispatch(updateCommentList([]));
+      dispatch(updatePage(1));
+      setTimeout(() => {
+        navigate(`${pathname.pathname}?idLecture=${id}&slug=${slug}`);
+      }, 500);
+    } else if (lectureType === "DOCUMENT") {
+      window.open(lecture?.url);
+    }
   };
   return (
     <button
@@ -37,7 +41,7 @@ const ListVideoChapter = ({ id, code, lecture, index, slug }: any) => {
         <div className="flex items-center gap-x-2">
           <PiMonitorPlayFill className="text-[20px]" />
           <div>
-            <p>Video</p>
+            <p>{lecture?.lectureType}</p>
           </div>
         </div>
       </div>

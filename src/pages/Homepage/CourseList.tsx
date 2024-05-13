@@ -28,12 +28,12 @@ const CourseList = ({ itemList }: any) => {
             {formatMoney(itemList?.price)}VND
           </span> */}
         </div>
-        <p className="text-[12px] text-[#dc3545] font-medium mb-3">
+        <p className="text-[22px] text-[#dc3545] font-medium mb-3">
           {itemList?.courseName?.split("-")[0]}
         </p>
-        <p className="text-[14px] text-[#0d6efd] font-medium mb-3 h-[60px]">
+        {/* <p className="text-[14px] text-[#0d6efd] font-medium mb-3 h-[60px]">
           {itemList?.courseName}
-        </p>
+        </p> */}
         <div className="flex items-center gap-x-2 text-[12px]">
           <span className="px-3 py-2 bg-[#009933] w-fit font-medium text-white rounded-3xl">
             Start learning
