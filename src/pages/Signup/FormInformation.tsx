@@ -154,13 +154,13 @@ const FormInformation = () => {
           <input
             {...register("name")}
             type="text"
-            placeholder="Tên"
+            placeholder="Fullname"
             className="focus:outline-none w-full px-3 py-3 outline-none border-[1px] border-[#E9EAF0] placeholder:text-[#8C94A3] placeholder:font-normal placeholder:text-[14px] "
           />
           <input
             {...register("phone")}
             type="text"
-            placeholder="Số điện thoại"
+            placeholder="Phone number"
             className="focus:outline-none w-full px-3 py-3 outline-none border-[1px] border-[#E9EAF0] placeholder:text-[#8C94A3] placeholder:font-normal placeholder:text-[14px] "
           />
           <DatePicker
@@ -168,7 +168,7 @@ const FormInformation = () => {
             onChange={(date: any) => setStartDate(date)}
             selected={startDate}
             className="w-full px-3 py-3 outline-none border-[1px] border-[#E9EAF0] placeholder:text-[#8C94A3] placeholder:font-normal placeholder:text-[14px]"
-            placeholderText="Ngày sinh"
+            placeholderText="Date of birth"
           />
           <RadioGroup onChange={setValue} value={value}>
             <Flex direction="row" gap="3">
@@ -178,10 +178,10 @@ const FormInformation = () => {
                 colorScheme="orange"
                 borderColor="#E9EAF0"
               >
-                Nam
+                Male
               </Radio>
               <Radio {...register("gender")} value="Nữ" colorScheme="orange">
-                Nữ
+                Famale
               </Radio>
             </Flex>
           </RadioGroup>
@@ -205,7 +205,7 @@ const FormInformation = () => {
             _focus={{ borderColor: "#FF6636", outline: "none" }}
             borderRadius="none"
             height="45px"
-            placeholder="Quận"
+            placeholder="District"
             outline="none"
             bg="white"
             {...register("district")}
@@ -219,14 +219,14 @@ const FormInformation = () => {
           <input
             {...register("address")}
             type="text"
-            placeholder="Địa chỉ"
+            placeholder="Detail address"
             className="focus:outline-none w-full px-3 py-3 outline-none border-[1px] border-[#E9EAF0] placeholder:text-[#8C94A3] placeholder:font-normal placeholder:text-[14px] "
           />
           <Select
             _focus={{ borderColor: "#FF6636", outline: "none" }}
             borderRadius="none"
             height="45px"
-            placeholder="Lớp"
+            placeholder="Grade"
             outline="none"
             bg="white"
             {...register("grade")}
@@ -239,7 +239,7 @@ const FormInformation = () => {
           </Select>
           <div>
             <h1 className="font-normal placeholder:text-[14px] text-[#FF6636]  mb-2">
-              Môn học mà bạn quan tâm
+              Concerned subjects
             </h1>
             <div className="grid grid-cols-3 gap-3">
               {subjects.map((item: any, index: any) => (

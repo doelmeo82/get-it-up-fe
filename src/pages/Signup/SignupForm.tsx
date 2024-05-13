@@ -56,7 +56,7 @@ const SignupForm = () => {
     if (response.meta.requestStatus === "fulfilled" && response.payload) {
       if (response?.payload?.error) {
         toast({
-          title: "Lỗi đăng ký",
+          title: "Fail đăng ký",
           description: response?.payload?.message,
           status: "error",
           duration: 9000,
@@ -72,7 +72,7 @@ const SignupForm = () => {
         dispatch(updateIsLogged(true));
         // console.log(response);
         toast({
-          title: "Đăng ký thành công",
+          title: "Đăng ký Success",
           description: response?.payload?.message,
           status: "success",
           duration: 9000,
@@ -118,7 +118,7 @@ const SignupForm = () => {
             </span>
           </div>
           <div>
-            <div className="text-[14px] font-light mb-[2px]">Mật khẩu</div>
+            <div className="text-[14px] font-light mb-[2px]">Password</div>
             <div
               className={`flex items-center gap-x-2 justify-between w-full px-3 py-3 outline-none border-[1px] ${
                 errors.password ? "border-red-500" : "border-[#E9EAF0]"
@@ -127,7 +127,7 @@ const SignupForm = () => {
               <input
                 {...register("password")}
                 type={showPass ? "text" : "password"}
-                placeholder="Mật khẩu"
+                placeholder="Password"
                 className={
                   "w-full focus:outline-none text-[14px] placeholder:text-[#8C94A3] placeholder:font-normal"
                 }
@@ -149,9 +149,7 @@ const SignupForm = () => {
             </span>
           </div>
           <div>
-            <div className="text-[14px] font-light mb-[2px]">
-              Submit mật khẩu
-            </div>
+            <div className="text-[14px] font-light mb-[2px]">Submit</div>
             <div
               className={`flex items-center gap-x-2 justify-between w-full px-3 py-3 outline-none ${
                 errors.confirmPassword
@@ -162,7 +160,7 @@ const SignupForm = () => {
               <input
                 {...register("confirmPassword")}
                 type={showConfirmPass ? "text" : "password"}
-                placeholder="Submit mật khẩu"
+                placeholder="Submit"
                 className={
                   "w-full focus:outline-none text-[14px] placeholder:text-[#8C94A3] placeholder:font-normal"
                 }

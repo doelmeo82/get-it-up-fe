@@ -1,24 +1,24 @@
 /* eslint-disable no-prototype-builtins */
-import moment from 'moment';
-import { idText } from 'typescript';
-moment.updateLocale('vi', {
+import moment from "moment";
+import { idText } from "typescript";
+moment.updateLocale("vi", {
   relativeTime: {
-    future: 'in %s',
-    past: '%s trước',
-    s: '%d giây',
-    ss: '%d giây',
-    m: '%d phút',
-    mm: '%d phút',
-    h: '%d giờ', //this is the setting that you need to change
-    hh: '%d giờ',
-    d: '%d ngày',
-    dd: '%d ngày',
-    w: '%d tuần',
-    ww: '%d tuần',
-    M: '%d tháng', //change this for month
-    MM: '%d tháng',
-    y: '%d năm',
-    yy: '%d năm',
+    future: "in %s",
+    past: "%s trước",
+    s: "%d giây",
+    ss: "%d giây",
+    m: "%d minutes",
+    mm: "%d minutes",
+    h: "%d hours", //this is the setting that you need to change
+    hh: "%d hours",
+    d: "%d ngày",
+    dd: "%d ngày",
+    w: "%d tuần",
+    ww: "%d tuần",
+    M: "%d tháng", //change this for month
+    MM: "%d tháng",
+    y: "%d năm",
+    yy: "%d năm",
   },
 });
 export const convertTimeToAgo = (time: any) => {
@@ -27,24 +27,24 @@ export const convertTimeToAgo = (time: any) => {
 };
 export function formatNumberMoney(number: number) {
   // Sử dụng hàm toLocaleString để định dạng số thành chuỗi có dấu phân cách hàng ngàn
-  const formattedNumber = number?.toLocaleString('vi-VN', {
-    style: 'currency',
-    currency: 'VND',
+  const formattedNumber = number?.toLocaleString("vi-VN", {
+    style: "currency",
+    currency: "VND",
     minimumFractionDigits: 0,
     maximumFractionDigits: 0,
   });
 
   // Loại bỏ ký hiệu tiền tệ "₫"
-  return formattedNumber?.replace('₫', '');
+  return formattedNumber?.replace("₫", "");
 }
 export function formatMoney(number: number) {
   const formattedNumber = number
     ?.toString()
-    .replace(/\B(?=(\d{3})+(?!\d))/g, '.');
+    .replace(/\B(?=(\d{3})+(?!\d))/g, ".");
   return formattedNumber;
 }
 export function isEmptyObject(obj: object) {
-  return JSON.stringify(obj) === '{}';
+  return JSON.stringify(obj) === "{}";
 }
 
 type QueryObject = {
@@ -61,15 +61,15 @@ export function createQueryString(queryObject: QueryObject = {}): string {
     .map((key) => {
       return Array.isArray(queryObject[key])
         ? (queryObject[key] as (string | number | boolean)[])
-          .map(
-            (item) => `${encodeURIComponent(key)}=${encodeURIComponent(item)}`
-          )
-          .join('&')
+            .map(
+              (item) => `${encodeURIComponent(key)}=${encodeURIComponent(item)}`
+            )
+            .join("&")
         : `${encodeURIComponent(key)}=${encodeURIComponent(queryObject[key])}`;
     })
-    .join('&');
+    .join("&");
 
-  return queryString ? `?${queryString}` : '';
+  return queryString ? `?${queryString}` : "";
 }
 
 export function queryStringToObject(
@@ -78,10 +78,10 @@ export function queryStringToObject(
 ): QueryObject {
   const queryObject: QueryObject = {};
   queryString &&
-    decodeURIComponent(queryString.replace('?', ''))
-      .split('&')
+    decodeURIComponent(queryString.replace("?", ""))
+      .split("&")
       .map((itemString) => {
-        const [itemKey, itemValue] = itemString.split('=');
+        const [itemKey, itemValue] = itemString.split("=");
         if (options.hasOwnProperty(itemKey)) {
           if (!queryObject[itemKey] && Array.isArray(options[itemKey])) {
             queryObject[itemKey] = [];
@@ -89,7 +89,7 @@ export function queryStringToObject(
           Array.isArray(options[itemKey])
             ? queryObject[itemKey].push(itemValue)
             : (queryObject[itemKey] =
-                typeof options[itemKey] === 'number'
+                typeof options[itemKey] === "number"
                   ? parseInt(itemValue)
                   : itemValue);
         }
@@ -123,8 +123,9 @@ export const sliceString = (index1: number, index2: number, title: string) => {
   return `${first}...${second}`;
 };
 export const genSlug = (length: number) => {
-  let result = '';
-  const characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
+  let result = "";
+  const characters =
+    "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
   const charactersLength = characters.length;
   let counter = 0;
   while (counter < length) {

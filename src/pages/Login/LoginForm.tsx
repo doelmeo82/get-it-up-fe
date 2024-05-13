@@ -44,7 +44,7 @@ const LoginForm = () => {
     if (response.meta.requestStatus === "fulfilled" && response?.payload) {
       if (response?.payload?.response?.data?.statusCode === 401) {
         toast({
-          title: "Lỗi Login",
+          title: "Fail Login",
           description: "Account của bạn đã bị xóa",
           status: "error",
           duration: 9000,
@@ -54,7 +54,7 @@ const LoginForm = () => {
       } else {
         if (response?.payload?.error === true) {
           toast({
-            title: "Lỗi Login",
+            title: "Fail Login",
             description: response?.payload?.message,
             status: "error",
             duration: 9000,
@@ -73,7 +73,7 @@ const LoginForm = () => {
             console.log(LocalStorage.getAccessToken());
 
             toast({
-              title: "Login thành công",
+              title: "Login succeed",
               description: response?.payload?.message,
               status: "success",
               duration: 9000,
@@ -85,7 +85,7 @@ const LoginForm = () => {
             }, 1500);
           } else {
             toast({
-              title: "Lỗi Login",
+              title: "Fail Login",
               description: "Account này không phải Account của Student",
               status: "error",
               duration: 9000,
@@ -97,7 +97,7 @@ const LoginForm = () => {
       }
     } else {
       toast({
-        title: "Lỗi Login",
+        title: "Fail Login",
         // description: response?.payload?.message,
         status: "error",
         duration: 9000,
@@ -125,7 +125,7 @@ const LoginForm = () => {
             </span>
           </div>
           <div>
-            <div className="mb-[5px] text-[14px]">Mật khẩu</div>
+            <div className="mb-[5px] text-[14px]">Password</div>
             <div
               className={`flex items-center gap-x-2 justify-between w-full px-3 py-3 outline-none border-[1px] ${
                 errors.password ? "border-red-500" : "border-[#E9EAF0]"
@@ -134,7 +134,7 @@ const LoginForm = () => {
               <input
                 {...register("password")}
                 type={showPass ? "text" : "password"}
-                placeholder="Mật khẩu"
+                placeholder="Password"
                 className="w-full focus:outline-none text-[14px] placeholder:text-[#8C94A3] placeholder:font-normal"
               />
               {showPass ? (

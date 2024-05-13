@@ -68,7 +68,7 @@ const CreateBlog = ({ setOpenCreate, getListBlog }: any) => {
       setOpenCreate(false);
       getListBlog();
       toast({
-        title: "Create blog thành công",
+        title: "Create blog Success",
         status: "success",
         duration: 5000,
         isClosable: true,

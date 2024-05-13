@@ -55,15 +55,15 @@ export const changePassSchema = yup.object().shape({
   current: yup
     .string()
     .min(6, "Mật khẩu phải hơn 6 ký tự")
-    .required("Yêu cầu nhập mật khẩu hiện tại"),
+    .required("Yêu cầu nhập Current password"),
   new: yup
     .string()
     .min(6, "Mật khẩu phải hơn 6 ký tự")
-    .required("Yêu cầu nhập mật khẩu mới"),
+    .required("Yêu cầu nhập New password"),
   newConfirm: yup
     .string()
     .oneOf([yup.ref("new")], "Mật khẩu chưa chính xác")
-    .required("Yêu cầu nhập mật khẩu mới"),
+    .required("Yêu cầu nhập New password"),
 });
 export const createTeacher = yup.object().shape({
   fullname: yup.string().required("Yêu cầu nhập họ và tên"),
@@ -75,11 +75,11 @@ export const createTeacher = yup.object().shape({
   password: yup
     .string()
     .min(6, "Mật khẩu phải hơn 6 ký tự")
-    .required("Yêu cầu nhập mật khẩu mới"),
+    .required("Yêu cầu nhập New password"),
   confirmPass: yup
     .string()
     .oneOf([yup.ref("password")], "Mật khẩu chưa chính xác")
-    .required("Yêu cầu nhập mật khẩu mới"),
+    .required("Yêu cầu nhập New password"),
   date: yup.date().required("Phải nhập ngày sinh"),
   gender: yup.string().required("Phải check giới tính"),
   subject: yup

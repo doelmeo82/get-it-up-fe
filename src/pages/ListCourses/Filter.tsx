@@ -101,7 +101,7 @@ const Filter = ({ setPage }: any) => {
         <h2>
           <AccordionButton>
             <Box as="span" flex="1" textAlign="left" fontWeight={600}>
-              Thời lượng video
+              Duration video
             </Box>
             <AccordionIcon />
           </AccordionButton>

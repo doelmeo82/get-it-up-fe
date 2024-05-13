@@ -25,7 +25,7 @@ const PaymentSuccess = () => {
   return (
     <div className="max-w-[1200px] w-full mx-auto text-[#1D2026]">
       <h1 className="font-semibold text-[24px] mb-5 text-center py-[40px] text-green-500">
-        Thanh toán Course thành công
+        Thanh toán Course Success
       </h1>
       <div className="animate-bounce mx-auto h-[100px] w-[100px] border-[1px] border-green-500 rounded-full flex justify-center items-center">
         <FaCheck className="text-[40px] text-green-500" />

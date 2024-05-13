@@ -1,7 +1,7 @@
-import React, { useEffect, useRef, useState } from 'react';
-import DatePicker from 'react-datepicker';
+import React, { useEffect, useRef, useState } from "react";
+import DatePicker from "react-datepicker";
 
-import { BsUpload } from 'react-icons/bs';
+import { BsUpload } from "react-icons/bs";
 import {
   Radio,
   RadioGroup,
@@ -10,10 +10,10 @@ import {
   Checkbox,
   CheckboxGroup,
   Button,
-} from '@chakra-ui/react';
-import { useForm } from 'react-hook-form';
-import { useNavigate } from 'react-router-dom';
-import { useAppDispatch } from '../../hooks/appHooks';
+} from "@chakra-ui/react";
+import { useForm } from "react-hook-form";
+import { useNavigate } from "react-router-dom";
+import { useAppDispatch } from "../../hooks/appHooks";
 import {
   getCategory,
   getDistrict,
@@ -21,12 +21,12 @@ import {
   getSubjects,
   getSubjetsGroup,
   userSetting,
-} from '../../store/actions/user.action';
-import moment from 'moment';
-import { selectUserInfo, updateUserInfo } from '../../store/reducers/authSlice';
-import { useSelector } from 'react-redux';
-import { convertBase64 } from '../../utils/lib';
-import { uploadFile } from '../../store/actions/course.action';
+} from "../../store/actions/user.action";
+import moment from "moment";
+import { selectUserInfo, updateUserInfo } from "../../store/reducers/authSlice";
+import { useSelector } from "react-redux";
+import { convertBase64 } from "../../utils/lib";
+import { uploadFile } from "../../store/actions/course.action";
 interface UserProps {
   name: string;
   phone: string;
@@ -50,11 +50,11 @@ const Account = () => {
   const [subjects, setSubjects] = useState([]);
   const [subjectGroup, setSubjectGroup] = useState([]);
   const [startDate, setStartDate] = useState(new Date());
-  const [value, setValue] = React.useState('Nam');
+  const [value, setValue] = React.useState("Nam");
   const [grade, setGrade] = useState([]);
   const input = useRef<any>(null);
   const [image, setImage] = useState<any>(
-    'https://images.pexels.com/photos/18125686/pexels-photo-18125686/free-photo-of-dem-d-ng-t-th-ch-p-nh-sang-tr-l-i.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1'
+    "https://images.pexels.com/photos/18125686/pexels-photo-18125686/free-photo-of-dem-d-ng-t-th-ch-p-nh-sang-tr-l-i.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
   );
 
   const {
@@ -69,13 +69,13 @@ const Account = () => {
       name: userInfo?.fullname,
       phone: userInfo?.phone,
       dateofbirth: startDate,
-      gender: userInfo?.gender === true ? 'Nam' : 'Nữ',
-      province: '',
-      district: '',
-      address: '',
+      gender: userInfo?.gender === true ? "Nam" : "Nữ",
+      province: "",
+      district: "",
+      address: "",
       grade: 0,
       subjects: [],
-      interestSubject: '',
+      interestSubject: "",
       avatar: userInfo?.avatar ? userInfo?.avatar : image,
     },
   });
@@ -88,11 +88,11 @@ const Account = () => {
     console.log(file);
     const base64 = await convertBase64(file);
     const formData = new FormData();
-    formData.append('file', file);
+    formData.append("file", file);
     const res: any = await dispatch(uploadFile(formData));
-    if (res.meta.requestStatus === 'fulfilled' && res.payload) {
+    if (res.meta.requestStatus === "fulfilled" && res.payload) {
       console.log(res.payload?.data?.url);
-      setValueForm('avatar', res.payload?.data?.url);
+      setValueForm("avatar", res.payload?.data?.url);
       setImage(res.payload?.data?.url);
 
       // dispatch(updateThumbnail(res.payload?.data?.url));
@@ -100,7 +100,7 @@ const Account = () => {
   };
   const getProvinces = async () => {
     const response: any = await dispatch(getProvince({}));
-    if (response.meta.requestStatus === 'fulfilled' && response.payload) {
+    if (response.meta.requestStatus === "fulfilled" && response.payload) {
       console.log(response);
       setProvince(response.payload?.data);
     } else {
@@ -108,12 +108,12 @@ const Account = () => {
     }
   };
   const getDistricts = async () => {
-    console.log(watch('province'));
+    console.log(watch("province"));
     const payload = new URLSearchParams({
-      'provinceId': watch('province').toString()
+      provinceId: watch("province").toString(),
     });
     const response: any = await dispatch(getDistrict(payload));
-    if (response.meta.requestStatus === 'fulfilled' && response.payload) {
+    if (response.meta.requestStatus === "fulfilled" && response.payload) {
       console.log(response);
       setDistrict(response.payload?.data);
     } else {
@@ -122,7 +122,7 @@ const Account = () => {
   };
   const getAllSubject = async () => {
     const response: any = await dispatch(getSubjects({}));
-    if (response.meta.requestStatus === 'fulfilled' && response.payload) {
+    if (response.meta.requestStatus === "fulfilled" && response.payload) {
       console.log(response);
       setSubjects(response.payload?.data);
     } else {
@@ -131,7 +131,7 @@ const Account = () => {
   };
   const getAllSubjectGroup = async () => {
     const response: any = await dispatch(getSubjetsGroup({}));
-    if (response.meta.requestStatus === 'fulfilled' && response.payload) {
+    if (response.meta.requestStatus === "fulfilled" && response.payload) {
       console.log(response);
       setSubjectGroup(response.payload?.data);
     } else {
@@ -140,7 +140,7 @@ const Account = () => {
   };
   const getCategories = async () => {
     const response: any = await dispatch(getCategory({}));
-    if (response.meta.requestStatus === 'fulfilled' && response.payload) {
+    if (response.meta.requestStatus === "fulfilled" && response.payload) {
       console.log(response);
       setGrade(response.payload?.data);
     } else {
@@ -155,15 +155,15 @@ const Account = () => {
   }, []);
   useEffect(() => {
     getDistricts();
-  }, [watch('province')]);
+  }, [watch("province")]);
 
   const onSubmit = async (data: UserProps) => {
     // const converSunb = data.subjects.map((item, index) => +item);
     const payload = {
       fullname: data.name,
       phone: data.phone,
-      gender: data.gender === 'Nam' ? true : false,
-      birthDate: moment(data.dateofbirth).format('YYYY-MM-DD'),
+      gender: data.gender === "Nam" ? true : false,
+      birthDate: moment(data.dateofbirth).format("YYYY-MM-DD"),
       address: {
         province: +data.province,
         district: +data.district,
@@ -175,12 +175,12 @@ const Account = () => {
       avatar: data.avatar,
     };
     const res: any = await dispatch(userSetting(payload));
-    if (res.meta.requestStatus === 'fulfilled' && res.payload) {
+    if (res.meta.requestStatus === "fulfilled" && res.payload) {
       console.log(res);
       dispatch(updateUserInfo(res?.payload.data));
       // navigate("/");
     } else {
-      console.log('err');
+      console.log("err");
     }
   };
   return (
@@ -193,16 +193,16 @@ const Account = () => {
               className="w-[280px] h-[280px] relative cursor-pointer"
             >
               <img
-                src={getValues('avatar')}
+                src={getValues("avatar")}
                 alt=""
                 className="w-full h-full object-cover"
               />
               <div className="flex items-center gap-x-3 absolute bottom-0 left-0 w-full justify-center p-[12px] text-white bg-black opacity-50">
                 <BsUpload className="text-[20px]" />
-                <span className="text-[14px]">Tải ảnh lên</span>
+                <span className="text-[14px]">Upload image</span>
               </div>
               <input
-                {...register('avatar')}
+                {...register("avatar")}
                 type="file"
                 ref={input}
                 onChange={handleImageChange}
@@ -213,51 +213,61 @@ const Account = () => {
           </div>
           <div className="w-full flex flex-col gap-y-5">
             <div className="flex flex-col gap-y-2">
-              <span className="text-[14px] text-[#1D2026]">Tên</span>
+              <span className="text-[14px] text-[#1D2026]">Fullname</span>
               <input
-                {...register('name')}
+                {...register("name")}
                 type="text"
                 className="w-full focus:outline-none border-[1px] border-[#E9EAF0] px-[18px] py-[11px] text-[14px]"
               />
             </div>
             <RadioGroup onChange={setValue} value={value}>
               <Stack direction="row">
-                <Radio value="Nam" colorScheme="orange" {...register('gender')}>
-                  Nam
+                <Radio
+                  value="Male"
+                  colorScheme="orange"
+                  {...register("gender")}
+                >
+                  Male
                 </Radio>
-                <Radio value="Nữ" colorScheme="orange" {...register('gender')}>
-                  Nữ
+                <Radio
+                  value="Female"
+                  colorScheme="orange"
+                  {...register("gender")}
+                >
+                  Famale
                 </Radio>
               </Stack>
             </RadioGroup>
             <div className="flex flex-col gap-y-2">
-              <span className="text-[14px] text-[#1D2026]">Điện thoại</span>
+              <span className="text-[14px] text-[#1D2026]">Phone number</span>
               <input
-                {...register('phone')}
+                {...register("phone")}
                 type="text"
                 className="w-full focus:outline-none border-[1px] border-[#E9EAF0] px-[18px] py-[11px] text-[14px]"
               />
             </div>
             <div className="flex flex-col gap-y-2">
-              <span className="text-[14px] text-[#1D2026]">Ngày sinh</span>
+              <span className="text-[14px] text-[#1D2026]">Date of birth</span>
               <DatePicker
-                {...register('dateofbirth')}
+                {...register("dateofbirth")}
                 onChange={(date: any) => setStartDate(date)}
                 selected={startDate}
                 className="w-full px-3 py-3 outline-none border-[1px] border-[#E9EAF0] placeholder:text-[#8C94A3] placeholder:font-normal placeholder:text-[14px]"
-                placeholderText="Ngày sinh"
+                placeholderText="Date of birth"
               />
             </div>
             <div className="flex flex-col gap-y-2">
-              <span className="text-[14px] text-[#1D2026]">Tỉnh</span>
+              <span className="text-[14px] text-[#1D2026]">
+                Province / City
+              </span>
               <Select
-                _focus={{ borderColor: '#FF6636', outline: 'none' }}
+                _focus={{ borderColor: "#FF6636", outline: "none" }}
                 borderRadius="none"
                 height="45px"
-                placeholder="Tỉnh"
+                placeholder="Province / City"
                 outline="none"
                 bg="white"
-                {...register('province')}
+                {...register("province")}
                 // onChange={handleChangeProvince}
               >
                 {province.map((item: any, index: any) => (
@@ -268,15 +278,15 @@ const Account = () => {
               </Select>
             </div>
             <div className="flex flex-col gap-y-2">
-              <span className="text-[14px] text-[#1D2026]">Quận</span>
+              <span className="text-[14px] text-[#1D2026]">District</span>
               <Select
-                _focus={{ borderColor: '#FF6636', outline: 'none' }}
+                _focus={{ borderColor: "#FF6636", outline: "none" }}
                 borderRadius="none"
                 height="45px"
-                placeholder="Quận"
+                placeholder="District"
                 outline="none"
                 bg="white"
-                {...register('district')}
+                {...register("district")}
               >
                 {district?.map((item: any, index: any) => (
                   <option value={item.district_id} key={item.district_id}>
@@ -286,23 +296,23 @@ const Account = () => {
               </Select>
             </div>
             <div className="flex flex-col gap-y-2">
-              <span className="text-[14px] text-[#1D2026]">Địa chỉ</span>
+              <span className="text-[14px] text-[#1D2026]">Address</span>
               <input
-                {...register('address')}
+                {...register("address")}
                 type="text"
                 className="w-full focus:outline-none border-[1px] border-[#E9EAF0] px-[18px] py-[11px] text-[14px]"
               />
             </div>
             <div>
-              <span className="text-[14px] text-[#1D2026]">Lớp</span>
+              <span className="text-[14px] text-[#1D2026]">Grade</span>
               <Select
-                _focus={{ borderColor: '#FF6636', outline: 'none' }}
+                _focus={{ borderColor: "#FF6636", outline: "none" }}
                 borderRadius="none"
                 height="45px"
-                placeholder="Lớp"
+                placeholder="Grade"
                 outline="none"
                 bg="white"
-                {...register('grade')}
+                {...register("grade")}
               >
                 {grade.map((item: any, index: any) => (
                   <option value={item._id} key={item._id}>
@@ -311,8 +321,8 @@ const Account = () => {
                 ))}
               </Select>
             </div>
-            <div className="flex flex-col gap-y-2">
-              <span className="text-[14px] text-[#1D2026]">Môn học</span>
+            {/* <div className="flex flex-col gap-y-2">
+              <span className="text-[14px] text-[#1D2026]">Subject</span>
               <div className="grid grid-cols-5 gap-3">
                 {subjects.map((item: any, index: any) => (
                   <Checkbox
@@ -320,7 +330,7 @@ const Account = () => {
                     value={item.subjectName}
                     colorScheme="orange"
                     borderColor="#8C94A3"
-                    {...register('subjects')}
+                    {...register("subjects")}
                     fontSize="14px"
                   >
                     {item.subjectName}
@@ -329,15 +339,15 @@ const Account = () => {
               </div>
             </div>
             <div className="flex flex-col gap-y-2">
-              <span className="text-[14px] text-[#1D2026]">Khối học</span>
+              <span className="text-[14px] text-[#1D2026]">Grade</span>
               <Select
-                _focus={{ borderColor: '#FF6636', outline: 'none' }}
+                _focus={{ borderColor: "#FF6636", outline: "none" }}
                 borderRadius="none"
                 height="45px"
-                placeholder="Khối thi"
+                placeholder="Grade"
                 outline="none"
                 bg="white"
-                {...register('interestSubject')}
+                {...register("interestSubject")}
               >
                 {subjectGroup.map((item: any, index: any) => (
                   <option value={item._id} key={item._id}>
@@ -345,15 +355,15 @@ const Account = () => {
                   </option>
                 ))}
               </Select>
-            </div>
+            </div> */}
             <Button
               bg="#FF6636"
               color="white"
-              _hover={{ bg: '#fc5b2a' }}
+              _hover={{ bg: "#fc5b2a" }}
               isLoading={isSubmitting}
               type="submit"
             >
-              Lưu thông tin
+              Update info
             </Button>
           </div>
         </div>

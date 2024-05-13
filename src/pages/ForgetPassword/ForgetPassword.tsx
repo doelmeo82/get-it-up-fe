@@ -33,7 +33,7 @@ const ForgetPassword = () => {
     if (response.meta.requestStatus === "fulfilled" && response.payload) {
       if (response?.payload?.error) {
         toast({
-          title: "Lỗi",
+          title: "Fail",
           description: response?.payload?.message,
           status: "error",
           duration: 9000,
@@ -42,7 +42,7 @@ const ForgetPassword = () => {
         });
       } else {
         toast({
-          title: "Thành công",
+          title: "Success",
           description: response?.payload?.message,
           status: "success",
           duration: 9000,

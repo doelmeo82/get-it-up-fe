@@ -37,7 +37,7 @@ const ListVideoChapter = ({ id, code, lecture, index, slug }: any) => {
         <div className="flex items-center gap-x-2">
           <PiMonitorPlayFill className="text-[20px]" />
           <div>
-            <p>Document</p>
+            <p>Video</p>
           </div>
         </div>
       </div>

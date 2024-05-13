@@ -45,7 +45,7 @@ const AssignmentList = ({ item }: any) => {
           </div>
         </Link>
       ) : (
-        <div>Không có Quizz nào</div>
+        <div>No quizz yet</div>
       )}
     </>
   );

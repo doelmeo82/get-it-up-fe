@@ -133,11 +133,11 @@ const SidebarCourse = ({ courseDetail, getDetailCourse }: any) => {
   };
   const copyLink = async () => {
     await navigator.clipboard.writeText(
-      `https://staging.primeedu.io.vn${location.pathname}`
+      `${process.env.REACT_APP_HOST}${location.pathname}`
     );
     toast({
       title: "Successfully",
-      description: "Sao chép link thành công",
+      description: "Sao chép link Success",
       status: "success",
       duration: 4000,
       isClosable: true,
@@ -154,16 +154,16 @@ const SidebarCourse = ({ courseDetail, getDetailCourse }: any) => {
       <div className="py-[24px] divide-y-2">
         <div className="px-[24px] pb-[24px] ">
           <div className="flex justify-between items-center mb-[5px]">
-            <h1 className="text-[#1D2026] text-[24px] font-normal">
+            {/* <h1 className="text-[#1D2026] text-[24px] font-normal">
               {formatMoney(courseDetail?.price)}VND
-            </h1>
+            </h1> */}
             <span className="px-[6px] py-[4px] text-[12px] text-[#FF6636] bg-[#FFEEE8] font-medium">
               {courseDetail?.courseName.split("-")[0]}
             </span>
           </div>
-          <span className="px-[6px] py-[4px] text-[12px] text-[#342F98] bg-[#EBEBFF] font-medium">
+          {/* <span className="px-[6px] py-[4px] text-[12px] text-[#342F98] bg-[#EBEBFF] font-medium">
             {courseDetail?.courseName.split("-")[1]}
-          </span>
+          </span> */}
         </div>
         <div className="px-[24px] py-[24px] text-[14px] flex flex-col gap-y-3">
           <div className="flex justify-between items-center text-[#6E7485]">
@@ -201,7 +201,7 @@ const SidebarCourse = ({ courseDetail, getDetailCourse }: any) => {
                     onClick={() => navigate("video")}
                     className="text-center w-full h-[56px] text-white text-[14px] font-semibold bg-[#FF6636] block leading-[56px] hover:bg-[#fb5c2b] transition ease-in-out duration-200"
                   >
-                    Go to lession
+                    Go to lesson
                   </button>
                 ) : (
                   <button
@@ -262,7 +262,7 @@ const SidebarCourse = ({ courseDetail, getDetailCourse }: any) => {
             <div>
               <div className="cursor-pointer flex gap-x-2 items-center bg-[#F5F7FA] text-[#4E5566] h-[45px] w-[45px] justify-center ">
                 <FacebookShareButton
-                  url={`https://staging.primeedu.io.vn${location.pathname}`}
+                  url={`${process.env.REACT_APP_HOST}${location.pathname}`}
                 >
                   <BsFacebook className="text-[18px]" />
                 </FacebookShareButton>

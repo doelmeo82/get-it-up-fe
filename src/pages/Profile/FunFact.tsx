@@ -1,15 +1,15 @@
-import React, { useEffect } from 'react';
-import { TbPlayerPlayFilled } from 'react-icons/tb';
-import { useSelector } from 'react-redux';
-import { selectUserCourse } from '../../store/reducers/courseSlice';
-import { useAppDispatch } from '../../hooks/appHooks';
-import { getCourseUserBuy } from '../../store/actions/course.action';
+import React, { useEffect } from "react";
+import { TbPlayerPlayFilled } from "react-icons/tb";
+import { useSelector } from "react-redux";
+import { selectUserCourse } from "../../store/reducers/courseSlice";
+import { useAppDispatch } from "../../hooks/appHooks";
+import { getCourseUserBuy } from "../../store/actions/course.action";
 const FunFact = () => {
   const userCourse = useSelector(selectUserCourse);
   const dispatch = useAppDispatch();
   const getUserCourseDetail = async () => {
     const res = await dispatch(getCourseUserBuy({}));
-    if (res.meta.requestStatus === 'fulfilled' && res.payload) {
+    if (res.meta.requestStatus === "fulfilled" && res.payload) {
       console.log(res);
     }
   };
@@ -24,7 +24,7 @@ const FunFact = () => {
         </div>
         <div>
           <h1 className="text-[24px] text-[#1D2026]">{userCourse.length}</h1>
-          <span className="text-[14px] text-[#4E5566]">Khoá học</span>
+          <span className="text-[14px] text-[#4E5566]">Grades</span>
         </div>
       </div>
       {/* <div className="flex p-[24px] bg-[#EBEBFF] w-full gap-x-[24px] items-center">

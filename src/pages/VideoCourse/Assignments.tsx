@@ -6,12 +6,6 @@ const Assignments = ({ courseDetail }: any) => {
   const paramsLecture = new URLSearchParams(search).get("idLecture");
   const [type, setType] = useState<any>();
   useEffect(() => {
-    console.log("aka");
-
-    console.log(
-      "🚀 ~ file: Assignments.tsx:13 ~ newArrayType ~ courseDetail:",
-      courseDetail
-    );
     if (paramsLecture) {
       const newArrayType = courseDetail?.sections?.map((section: any) => {
         return section?.lectures?.filter(
@@ -19,16 +13,13 @@ const Assignments = ({ courseDetail }: any) => {
         );
       });
       setType(newArrayType && newArrayType[0]);
-      console.log(
-        "🚀 ~ file: Assignments.tsx:16 ~ useEffect ~ newArrayType:",
-        newArrayType
-      );
+      console.log("courseDetail :>> ", courseDetail);
     }
   }, [courseDetail, paramsLecture]);
   return (
     <div className="flex flex-col gap-y-4">
       <h1 className="font-semibold text-xl">
-        Quizz about {courseDetail?.courseName}
+        Bài tập về {courseDetail?.courseName}
       </h1>
       <div className="flex flex-col gap-y-2">
         {type?.map((item: any, index: any) => (

@@ -22,9 +22,12 @@ const Profile = () => {
       <div className="flex gap-y-3 flex-col lg:flex-row justify-between items-center border-[1px] w-full border-[#FF6636] p-[40px] bg-[#FF6636]">
         <div className="flex gap-x-[24px] items-center">
           <img
-            src="https://images.pexels.com/photos/2907/car-mustang.jpg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
+            src={
+              userInfo?.avatar ??
+              "https://images.pexels.com/photos/2907/car-mustang.jpg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
+            }
             alt=""
-            className="w-[110px] h-[110px] rounded-full"
+            className="w-[110px] h-[110px] rounded-full object-cover"
           />
           <div className="flex flex-col gap-y-[5px]">
             <h1 className="text-[24px] text-white font-semibold">

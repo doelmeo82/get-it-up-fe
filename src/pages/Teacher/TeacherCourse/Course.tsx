@@ -32,7 +32,7 @@ const Course = ({ item, getTeacherCourseData }: any) => {
     const res: any = await dispatch(updatePublicCourse(payload));
     if (res.meta.requestStatus === "fulfilled" && res.payload) {
       toast({
-        title: "Thành công",
+        title: "Success",
         description: res?.payload?.message,
         status: "success",
         duration: 9000,
@@ -75,14 +75,14 @@ const Course = ({ item, getTeacherCourseData }: any) => {
           <div className="flex gap-x-[4px] items-center">
             <IoPersonOutline className="text-[18px] text-[#564FFD]" />
             <span className="text-[14px] text-[#4E5566] ">
-              982,568 <span className="text-[#8C94A3]">học viên</span>
+              982,568 <span className="text-[#8C94A3]">Students</span>
             </span>
           </div>
         </div>
         <div className="flex justify-between items-center py-[16px]">
-          <span className="text-[#FF6636] font-semibold">
+          {/* <span className="text-[#FF6636] font-semibold">
             {formatMoney(item?.price)} VND
-          </span>
+          </span> */}
           <div>
             <Menu>
               <MenuButton

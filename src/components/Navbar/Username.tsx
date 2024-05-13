@@ -60,7 +60,10 @@ const Username = () => {
         <div className="px-2 py-3 divide-y-[1px]">
           <div className="grid grid-cols-[80px_1fr] gap-x-2 items-center pb-3">
             <img
-              src="https://images.pexels.com/photos/9449708/pexels-photo-9449708.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
+              src={
+                userId?.avatar ??
+                "https://images.pexels.com/photos/9449708/pexels-photo-9449708.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
+              }
               alt=""
               className="w-[80px] h-[80px] rounded-full border-[1px]"
             />

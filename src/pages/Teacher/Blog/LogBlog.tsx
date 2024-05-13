@@ -23,7 +23,7 @@ const LogBlog = ({ isOpen, onClose, item, getListBlog }: any) => {
       onClose();
       getListBlog();
       toast({
-        title: "Xoá thành công",
+        title: "Xoá Success",
         status: "success",
         duration: 5000,
         isClosable: true,
@@ -31,7 +31,7 @@ const LogBlog = ({ isOpen, onClose, item, getListBlog }: any) => {
       });
     } else {
       toast({
-        title: "Xoá không thành công",
+        title: "Xoá không Success",
         status: "error",
         duration: 5000,
         isClosable: true,

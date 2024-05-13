@@ -41,7 +41,7 @@ const Otp = () => {
     if (response.meta.requestStatus === "fulfilled" && response.payload) {
       if (response?.payload?.error) {
         toast({
-          title: "Lỗi đăng ký",
+          title: "Fail đăng ký",
           description: response?.payload?.message,
           status: "error",
           duration: 9000,
@@ -52,7 +52,7 @@ const Otp = () => {
         // console.log(response);
         LocalStorage.setUserId(selectUserId._id);
         toast({
-          title: "Kích hoạt thành công",
+          title: "Kích hoạt Success",
           description: response?.payload?.message,
           status: "success",
           duration: 9000,

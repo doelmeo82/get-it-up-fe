@@ -94,7 +94,7 @@ const BlogCard = ({ item, getListBlog }: any) => {
           {item?.status === STATUS_BLOG.ACCEPTED && (
             <div className="flex items-center gap-3 text-green-500">
               <FaCheck />
-              <div className="text-[14px]">Kiểm duyệt thành công</div>
+              <div className="text-[14px]">Kiểm duyệt Success</div>
             </div>
           )}
           {item?.status === STATUS_BLOG.DECLINED && (

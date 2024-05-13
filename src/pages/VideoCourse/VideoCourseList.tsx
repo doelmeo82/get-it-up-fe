@@ -68,7 +68,7 @@ const VideoCourseList = ({ courseDetail }: any) => {
               <AccordionIcon />
             </Box>
             <div className="text-[13px]">
-              <span>0/5 | 26 phút</span>
+              <span>0/5 | 26 minutes</span>
             </div>
           </AccordionButton>
         </div>

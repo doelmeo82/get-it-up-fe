@@ -89,7 +89,7 @@ const UpdateBlog = ({ isOpen, onClose, item, getListBlog }: any) => {
         getListBlog();
         onClose();
         toast({
-          title: "Cập nhập thành công",
+          title: "Cập nhập Success",
           status: "success",
           duration: 5000,
           isClosable: true,
@@ -99,7 +99,7 @@ const UpdateBlog = ({ isOpen, onClose, item, getListBlog }: any) => {
     } catch (e: any) {
       console.log("🚀 ~ handleSubmitUpdate ~ e:", e);
       toast({
-        title: "Cập nhập không thành công",
+        title: "Cập nhập không Success",
         status: "success",
         duration: 5000,
         isClosable: true,

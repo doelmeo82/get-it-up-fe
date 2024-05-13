@@ -108,8 +108,7 @@ const FavoriteList = () => {
         <Thead>
           <Tr>
             <Th>Course</Th>
-            <Th>Giá</Th>
-            <Th>Hành động</Th>
+            <Th>Action</Th>
           </Tr>
         </Thead>
         <Tbody>

@@ -47,9 +47,9 @@ const Topic = ({ courseDetail, isShow }: any) => {
           <h1>{sumLecture} bài giảng</h1>
           <div className="w-1 h-1 rounded-full bg-[#61677A]"></div>
           <h1>
-            Tổng thời lượng:{" "}
+            Tổng Duration:{" "}
             {moment.duration(sumTimeLecture, "minutes").asHours().toFixed(0)}{" "}
-            giờ
+            hours
           </h1>
         </div>
       </div>
@@ -65,14 +65,14 @@ const Topic = ({ courseDetail, isShow }: any) => {
                   </Box>
                 </div>
                 <div className="flex gap-x-2 items-center text-[14px] w-full justify-end">
-                  <h1>{section.lectures.length} bài giảng</h1>
+                  <h1>{section.lectures.length} theme</h1>
                   <div className="w-1 h-1 rounded-full bg-[#ffffff]"></div>
                   <h1>
                     {moment
                       .duration(timeLecture(section?.lectures), "minutes")
                       .asHours()
                       .toFixed(0)}{" "}
-                    giờ
+                    hours
                   </h1>
                 </div>
               </AccordionButton>

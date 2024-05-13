@@ -43,7 +43,7 @@ const Otp = () => {
     if (response.meta.requestStatus === "fulfilled" && response.payload) {
       if (response?.payload?.error) {
         toast({
-          title: "Lỗi",
+          title: "Fail",
           description: response?.payload?.message,
           status: "error",
           duration: 9000,
@@ -52,7 +52,7 @@ const Otp = () => {
         });
       } else {
         toast({
-          title: "Đổi mật khẩu thành công",
+          title: "Đổi mật khẩu Success",
           description: response?.payload?.message,
           status: "success",
           duration: 9000,
@@ -79,12 +79,12 @@ const Otp = () => {
       <div>
         <div className="w-[300px] border-b-[1px] border-[#272829] pb-6">
           <h1 className="font-bold text-[24px] mb-5 text-center">
-            Đặt lại mật khẩu mới
+            Đặt lại New password
           </h1>
           <form onSubmit={handleSubmit(onSubmit)}>
             <div className="mb-3 flex flex-col gap-y-3">
               <div>
-                <div className="text-[14px] mb-[5px]">Mật khẩu mới</div>
+                <div className="text-[14px] mb-[5px]">New password</div>
                 <div
                   className={`flex items-center text-[14px] gap-x-2 justify-between w-[300px] px-3 py-3 outline-none border-[1px] ${
                     errors.newPassword ? "border-red-500" : "border-[#E9EAF0]"
@@ -93,7 +93,7 @@ const Otp = () => {
                   <input
                     {...register("newPassword")}
                     type={showPass ? "text" : "password"}
-                    placeholder="Mật khẩu mới"
+                    placeholder="New password"
                     className="w-full focus:outline-none placeholder:text-[#8C94A3] placeholder:font-normal"
                   />
                   {showPass ? (

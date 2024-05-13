@@ -80,7 +80,7 @@ const Infomation = () => {
             )}
             <div className="flex items-center gap-x-3 absolute bottom-0 left-0 w-full justify-center p-[12px] text-white bg-black opacity-50">
               <BsUpload className="text-[20px]" />
-              <span className="text-[14px]">Tải ảnh lên</span>
+              <span className="text-[14px]">Upload image</span>
             </div>
             <input
               {...register("imgUrl")}
@@ -94,7 +94,7 @@ const Infomation = () => {
         </div>
         <div className="flex flex-col gap-y-[6px]">
           <span className="text-[#1D2026] text-[14px] font-normal">
-            Họ và tên
+            Fullname
           </span>
           <input
             {...register("fullName")}
@@ -105,7 +105,7 @@ const Infomation = () => {
         </div>
         <div className="flex flex-col gap-y-[6px]">
           <span className="text-[#1D2026] text-[14px] font-normal">
-            Tên người dùng
+            Username
           </span>
           <input
             {...register("username")}
@@ -115,9 +115,7 @@ const Infomation = () => {
           />
         </div>
         <div className="flex flex-col gap-y-[6px]">
-          <span className="text-[#1D2026] text-[14px] font-normal">
-            Tiêu đề
-          </span>
+          <span className="text-[#1D2026] text-[14px] font-normal">Title</span>
           <input
             {...register("title")}
             type="text"
@@ -126,9 +124,7 @@ const Infomation = () => {
           />
         </div>
         <div className="flex flex-col gap-y-[6px]">
-          <span className="text-[#1D2026] text-[14px] font-normal">
-            Tiểu sử
-          </span>
+          <span className="text-[#1D2026] text-[14px] font-normal">Bio</span>
           <textarea
             {...register("bio")}
             className="outline-none h-[100px] resize-none px-[18px] py-[11px] placeholder:text-[#8C94A3] text-[14px] text-[#1D2026] border-[1px] border-[#E9EAF0"
@@ -143,7 +139,7 @@ const Infomation = () => {
           color="white"
           type="submit"
         >
-          Cập nhập thông tin
+          Update
         </Button>
       </form>
     </div>

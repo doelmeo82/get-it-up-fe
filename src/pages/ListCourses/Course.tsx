@@ -149,7 +149,7 @@ const Course = ({ item, getListCourse }: any) => {
               </p>
 
               {/* <span className="text-[12px] font-normal px-[6px] py-[4px] text-[#15711F] bg-[#E1F7E3] w-fit">
-                55 giờ học, 12 chuyên đề
+                55 hours học, 12 chuyên đề
               </span> */}
             </div>
             <div className="flex gap-x-6">
@@ -163,17 +163,17 @@ const Course = ({ item, getListCourse }: any) => {
               <div className="flex gap-x-2">
                 <AiOutlineClockCircle className="text-[20px] text-[#23BD33]" />
                 <span className="text-[#8C94A3] font-normal text-[14px]">
-                  {Math.floor(+item?.totalDuration / 60)} giờ học tất cả
+                  {Math.floor(+item?.totalDuration / 60)} hours studying
                 </span>
               </div>
             </div>
           </div>
         </div>
         <div className="flex flex-col justify-between items-end">
-          <h1 className="text-right text-[20px] font-semibold mb-1 text-[#FF6636] w-fit">
+          {/* <h1 className="text-right text-[20px] font-semibold mb-1 text-[#FF6636] w-fit">
             {formatMoney(item?.price)}
             <span>VND</span>
-          </h1>
+          </h1> */}
           {userId && (
             <div className="flex gap-x-3 text-white flex-wrap gap-y-5 justify-end">
               {item?.isPaid ? (
@@ -182,7 +182,7 @@ const Course = ({ item, getListCourse }: any) => {
                   className="flex items-center gap-x-2 px-[12px] py-[6px] bg-[#FF6636] rounded-md"
                 >
                   <VscGoToFile />
-                  <span>Đi Start learning</span>
+                  <span>Start learning</span>
                 </button>
               ) : (
                 <>

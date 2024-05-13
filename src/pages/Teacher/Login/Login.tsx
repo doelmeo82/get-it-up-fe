@@ -48,7 +48,7 @@ const Login = () => {
     console.log("🚀 ~ file: Login.tsx:48 ~ onSubmit ~ response:", response);
     if (response.meta.requestStatus === "rejected") {
       toast({
-        title: "Lỗi Login",
+        title: "Fail Login",
         description: response?.payload?.message,
         status: "error",
         duration: 9000,
@@ -59,7 +59,7 @@ const Login = () => {
     if (response.meta.requestStatus === "fulfilled" && response?.payload) {
       if (response?.payload?.error) {
         toast({
-          title: "Lỗi Login",
+          title: "Fail Login",
           description: response?.payload?.message,
           status: "error",
           duration: 9000,
@@ -82,7 +82,7 @@ const Login = () => {
           console.log(LocalStorage.getAccessToken());
           dispatch(updateUserInfo(response?.payload.data?.infoUser));
           toast({
-            title: "Login thành công",
+            title: "Login succeed",
             description: response?.payload?.message,
             status: "success",
             duration: 9000,
@@ -94,7 +94,7 @@ const Login = () => {
           }, 1500);
         } else {
           toast({
-            title: "Login thành công",
+            title: "Login succeed",
             description: response?.payload?.message,
             status: "success",
             duration: 9000,
