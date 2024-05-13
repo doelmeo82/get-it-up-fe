@@ -95,6 +95,8 @@ const Navbar = () => {
             bg="#0D6EFD"
             fontWeight="400"
             borderRadius={"3xl"}
+            textColor={"white"}
+            _hover={{ textColor: "black" }}
           >
             Category
           </Button>
@@ -103,7 +105,7 @@ const Navbar = () => {
             className="w-full lg:w-[50%] relative"
             onSubmit={handleSubmit(handleOnSubmit)}
           >
-            <div className="flex items-center gap-4 bg-[#FF4500] py-3 px-4 rounded-full border-[1px] border-[#272829]">
+            <div className="flex items-center gap-4 bg-[#FF4500] py-3 px-4 rounded-full border-[1px] border-[#fff]">
               <button
                 type={value === "" ? "button" : "submit"}
                 className={`${
@@ -128,9 +130,19 @@ const Navbar = () => {
               <SearchResult value={value} debouncedValue={debouncedValue} />
             )}
           </form>
-          <Link className="bg-[#0D6EFD] rounded-3xl px-5 py-2" to="/teacher">
+          <Link
+            className="bg-[#0D6EFD] rounded-3xl px-5 py-2 text-white hover:text-black"
+            to="/teacher"
+          >
             Teacher
           </Link>
+          {/* 
+          <Link
+            className="bg-red-600 rounded-3xl px-5 py-2 text-white hover:text-black"
+            to="/exam"
+          >
+            Exam
+          </Link> */}
           {!userId ? (
             <div className="flex gap-x-3">
               <Link

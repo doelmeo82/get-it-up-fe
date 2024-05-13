@@ -6,7 +6,7 @@ import { FaLayerGroup } from "react-icons/fa";
 import { FiBook, FiSettings } from "react-icons/fi";
 import { CiLogout } from "react-icons/ci";
 import { MdQuiz } from "react-icons/md";
-import logo from "../../image/Navbar/sidebar.svg";
+import logo from "../../image/Navbar/logo_main.png";
 import { LocalStorage } from "../../utils/LocalStorage";
 import { useAppDispatch } from "../../hooks/appHooks";
 import { updateIsLogged, updateUserId } from "../../store/reducers/authSlice";
@@ -46,7 +46,7 @@ const Sidebar = () => {
           }`}
         >
           <BsBarChartFill className="text-[18px]" />
-          <span>Tổng quan</span>
+          <span>Overview</span>
         </div>
         <div
           onClick={() => handleNavigate("create-course")}
@@ -57,19 +57,9 @@ const Sidebar = () => {
           }`}
         >
           <AiOutlinePlusCircle className="text-[18px]" />
-          <span>Tạo Course mới</span>
+          <span>Create new Grades</span>
         </div>
-        <div
-          onClick={() => handleNavigate("create-combo")}
-          className={`flex gap-x-2 items-center px-[24px] cursor-pointer py-[15px] ${
-            path.pathname.includes("create-combo") === true
-              ? "bg-[#FF6636] text-white"
-              : ""
-          }`}
-        >
-          <AiOutlinePlusCircle className="text-[18px]" />
-          <span>Tạo Combo Course</span>
-        </div>
+
         <div
           onClick={() => handleNavigate("exam")}
           className={`flex gap-x-2 items-center px-[24px] cursor-pointer py-[15px] ${
@@ -79,7 +69,7 @@ const Sidebar = () => {
           }`}
         >
           <FiBook className="text-[18px]" />
-          <span>Ngân hàng đề thi</span>
+          <span>Exam Resources</span>
         </div>
         <div
           onClick={() => handleNavigate("quiz")}
@@ -90,7 +80,7 @@ const Sidebar = () => {
           }`}
         >
           <MdQuiz className="text-[18px]" />
-          <span>Ngân hàng Quizz</span>
+          <span>Quizz Resources</span>
         </div>
         <div
           onClick={() => handleNavigate("courses")}
@@ -101,7 +91,7 @@ const Sidebar = () => {
           }`}
         >
           <FaLayerGroup className="text-[18px]" />
-          <span>Course</span>
+          <span>Grades</span>
         </div>
         <div
           onClick={() => handleNavigate("message")}
@@ -134,7 +124,7 @@ const Sidebar = () => {
           }`}
         >
           <FiSettings className="text-[18px]" />
-          <span>Cài đặt</span>
+          <span>Setting</span>
         </div>
         <div
           onClick={handleLogout}

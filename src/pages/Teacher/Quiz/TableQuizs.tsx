@@ -1,4 +1,4 @@
-import React from 'react';
+import React from "react";
 import {
   Table,
   Thead,
@@ -10,9 +10,9 @@ import {
   TableCaption,
   TableContainer,
   useDisclosure,
-} from '@chakra-ui/react';
-import ItemQuiz from './ItemQuiz';
-const TableQuizs = ({listquizs,getListQuizTeacher}:any) => {
+} from "@chakra-ui/react";
+import ItemQuiz from "./ItemQuiz";
+const TableQuizs = ({ listquizs, getListQuizTeacher }: any) => {
   return (
     <div>
       <TableContainer>
@@ -22,13 +22,17 @@ const TableQuizs = ({listquizs,getListQuizTeacher}:any) => {
               <Th>ID</Th>
               <Th>Đề thi</Th>
               <Th>Xem đề thi</Th>
-              <Th>Ngày tạo</Th>
+              <Th>Ngày create</Th>
               <Th></Th>
             </Tr>
           </Thead>
           <Tbody>
             {listquizs?.listData?.map((item: any, index: any) => (
-              <ItemQuiz key={item._id} item={item} getListQuizTeacher={getListQuizTeacher} />
+              <ItemQuiz
+                key={item._id}
+                item={item}
+                getListQuizTeacher={getListQuizTeacher}
+              />
             ))}
           </Tbody>
         </Table>

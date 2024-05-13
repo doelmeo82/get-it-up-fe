@@ -83,7 +83,7 @@ const TableListStudent = () => {
               <Th>Usename</Th>
               <Th>Email</Th>
               <Th>Họ và tên</Th>
-              <Th>Ngày tạo</Th>
+              <Th>Ngày create</Th>
               <Th>ROLE</Th>
               <Th>Trạng thái</Th>
               <Th isNumeric>Hành động</Th>

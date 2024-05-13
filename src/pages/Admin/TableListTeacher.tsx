@@ -82,7 +82,7 @@ const TableListTeacher = () => {
         onClick={onOpenCreate}
         className="mb-4 px-[16px] py-[8px] bg-[#FF6636] rounded-lg text-white font-medium"
       >
-        Tạo Account cho Teacher
+        create Account cho Teacher
       </button>
       <TableContainer>
         <Table variant="simple">
@@ -91,7 +91,7 @@ const TableListTeacher = () => {
               <Th>ID</Th>
               <Th>Usename</Th>
               <Th>Họ và tên</Th>
-              <Th>Ngày tạo</Th>
+              <Th>Ngày create</Th>
               <Th>ROLE</Th>
               <Th>Trạng thái</Th>
               <Th isNumeric>Hành động</Th>

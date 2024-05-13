@@ -1,6 +1,6 @@
-import React, { useEffect, useRef, useState } from 'react';
-import { useAppDispatch } from '../../../../hooks/appHooks';
-import { updateQuizAnswer } from '../../../../store/reducers/quizSlice';
+import React, { useEffect, useRef, useState } from "react";
+import { useAppDispatch } from "../../../../hooks/appHooks";
+import { updateQuizAnswer } from "../../../../store/reducers/quizSlice";
 import {
   Modal,
   ModalOverlay,
@@ -10,11 +10,18 @@ import {
   ModalBody,
   ModalCloseButton,
   Button,
-} from '@chakra-ui/react';
-import SunEditor from 'suneditor-react';
-import { buttonList } from '../../../../utils/type';
-import katex from 'katex';
-const ModalEditorEachTime = ({isOpen, onClose, index,indexQuiz,quiz,titleRedux}:any) => {
+} from "@chakra-ui/react";
+import SunEditor from "suneditor-react";
+import { buttonList } from "../../../../utils/type";
+import katex from "katex";
+const ModalEditorEachTime = ({
+  isOpen,
+  onClose,
+  index,
+  indexQuiz,
+  quiz,
+  titleRedux,
+}: any) => {
   /**
    * @type {React.MutableRefObject<SunEditor>} get type definitions for editor
    */
@@ -23,7 +30,7 @@ const ModalEditorEachTime = ({isOpen, onClose, index,indexQuiz,quiz,titleRedux}:
   const getSunEditorInstance = (sunEditor: any) => {
     editor.current = sunEditor;
   };
-  const [value, setValue] = useState('');
+  const [value, setValue] = useState("");
   const dispatch = useAppDispatch();
   const handleChange = (content: any) => {
     console.log(content);
@@ -39,19 +46,19 @@ const ModalEditorEachTime = ({isOpen, onClose, index,indexQuiz,quiz,titleRedux}:
         quizIndex: indexQuestion,
         answerIndex: indexAnswer,
         value: value,
-        title:titleRedux
+        title: titleRedux,
       })
     );
     onClose();
   };
-  useEffect(()=>{
+  useEffect(() => {
     setValue(quiz);
-  },[]);
+  }, []);
   return (
     <Modal isOpen={isOpen} onClose={onClose} isCentered size="4xl">
       <ModalOverlay />
       <ModalContent>
-        <ModalHeader>Nhập câu trả lời {indexQuiz+1}</ModalHeader>
+        <ModalHeader>Nhập câu trả lời {indexQuiz + 1}</ModalHeader>
         <ModalCloseButton />
         <ModalBody>
           <SunEditor
@@ -71,7 +78,7 @@ const ModalEditorEachTime = ({isOpen, onClose, index,indexQuiz,quiz,titleRedux}:
           <Button
             mr={3}
             onClick={onClose}
-            _hover={{ bg: '#ff511c' }}
+            _hover={{ bg: "#ff511c" }}
             bg="#FF6636"
             color="white"
           >
@@ -81,7 +88,7 @@ const ModalEditorEachTime = ({isOpen, onClose, index,indexQuiz,quiz,titleRedux}:
             onClick={() => updateExam(index, indexQuiz, value)}
             variant="ghost"
           >
-            Tạo câu trả lời
+            create câu trả lời
           </Button>
         </ModalFooter>
       </ModalContent>

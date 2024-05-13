@@ -93,18 +93,18 @@ const FormBasic = () => {
           <input
             {...register("titleSubject")}
             type="text"
-            placeholder="Toán 12....."
+            placeholder="Math  12....."
             className="outline-none w-full px-[18px] py-[13px] border-[1px] border-[#E9EAF0] placeholder:text-[14px] placeholder:text-[#8C94A3]"
           />
         </div>
         <div className="grid grid-cols-2 gap-[15px]">
           <div className="flex flex-col gap-y-[6px]">
-            <span className="text-[14px] text-[#1D2026]">Khối lớp</span>
+            <span className="text-[14px] text-[#1D2026]">Grade</span>
             <Select
               _focusVisible={{ borderColor: "none" }}
               borderRadius="none"
               fontSize="14px"
-              placeholder="Khối"
+              placeholder="Grade"
               {...register("grade")}
             >
               {grade?.map((item: any, index: any) => (
@@ -115,12 +115,12 @@ const FormBasic = () => {
             </Select>
           </div>
           <div className="flex flex-col gap-y-[6px]">
-            <span className="text-[14px] text-[#1D2026]">Môn học</span>
+            <span className="text-[14px] text-[#1D2026]">Subject</span>
             <Select
               _focusVisible={{ borderColor: "none" }}
               borderRadius="none"
               fontSize="14px"
-              placeholder="Môn học"
+              placeholder="Subject"
               _placeholder={{ fontSize: "14px", color: "#8C94A3" }}
               {...register("subject")}
             >
@@ -133,21 +133,11 @@ const FormBasic = () => {
               <option value="Hóa">Hóa</option> */}
             </Select>
           </div>
+
           <div className="flex flex-col gap-y-[6px]">
-            <span className="text-[14px] text-[#1D2026]">Giá tiền</span>
-            <InputGroup size="md">
-              <Input
-                placeholder="Giá tiền"
-                borderRadius="0"
-                border="1px solid #E9EAF0"
-                _focusVisible={{ border: "1px solid #E9EAF0" }}
-                {...register("money")}
-              />
-              <InputRightAddon children="đồng" borderRadius="0" />
-            </InputGroup>
-          </div>
-          <div className="flex flex-col gap-y-[6px]">
-            <span className="text-[14px] text-[#1D2026]">Ngày hết Course</span>
+            <span className="text-[14px] text-[#1D2026]">
+              Expiration Date Grade
+            </span>
             <DatePicker
               {...register("date")}
               onChange={(date: any) => setStartDate(date)}
@@ -171,7 +161,7 @@ const FormBasic = () => {
             borderRadius="none"
             // className="text-[14px] h-[48px] px-[24px] font-semibold text-white bg-[#FF6636] hover:bg-[#fe5a27]"
           >
-            Lưu và tiếp tục
+            Save and Continue
           </Button>
         </div>
       </form>

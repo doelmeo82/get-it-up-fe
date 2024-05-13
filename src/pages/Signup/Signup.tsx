@@ -11,7 +11,7 @@ const Signup = () => {
       </div>
       <div className="flex justify-center items-center flex-col text-[#1D2026] px-[18px] lg:px-0">
         <div className="w-max-[600px] border-b-[1px] border-[#272829] pb-6">
-          <h1 className="font-bold text-[24px] mb-5">Signup</h1>
+          <h1 className="font-bold text-[24px] mb-5">SignUp</h1>
           <div className="flex flex-col gap-y-3 mb-5">
             <SignupForm />
           </div>

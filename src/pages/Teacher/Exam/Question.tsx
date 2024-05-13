@@ -1,5 +1,5 @@
-import React, { useState } from 'react';
-import { useSelector } from 'react-redux';
+import React, { useState } from "react";
+import { useSelector } from "react-redux";
 import {
   addAnswer,
   deleteAnswer,
@@ -10,15 +10,15 @@ import {
   updateAnswerCorretAnswer,
   updateAnswerExplain,
   updateAnswerTitle,
-} from '../../../store/reducers/examSlice';
-import { toolbarOptions } from '../../../utils/type';
-import ReactQuill from 'react-quill';
-import { useAppDispatch } from '../../../hooks/appHooks';
-import { AiOutlinePlus } from 'react-icons/ai';
-import { BsTrash } from 'react-icons/bs';
-import Select from './Select';
-import e from 'express';
-import QuestionCreateItem from './QuestionCreateItem';
+} from "../../../store/reducers/examSlice";
+import { toolbarOptions } from "../../../utils/type";
+import ReactQuill from "react-quill";
+import { useAppDispatch } from "../../../hooks/appHooks";
+import { AiOutlinePlus } from "react-icons/ai";
+import { BsTrash } from "react-icons/bs";
+import Select from "./Select";
+import e from "express";
+import QuestionCreateItem from "./QuestionCreateItem";
 interface QuestionProps {
   title: string;
   answers: Array<string>;
@@ -27,8 +27,8 @@ interface QuestionProps {
   questionLevel: string;
 }
 const Question = () => {
-  const [valueDesc, setValueDesc] = useState('');
-  const [types, setTypes] = useState<any>('');
+  const [valueDesc, setValueDesc] = useState("");
+  const [types, setTypes] = useState<any>("");
 
   const examQuestion = useSelector(selectExam);
   const dispatch = useAppDispatch();
@@ -36,11 +36,11 @@ const Question = () => {
   const addQuestion = () => {
     dispatch(
       setUpdateExam({
-        title: '',
-        answers: ['', '', '', ''],
+        title: "",
+        answers: ["", "", "", ""],
         correctAnswers: [],
-        explain: '',
-        questionLevel: 'Nhận biết',
+        explain: "",
+        questionLevel: "Nhận biết",
       })
     );
   };
@@ -81,7 +81,7 @@ const Question = () => {
       updateAnswerTitle({
         questionIndex: indexQuestion,
         value: e.target.value,
-        type:'create'
+        type: "create",
       })
     );
   };
@@ -91,7 +91,7 @@ const Question = () => {
       updateAnswerExplain({
         questionIndex: indexQuestion,
         value: e,
-        type:'create'
+        type: "create",
       })
     );
   };
@@ -104,11 +104,11 @@ const Question = () => {
         updateAnswerCorretAnswer({
           questionIndex: indexQuestion,
           value: +e.target.value,
-          type:'create'
+          type: "create",
         })
       );
     } else {
-      console.log('uncheck');
+      console.log("uncheck");
 
       dispatch(
         deleteAnswerCorretAnswer({
@@ -122,7 +122,7 @@ const Question = () => {
 
   return (
     <div>
-      <h1 className="text-[18px] font-semibold mb-2">Tạo câu hỏi</h1>
+      <h1 className="text-[18px] font-semibold mb-2">create câu hỏi</h1>
       <div className="flex flex-col gap-y-[24px]">
         {examQuestion.questions.map((item: QuestionProps, index: number) => (
           <QuestionCreateItem

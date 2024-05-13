@@ -53,7 +53,7 @@ const ModalUpdateBanner = ({ index, isOpen, onClose }: any) => {
     <Modal isOpen={isOpen} onClose={onClose} isCentered size={"4xl"}>
       <ModalOverlay />
       <ModalContent>
-        <ModalHeader>Cập nhập Banner</ModalHeader>
+        <ModalHeader>Update Banner</ModalHeader>
         <ModalCloseButton />
         <ModalBody>
           <div className="flex flex-col gap-y-3">
@@ -131,7 +131,7 @@ const ModalUpdateBanner = ({ index, isOpen, onClose }: any) => {
           <Button bg="#FF6636" mr={3} onClick={onClose} color="white">
             Đóng
           </Button>
-          <Button variant="ghost">Cập nhập banner</Button>
+          <Button variant="ghost">Update banner</Button>
         </ModalFooter>
       </ModalContent>
     </Modal>

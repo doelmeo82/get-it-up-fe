@@ -100,7 +100,7 @@ const Course = ({ item, getTeacherCourseData }: any) => {
                 <MenuItem onClick={() => navigate(`${item?._id}`)}>
                   Xem chi tiết Course
                 </MenuItem>
-                <MenuItem>Cập nhập Course</MenuItem>
+                <MenuItem>Update Course</MenuItem>
                 <MenuItem>Xóa Course</MenuItem>
                 <MenuItem onClick={() => publicItem(item?.isPublic)}>
                   Đăng tải Course

@@ -22,7 +22,7 @@ const Courses = ({ setPage, page, getListCourse }: any) => {
         ) : (
           <>
             {course.listData.length === 0 ? (
-              <p className="text-center">Không có Course nào</p>
+              <p className="text-center">Not grades yet</p>
             ) : (
               <>
                 {course.listData.map((item: any, index: any) => (

@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState } from "react";
 import {
   Modal,
   ModalOverlay,
@@ -8,8 +8,8 @@ import {
   ModalBody,
   ModalCloseButton,
   Button,
-} from '@chakra-ui/react';
-import EquationEditor from 'equation-editor-react';
+} from "@chakra-ui/react";
+import EquationEditor from "equation-editor-react";
 interface ModalMathProps {
   isOpen: boolean;
   onClose: () => void;
@@ -35,7 +35,7 @@ const ModalMath = ({
         <ModalHeader>Modal Title</ModalHeader>
         <ModalCloseButton />
         <ModalBody>
-          {' '}
+          {" "}
           <div className="flex items-center min-h-[40px]  p-2 border-[1px] border-black rounded-lg">
             <EquationEditor
               value={equation}
@@ -51,7 +51,7 @@ const ModalMath = ({
             Đóng
           </Button>
           <Button onClick={onChange} variant="ghost">
-            Tạo công thức
+            create công thức
           </Button>
         </ModalFooter>
       </ModalContent>

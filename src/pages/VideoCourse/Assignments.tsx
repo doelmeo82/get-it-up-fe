@@ -19,7 +19,7 @@ const Assignments = ({ courseDetail }: any) => {
   return (
     <div className="flex flex-col gap-y-4">
       <h1 className="font-semibold text-xl">
-        Bài tập về {courseDetail?.courseName}
+        {courseDetail?.courseName} quizz
       </h1>
       <div className="flex flex-col gap-y-2">
         {type?.map((item: any, index: any) => (

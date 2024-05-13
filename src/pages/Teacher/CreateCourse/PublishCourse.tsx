@@ -22,8 +22,8 @@ const PublishCourse = () => {
     if (res.meta.requestStatus === "fulfilled" && res.payload) {
       console.log(res);
       toast({
-        title: "Tạo khoá học Success",
-        description: `Tạo khoá ${res.payload.data.courseName}`,
+        title: "create khoá học Success",
+        description: `create khoá ${res.payload.data.courseName}`,
         status: "success",
         duration: 5000,
         isClosable: true,

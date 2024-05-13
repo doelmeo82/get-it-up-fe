@@ -1,10 +1,10 @@
-import axiosClient from './axiosClient';
+import axiosClient from "./axiosClient";
 export const courseService = {
   createCourse: (params: any) => {
-    return axiosClient.post('course/teacher/create', params);
+    return axiosClient.post("course/teacher/create", params);
   },
   uploadFile: (params: any) => {
-    return axiosClient.post('files/upload-single', params);
+    return axiosClient.post("files/upload-single", params);
   },
   getCourseTeacher: (params: any) => {
     return axiosClient.get(`course/teacher/my-course?${params.toString()}`);
@@ -13,21 +13,22 @@ export const courseService = {
     return axiosClient.get(`/course?${params.toString()}`);
   },
   getCourseDetail: (params: any) => {
-    return axiosClient.get(`/course/detail/${params}`);
+    const param = params ? params : 16;
+    return axiosClient.get(`/course/detail/${param}`);
   },
   getCourseUserBuy: () => {
-    return axiosClient.get('/course/student/my-course');
+    return axiosClient.get("/course/student/my-course");
   },
   publicCourse: (params: any) => {
-    return axiosClient.put('/course/teacher/public-course', params);
+    return axiosClient.put("/course/teacher/public-course", params);
   },
   getStudentParticipate: (params: any) => {
     return axiosClient.get(`/course/participants?${params.toString()}`);
   },
-  uploadVideo:(params:any)=>{
-    return axiosClient.post('files/upload-video',params);
+  uploadVideo: (params: any) => {
+    return axiosClient.post("files/upload-video", params);
   },
-  getStatusTeacher:()=>{
-    return axiosClient.get('/course/teacher/statistic');
-  }
+  getStatusTeacher: () => {
+    return axiosClient.get("/course/teacher/statistic");
+  },
 };

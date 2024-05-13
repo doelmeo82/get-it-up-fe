@@ -1,8 +1,8 @@
 import React from "react";
 import logowhite from "../../image/Navbar/logo_main.png";
-import { BsFacebook } from "react-icons/bs";
+import { BsFacebook, BsTiktok, BsYoutube } from "react-icons/bs";
 import { AiOutlineInstagram } from "react-icons/ai";
-import { FaTwitter } from "react-icons/fa6";
+import { FaInstagram, FaTiktok, FaTwitter } from "react-icons/fa6";
 import { Link } from "react-router-dom";
 const Footer = () => {
   return (
@@ -10,14 +10,20 @@ const Footer = () => {
       <div className="flex flex-col justify-between gap-y-[15px]">
         <img src={logowhite} alt="logo-icon" className="w-[250px]" />
         <div className="flex gap-x-3">
-          <div className="text-gray w-[50px] h-[50px] bg-[rgba(54,59,71,0.40)] flex justify-center items-center">
-            <BsFacebook className="text-[22px]" />
+          <div className="text-[#0408e7] w-[50px] h-[50px] flex justify-center items-center">
+            <BsFacebook className="text-[26px]" />
           </div>
-          <div className="text-gray w-[50px] h-[50px] bg-[rgba(54,59,71,0.40)] flex justify-center items-center">
-            <AiOutlineInstagram className="text-[22px]" />
+          <div className="text-[#e84bb4] w-[50px] h-[50px] flex justify-center items-center">
+            <FaInstagram className="text-[26px]" />
           </div>
-          <div className="text-gray w-[50px] h-[50px] bg-[rgba(54,59,71,0.40)] flex justify-center items-center">
-            <FaTwitter className="text-[22px]" />
+          <div className="text-[#45c0de] w-[50px] h-[50px] flex justify-center items-center">
+            <FaTwitter className="text-[26px]" />
+          </div>
+          <div className="text-[#ff2626] w-[50px] h-[50px] flex justify-center items-center">
+            <BsYoutube className="text-[26px]" />
+          </div>
+          <div className="text-[#0a0a0a] w-[50px] h-[50px] flex justify-center items-center">
+            <FaTiktok className="text-[26px]" />
           </div>
         </div>
         <div className="flex gap-x-2">
@@ -30,29 +36,29 @@ const Footer = () => {
         <div className="grid grid-cols-2">
           <div>
             <ul className="flex flex-col gap-y-4">
-              <li className="hover:text-white">
+              <li className="hover:text-[#FF4500]">
                 <Link to="">About us</Link>
               </li>
-              <li className="hover:text-white">
+              <li className="hover:text-[#FF4500]">
                 <Link to="">Contact</Link>
               </li>
-              <li className="hover:text-white">
+              <li className="hover:text-[#FF4500]">
                 <Link to="">Helps</Link>
               </li>
-              <li className="hover:text-white">
+              <li className="hover:text-[#FF4500]">
                 <Link to="">Policies</Link>
               </li>
             </ul>
           </div>
           <div>
             <ul className="flex flex-col gap-y-4">
-              <li className="hover:text-white">
+              <li className="hover:text-[#FF4500]">
                 <Link to="">Themes</Link>
               </li>
-              <li className="hover:text-white">
+              <li className="hover:text-[#FF4500]">
                 <Link to="">Wish list</Link>
               </li>
-              <li className="hover:text-white">
+              <li className="hover:text-[#FF4500]">
                 <Link to="">Hot themes</Link>
               </li>
             </ul>

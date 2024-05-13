@@ -4,21 +4,21 @@ import { idText } from "typescript";
 moment.updateLocale("vi", {
   relativeTime: {
     future: "in %s",
-    past: "%s trước",
-    s: "%d giây",
-    ss: "%d giây",
+    past: "%s ago",
+    s: "%d seconds",
+    ss: "%d seconds",
     m: "%d minutes",
     mm: "%d minutes",
     h: "%d hours", //this is the setting that you need to change
     hh: "%d hours",
-    d: "%d ngày",
-    dd: "%d ngày",
-    w: "%d tuần",
-    ww: "%d tuần",
-    M: "%d tháng", //change this for month
-    MM: "%d tháng",
-    y: "%d năm",
-    yy: "%d năm",
+    d: "%d days",
+    dd: "%d days",
+    w: "%d weeks",
+    ww: "%d weeks",
+    M: "%d months", //change this for month
+    MM: "%d months",
+    y: "%d years",
+    yy: "%d years",
   },
 });
 export const convertTimeToAgo = (time: any) => {

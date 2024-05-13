@@ -9,7 +9,7 @@ const VideoCreateCourses = () => {
           Video Course
         </h1>
         <div className="flex gap-x-3 text-[#FF6636] text-[14px]">
-          <button className="h-[48px] px-[24px] bg-[#FFEEE8]">Hủy bỏ</button>
+          <button className="h-[48px] px-[24px] bg-[#FFEEE8]">cancle bỏ</button>
           <button className="h-[48px] px-[24px]">Xem lại</button>
         </div>
       </div>

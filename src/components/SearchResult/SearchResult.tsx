@@ -35,7 +35,7 @@ const SearchResult = ({ value, debouncedValue }: any) => {
         <div>
           <div className="flex flex-col gap-y-3">
             {searchCourseList?.listData?.length === 0 ? (
-              <p className="text-[#1D2026]">Không có Course</p>
+              <p className="text-[#1D2026]">No Grades yet</p>
             ) : (
               <>
                 {searchCourseList?.listData?.map((item: any, index: any) => (
@@ -57,9 +57,6 @@ const SearchResult = ({ value, debouncedValue }: any) => {
                         <span className="px-[3px] py-[2px] bg-[#EBEBFF] text-[#564FFD]">
                           {item?.category.categoryName}
                         </span>
-                        <span className="px-[3px] py-[2px] bg-[#FFF2E5] text-[#FD8E1F]">
-                          {formatMoney(item?.price)}VND
-                        </span>
                       </div>
                     </div>
                   </Link>
@@ -68,7 +65,7 @@ const SearchResult = ({ value, debouncedValue }: any) => {
                   to={`/courses?search=${debouncedValue.debouncedValue}`}
                   className="text-[14px] italic hover:text-[#FF6636]"
                 >
-                  Xem tất cả kết quả về {debouncedValue.debouncedValue}
+                  View all results for {debouncedValue.debouncedValue}
                 </Link>
               </>
             )}

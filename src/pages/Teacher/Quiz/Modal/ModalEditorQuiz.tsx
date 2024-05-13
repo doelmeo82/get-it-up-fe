@@ -1,6 +1,6 @@
-import React, { useEffect, useRef, useState } from 'react';
-import { useAppDispatch } from '../../../../hooks/appHooks';
-import { updateQuizTitle } from '../../../../store/reducers/quizSlice';
+import React, { useEffect, useRef, useState } from "react";
+import { useAppDispatch } from "../../../../hooks/appHooks";
+import { updateQuizTitle } from "../../../../store/reducers/quizSlice";
 import {
   Modal,
   ModalOverlay,
@@ -10,11 +10,17 @@ import {
   ModalBody,
   ModalCloseButton,
   Button,
-} from '@chakra-ui/react';
-import SunEditor from 'suneditor-react';
-import katex from 'katex';
-import { buttonList } from '../../../../utils/type';
-const ModalEditorQuiz = ({isOpen,onClose,index,title,titleRedux}:any) => {
+} from "@chakra-ui/react";
+import SunEditor from "suneditor-react";
+import katex from "katex";
+import { buttonList } from "../../../../utils/type";
+const ModalEditorQuiz = ({
+  isOpen,
+  onClose,
+  index,
+  title,
+  titleRedux,
+}: any) => {
   /**
    * @type {React.MutableRefObject<SunEditor>} get type definitions for editor
    */
@@ -23,7 +29,7 @@ const ModalEditorQuiz = ({isOpen,onClose,index,title,titleRedux}:any) => {
   const getSunEditorInstance = (sunEditor: any) => {
     editor.current = sunEditor;
   };
-  const [value, setValue] = useState('');
+  const [value, setValue] = useState("");
   const handleChange = (content: any) => {
     console.log(content);
     setValue(content);
@@ -34,14 +40,14 @@ const ModalEditorQuiz = ({isOpen,onClose,index,title,titleRedux}:any) => {
       updateQuizTitle({
         quizIndex: indexQuestion,
         value: value,
-        title:titleRedux
+        title: titleRedux,
       })
     );
     onClose();
   };
-  useEffect(()=>{
+  useEffect(() => {
     setValue(title);
-  },[]);
+  }, []);
   return (
     <Modal isOpen={isOpen} onClose={onClose} id="modal" isCentered size="4xl">
       <ModalOverlay />
@@ -65,14 +71,14 @@ const ModalEditorQuiz = ({isOpen,onClose,index,title,titleRedux}:any) => {
           <Button
             mr={3}
             onClick={onClose}
-            _hover={{ bg: '#ff511c' }}
+            _hover={{ bg: "#ff511c" }}
             bg="#FF6636"
             color="white"
           >
-          Đóng
+            Đóng
           </Button>
           <Button onClick={() => updateTitleQuiz(index, value)} variant="ghost">
-          Tạo câu hỏi
+            create câu hỏi
           </Button>
         </ModalFooter>
       </ModalContent>

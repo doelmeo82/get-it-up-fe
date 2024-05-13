@@ -140,7 +140,7 @@ const ModalCreateTeacher = ({
       <ModalOverlay />
       <ModalContent>
         <form onSubmit={handleSubmit(onSubmit)}>
-          <ModalHeader>Tạo Account cho Teacher</ModalHeader>
+          <ModalHeader>create Account cho Teacher</ModalHeader>
           <ModalCloseButton />
           <ModalBody>
             <div className="flex flex-col gap-y-4">
@@ -367,7 +367,7 @@ const ModalCreateTeacher = ({
               Đóng
             </Button>
             <Button type="submit" variant="ghost" isLoading={isSubmitting}>
-              Tạo
+              create
             </Button>
           </ModalFooter>
         </form>

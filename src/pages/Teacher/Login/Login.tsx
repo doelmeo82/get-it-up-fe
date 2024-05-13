@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import Logo from "../../../image/Navbar/logo.svg";
+import Logo from "../../../image/Navbar/logo_main.png";
 import { AiFillEyeInvisible, AiFillEye } from "react-icons/ai";
 import { Button, useToast } from "@chakra-ui/react";
 import { useNavigate } from "react-router-dom";
@@ -116,12 +116,12 @@ const Login = () => {
       >
         <img src={Logo} alt="" />
         <div className="text-[30px] font-semibold text-white">
-          Xin chào các thầy/cô giáo. Mời thầy cô Login
+          Hello teachers. Invite teachers to Login
         </div>
         <div className="w-full flex flex-col gap-y-4">
           <div className="flex flex-col gap-y-2">
             <span className="text-[14px] font-medium text-white">
-              Tên Account
+              Account Name
             </span>
 
             <input
@@ -131,7 +131,7 @@ const Login = () => {
             />
           </div>
           <div className="flex flex-col gap-y-2">
-            <span className="text-[14px] font-medium text-white">Mật khẩu</span>
+            <span className="text-[14px] font-medium text-white">Password</span>
             <div className="flex gap-x-3 bg-white items-center px-[18px] py-[13px]">
               <input
                 {...register("passwordteacher")}
@@ -153,7 +153,7 @@ const Login = () => {
           </div>
           <Button type="submit">Login</Button>
           <Button type="button" onClick={() => navigate("/")}>
-            Trở lại trang chủ
+            Return to Home page
           </Button>
         </div>
       </form>

@@ -137,16 +137,13 @@ const Course = ({ item, getListCourse }: any) => {
             <h1 className="text-[20px] font-semibold text-[#272829]">
               {item?.courseName}
             </h1>
-            <p className="font-normal text-[14px]">
+            {/* <p className="font-normal text-[14px]">
               {parse(item?.description)}
-            </p>
+            </p> */}
             <div className="flex gap-3 items-center flex-wrap">
               <div className="px-[6px] py-[4px] text-[12px] font-medium text-[#993D20] bg-[#FFEEE8] w-fit">
                 {item?.category.categoryName}
               </div>
-              <p className="text-[12px] font-normal px-[6px] py-[4px] text-[#342F98] bg-[#EBEBFF] w-fit">
-                bởi {item?.courseName.split("-")[1]}
-              </p>
 
               {/* <span className="text-[12px] font-normal px-[6px] py-[4px] text-[#15711F] bg-[#E1F7E3] w-fit">
                 55 hours học, 12 chuyên đề

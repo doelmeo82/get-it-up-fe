@@ -20,15 +20,12 @@ import Cart from "./pages/Cart/Cart";
 import LoginTeacher from "./pages/Teacher/Login/Login";
 import Header from "./pages/Teacher/Header/Header";
 
-import "@fontsource/inter/100.css";
-import "@fontsource/inter/200.css";
-import "@fontsource/inter/300.css";
-import "@fontsource/inter/400.css";
-import "@fontsource/inter/500.css";
-import "@fontsource/inter/600.css";
-import "@fontsource/inter/700.css";
-import "@fontsource/inter/800.css";
-import "@fontsource/inter/900.css";
+import "@fontsource/alegreya/400.css";
+import "@fontsource/alegreya/500.css";
+import "@fontsource/alegreya/600.css";
+import "@fontsource/alegreya/700.css";
+import "@fontsource/alegreya/800.css";
+import "@fontsource/alegreya/900.css";
 import Profile from "./pages/Profile/Profile";
 import Dashboard from "./pages/Teacher/Dashboard/Dashboard";
 import Sidebar from "./components/Sidebar/Sidebar";
@@ -56,6 +53,7 @@ import DetailBlog from "./pages/DetailBlog/DetailBlog";
 import BlogTeacher from "./pages/Teacher/Blog/BlogTeacher";
 import BlogAdmin from "./pages/Admin/BlogCheck/BlogAdmin";
 import Banner from "./pages/Admin/Banner/Banner";
+import Exam from "./pages/Assingments/Exam";
 function App() {
   const [loading, setLoading] = useState(true);
   const pathname = useLocation();
@@ -315,6 +313,14 @@ function App() {
                       <RequireVideo redirectTo="/courses">
                         <VideoCourse />
                       </RequireVideo>
+                    </RequireAuth>
+                  }
+                />
+                <Route
+                  path="exam"
+                  element={
+                    <RequireAuth redirectTo="/login">
+                      <Exam />
                     </RequireAuth>
                   }
                 />

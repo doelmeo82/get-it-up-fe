@@ -92,7 +92,7 @@ const SidebarAdmin = () => {
           }`}
         >
           <IoCreateOutline className="text-[18px]" />
-          <span>Tạo banner</span>
+          <span>create banner</span>
         </div>
         <div
           // onClick={() => handleNavigate("dashboard")}

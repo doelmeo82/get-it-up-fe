@@ -1,11 +1,11 @@
-import React from 'react';
-import FormAdvance from './FormAdvance';
-import { useNavigate } from 'react-router-dom';
+import React from "react";
+import FormAdvance from "./FormAdvance";
+import { useNavigate } from "react-router-dom";
 
 const AdvanceInformation = () => {
   const navigate = useNavigate();
   const handleClick = () => {
-    navigate('/teacher/courses');
+    navigate("/teacher/courses");
   };
   return (
     <div>
@@ -18,7 +18,7 @@ const AdvanceInformation = () => {
             className="h-[48px] px-[24px] bg-[#FFEEE8]"
             onClick={handleClick}
           >
-            Hủy bỏ
+            cancle bỏ
           </button>
           <button className="h-[48px] px-[24px]">Xem lại</button>
         </div>

@@ -89,7 +89,7 @@ const UpdateBlog = ({ isOpen, onClose, item, getListBlog }: any) => {
         getListBlog();
         onClose();
         toast({
-          title: "Cập nhập Success",
+          title: "Update Success",
           status: "success",
           duration: 5000,
           isClosable: true,
@@ -99,7 +99,7 @@ const UpdateBlog = ({ isOpen, onClose, item, getListBlog }: any) => {
     } catch (e: any) {
       console.log("🚀 ~ handleSubmitUpdate ~ e:", e);
       toast({
-        title: "Cập nhập không Success",
+        title: "Update không Success",
         status: "success",
         duration: 5000,
         isClosable: true,
@@ -114,7 +114,7 @@ const UpdateBlog = ({ isOpen, onClose, item, getListBlog }: any) => {
     <Modal isOpen={isOpen} onClose={onClose} size="5xl">
       <ModalOverlay />
       <ModalContent>
-        <ModalHeader>Cập nhập Blog</ModalHeader>
+        <ModalHeader>Update Blog</ModalHeader>
         <ModalCloseButton />
         <ModalBody>
           <form className="flex flex-col gap-4" onSubmit={handleSubmitUpdate}>

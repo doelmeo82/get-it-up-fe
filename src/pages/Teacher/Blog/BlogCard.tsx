@@ -52,7 +52,7 @@ const BlogCard = ({ item, getListBlog }: any) => {
               Lựa chọn
             </MenuButton>
             <MenuList>
-              <MenuItem onClick={onOpen}>Cập nhập blog</MenuItem>
+              <MenuItem onClick={onOpen}>Update blog</MenuItem>
               <MenuItem onClick={onOpenLock}>Xoá Blog</MenuItem>
             </MenuList>
           </Menu>

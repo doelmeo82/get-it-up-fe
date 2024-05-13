@@ -41,9 +41,8 @@ const Assingments = () => {
   };
 
   useEffect(() => {
-    if (params) {
-      geExamDetail(params);
-    }
+    const param = params ?? 1;
+    geExamDetail(param);
   }, []);
   return (
     <div className="py-[20px] px-[24px] text-[#272829]">
@@ -57,7 +56,7 @@ const Assingments = () => {
         <div className="flex-1">
           <TitleAssignmet questions={questions} />
         </div>
-        <div className="relative lg:fixed h-full w-[300px] right-0 lg:right-[150px] flex flex-col gap-y-3">
+        <div className="relative  h-full w-[300px] right-0 lg:right-[150px] flex flex-col gap-y-3">
           <TimeAndQuestions questions={questions} />
           <QuestionNumber questions={questions} />
         </div>

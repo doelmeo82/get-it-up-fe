@@ -31,7 +31,7 @@ const TabCreateCourse = () => {
           >
             <div className="text-[#1D2026] flex items-center gap-x-2">
               <BiSolidLayer className="text-[20px]" />
-              <span className="text-[16px] font-normal">Thông tin cơ bản</span>
+              <span className="text-[16px] font-normal">Basic Information</span>
             </div>
           </Tab>
           <Tab
@@ -41,7 +41,7 @@ const TabCreateCourse = () => {
             <div className="text-[#1D2026] flex items-center gap-x-2">
               <MdContentPaste className="text-[20px]" />
               <span className="text-[16px] font-normal">
-                Thông tin nâng cao
+                Advanced Information
               </span>
             </div>
           </Tab>
@@ -51,7 +51,7 @@ const TabCreateCourse = () => {
           >
             <div className="text-[#1D2026] flex items-center gap-x-2">
               <MdOutlineOndemandVideo className="text-[20px]" />
-              <span className="text-[16px] font-normal">Video Course</span>
+              <span className="text-[16px] font-normal">Video Grade</span>
             </div>
           </Tab>
           <Tab
@@ -60,7 +60,7 @@ const TabCreateCourse = () => {
           >
             <div className="text-[#1D2026] flex items-center gap-x-2">
               <RiVideoUploadFill className="text-[20px]" />
-              <span className="text-[16px] font-normal">Đăng tải Course</span>
+              <span className="text-[16px] font-normal">Upload Grade</span>
             </div>
           </Tab>
         </TabList>

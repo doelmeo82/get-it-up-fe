@@ -1,4 +1,4 @@
-import React from 'react';
+import React from "react";
 import {
   Table,
   Thead,
@@ -10,9 +10,9 @@ import {
   TableCaption,
   TableContainer,
   useDisclosure,
-} from '@chakra-ui/react';
-import ModalDeleteExam from './Modal/ModalDeleteExam';
-import ItemTable from './ItemTable';
+} from "@chakra-ui/react";
+import ModalDeleteExam from "./Modal/ModalDeleteExam";
+import ItemTable from "./ItemTable";
 const TableExam = ({ exams, getExams }: any) => {
   return (
     <div>
@@ -25,7 +25,7 @@ const TableExam = ({ exams, getExams }: any) => {
               <Th>Xem đề thi</Th>
               <Th>Lớp</Th>
               <Th>Môn học</Th>
-              <Th>Ngày tạo</Th>
+              <Th>Ngày create</Th>
               <Th textAlign="center">Thời gian</Th>
               <Th></Th>
               {/* <Th isNumeric>multiply by</Th> */}

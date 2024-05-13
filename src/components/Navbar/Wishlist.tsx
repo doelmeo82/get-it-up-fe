@@ -90,7 +90,7 @@ const Wishlist = () => {
           {/* khi nào rỗng thì hiện */}
           {/* <h1>Các Wish list đang trống</h1> */}
           {wishList.length === 0 ? (
-            <h1>Các Wish list đang trống</h1>
+            <h1>Wish list is empty</h1>
           ) : (
             <div className="flex flex-col gap-y-1 divide-y-2 max-h-[550px] h-fit overflow-y-scroll">
               {wishList?.map((wishlistItem: any, index: number) => (

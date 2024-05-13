@@ -2638,6 +2638,11 @@
   resolved "https://registry.yarnpkg.com/@fontsource-variable/quicksand/-/quicksand-5.0.8.tgz#10177a2b4c6f2f08dfd6e9cd8abd71d2fb080271"
   integrity sha512-q+/Rb74Jru/oxhg3cdhTTWZ6sl3utTWSHQZZz5oeWmqvNVMyEaqzEuVwKhkZgZ8p5XotzHyr8M9YEB1NsmYWjw==
 
+"@fontsource/alegreya@^5.0.13":
+  version "5.0.13"
+  resolved "https://registry.yarnpkg.com/@fontsource/alegreya/-/alegreya-5.0.13.tgz#465a99c33eb2f5b8d5bcf26059983a8ea4b5d5e6"
+  integrity sha512-9T0F7aEvI96N9RD+kwISTi40rOBtW/smtrYhRBJ6eXTFlILWdZ+wg+ytyZDcYFveUgdFQlDTEoU7kU21sXybwQ==
+
 "@fontsource/inter@^5.0.13":
   version "5.0.13"
   resolved "https://registry.yarnpkg.com/@fontsource/inter/-/inter-5.0.13.tgz#b106fdc43b8eea8d6f5c0ce55941b1ae577c49e5"

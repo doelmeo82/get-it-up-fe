@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState } from "react";
 import {
   Modal,
   ModalOverlay,
@@ -8,24 +8,28 @@ import {
   ModalBody,
   ModalCloseButton,
   Button,
-} from '@chakra-ui/react';
-import Question from '../Question';
-import { useAppDispatch } from '../../../../hooks/appHooks';
-import { useSelector } from 'react-redux';
-import { resetCreateQuiz, selectQuiz, updateTitle } from '../../../../store/reducers/quizSlice';
-import { createQuiz } from '../../../../store/actions/quiz.action';
-const ModalCreateQuiz = ({isOpen,onClose,getListQuizTeacher}:any) => {
+} from "@chakra-ui/react";
+import Question from "../Question";
+import { useAppDispatch } from "../../../../hooks/appHooks";
+import { useSelector } from "react-redux";
+import {
+  resetCreateQuiz,
+  selectQuiz,
+  updateTitle,
+} from "../../../../store/reducers/quizSlice";
+import { createQuiz } from "../../../../store/actions/quiz.action";
+const ModalCreateQuiz = ({ isOpen, onClose, getListQuizTeacher }: any) => {
   const dispatch = useAppDispatch();
   const quiz = useSelector(selectQuiz);
-  console.log('🚀 ~ ModalCreateQuiz ~ quiz:', quiz);
-  const [types, setTypes] = useState<any>('');
+  console.log("🚀 ~ ModalCreateQuiz ~ quiz:", quiz);
+  const [types, setTypes] = useState<any>("");
   const [loading, setLoading] = useState(false);
   const changeTitle = (e: React.ChangeEvent<HTMLInputElement>) => {
     dispatch(updateTitle(e.target.value));
   };
   const postQuiz = async () => {
     const response = await dispatch(createQuiz(quiz));
-    if (response.meta.requestStatus === 'fulfilled' && response.payload) {
+    if (response.meta.requestStatus === "fulfilled" && response.payload) {
       setLoading(false);
       onClose();
       getListQuizTeacher(1);
@@ -39,15 +43,15 @@ const ModalCreateQuiz = ({isOpen,onClose,getListQuizTeacher}:any) => {
       resetCreateQuiz({
         questions: [
           {
-            title: '',
-            answers: ['', '', '', ''],
+            title: "",
+            answers: ["", "", "", ""],
             correctAnswers: [],
-            explain: '',
-            questionLevel: 'Nhận biết',
-            answerType: '',
+            explain: "",
+            questionLevel: "Nhận biết",
+            answerType: "",
           },
         ],
-        title: '',
+        title: "",
       })
     );
   };
@@ -55,10 +59,10 @@ const ModalCreateQuiz = ({isOpen,onClose,getListQuizTeacher}:any) => {
     <Modal isOpen={isOpen} onClose={onClose} isCentered>
       <ModalOverlay />
       <ModalContent maxW="1200px" h="600px">
-        <ModalHeader>Tạo quizz</ModalHeader>
+        <ModalHeader>create quizz</ModalHeader>
         <ModalCloseButton />
         <ModalBody maxH="600px" overflowY="scroll">
-          <div className='flex flex-col gap-y-3'>
+          <div className="flex flex-col gap-y-3">
             <div className="flex flex-col gap-y-2">
               <span className="text-[14px]">Tiêu đề</span>
               <input
@@ -81,17 +85,17 @@ const ModalCreateQuiz = ({isOpen,onClose,getListQuizTeacher}:any) => {
             onClick={onClose}
             borderRadius="none"
           >
-            Hủy tạo
+            cancle create
           </Button>
           <Button
             bg="#FF6636"
             color="#FFFFFF"
-            _hover={{ bg: '#fb5b2a' }}
+            _hover={{ bg: "#fb5b2a" }}
             borderRadius="none"
             isLoading={loading}
             onClick={clickPostQuiz}
           >
-            Tạo Quizz
+            create Quizz
           </Button>
         </ModalFooter>
       </ModalContent>

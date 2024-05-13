@@ -24,7 +24,7 @@ const TabProfile = () => {
           flexWrap={"wrap"}
         >
           <Tab onClick={onClickTabs}>Dashboard</Tab>
-          <Tab onClick={onClickTabs}>Course</Tab>
+          <Tab onClick={onClickTabs}>Grades</Tab>
           <Tab onClick={onClickTabs}>Messages</Tab>
           {/* <Tab onClick={onClickTabs}>Teacher</Tab> */}
           <Tab onClick={onClickTabs}>Wish list</Tab>

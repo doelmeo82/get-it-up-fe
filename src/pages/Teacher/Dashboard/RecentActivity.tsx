@@ -20,7 +20,7 @@ import { getAllCommentTeacherCourse } from "../../../store/actions/comment.actio
 import parse from "html-react-parser";
 import moment from "moment";
 const RecentActivity = () => {
-  const [menu, setMenu] = useState("Hôm nay");
+  const [menu, setMenu] = useState("Today");
   const handleSetmenu = (menu: string) => {
     setMenu(menu);
   };
@@ -47,7 +47,7 @@ const RecentActivity = () => {
     <div className="max-w-[430px] w-full bg-white flex flex-col gap-y-[16px]">
       <div className="flex justify-between px-[20px] py-[16px] items-center border-b-[1px] shadow-[0px_-1px_0px_0px_#E9EAF0]">
         <span className="text-[#1D2026] text-[16px] font-normal ">
-          Hoạt động gần đây
+          Recent activity
         </span>
         <Menu>
           <MenuButton
@@ -63,14 +63,12 @@ const RecentActivity = () => {
             {menu}
           </MenuButton>
           <MenuList>
-            <MenuItem onClick={() => handleSetmenu("Hôm nay")}>
-              Hôm nay
+            <MenuItem onClick={() => handleSetmenu("Today")}>Today</MenuItem>
+            <MenuItem onClick={() => handleSetmenu("Yesterday")}>
+              Yesterday
             </MenuItem>
-            <MenuItem onClick={() => handleSetmenu("Hôm qua")}>
-              Hôm qua
-            </MenuItem>
-            <MenuItem onClick={() => handleSetmenu("Hôm kia")}>
-              Hôm kia
+            <MenuItem onClick={() => handleSetmenu("The day before yesterday")}>
+              The day before yesterday
             </MenuItem>
           </MenuList>
         </Menu>

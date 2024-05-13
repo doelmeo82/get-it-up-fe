@@ -1,17 +1,17 @@
-import React, { useEffect } from 'react';
-import { useAppDispatch } from '../../../hooks/appHooks';
-import { getExamDetail } from '../../../store/actions/exam.action';
-import { useSelector } from 'react-redux';
+import React, { useEffect } from "react";
+import { useAppDispatch } from "../../../hooks/appHooks";
+import { getExamDetail } from "../../../store/actions/exam.action";
+import { useSelector } from "react-redux";
 import {
   selectExam,
   selectExamDetail,
   selectExamTemp,
   setAddUpdateExam,
   setUpdateExam,
-} from '../../../store/reducers/examSlice';
-import moment from 'moment';
-import Select from './Select';
-import QuestionUpdate from './QuestionUpdate';
+} from "../../../store/reducers/examSlice";
+import moment from "moment";
+import Select from "./Select";
+import QuestionUpdate from "./QuestionUpdate";
 
 const ExamUpdate = ({ item }: any) => {
   //   console.log("🚀 ~ file: ExamUpdate.tsx:4 ~ ExamUpdate ~ item:", item);
@@ -19,9 +19,9 @@ const ExamUpdate = ({ item }: any) => {
   const exam: any = useSelector(selectExamTemp);
   const getDetailExam = async () => {
     const response: any = await dispatch(getExamDetail(item._id));
-    if (response.meta.requestStatus === 'fulfilled' && response.payload) {
+    if (response.meta.requestStatus === "fulfilled" && response.payload) {
       console.log(
-        '🚀 ~ file: ExamUpdate.tsx:12 ~ getDetailExam ~ response:',
+        "🚀 ~ file: ExamUpdate.tsx:12 ~ getDetailExam ~ response:",
         response
       );
     }
@@ -32,21 +32,21 @@ const ExamUpdate = ({ item }: any) => {
   const addQuestion = () => {
     dispatch(
       setAddUpdateExam({
-        title: '',
-        answers: ['', '', '', ''],
+        title: "",
+        answers: ["", "", "", ""],
         correctAnswers: [],
-        explain: '',
-        questionLevel: 'Nhận biết',
+        explain: "",
+        questionLevel: "Nhận biết",
       })
     );
   };
   return (
     <div>
-      <h1 className="text-[20px] font-medium mb-3">Cập nhập câu hỏi đề thi</h1>
+      <h1 className="text-[20px] font-medium mb-3">Update câu hỏi đề thi</h1>
       <div className="mb-[10px]">
         <span>
-          <span className="font-semibold"> Thời gian tạo:</span>{' '}
-          {moment(exam?.createdAt).format('DD/MM/YYYY')}
+          <span className="font-semibold"> Thời gian create:</span>{" "}
+          {moment(exam?.createdAt).format("DD/MM/YYYY")}
         </span>
       </div>
       <div className="flex flex-col gap-y-4">

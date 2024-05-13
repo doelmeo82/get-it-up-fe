@@ -89,9 +89,6 @@ const AnotherCourse = ({ courseDetail }: any) => {
                   <BsFillPeopleFill className="text-[20px]" />
                   <span>90,344</span>
                 </div> */}
-                <h1 className="font-medium text-[#FF6636]">
-                  <span>{formatMoney(item?.price)} VND</span>
-                </h1>
               </div>
               <div>
                 {userId && (

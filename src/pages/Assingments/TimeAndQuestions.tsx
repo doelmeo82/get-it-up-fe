@@ -1,11 +1,11 @@
-import React, { useEffect, useState } from 'react';
-import { useSelector } from 'react-redux';
-import { selectQuestion } from '../../store/reducers/questionSlice';
+import React, { useEffect, useState } from "react";
+import { useSelector } from "react-redux";
+import { selectQuestion } from "../../store/reducers/questionSlice";
 import {
   selectTimeStop,
   updateTimeFinish,
-} from '../../store/reducers/examSlice';
-import { useAppDispatch } from '../../hooks/appHooks';
+} from "../../store/reducers/examSlice";
+import { useAppDispatch } from "../../hooks/appHooks";
 
 const TimeAndQuestions = ({ questions }: any) => {
   const questionNumber = useSelector(selectQuestion);
@@ -47,14 +47,14 @@ const TimeAndQuestions = ({ questions }: any) => {
     <div>
       <div className="bg-[#FF6636] px-[20px] py-[10px] h-[100px] flex flex-col justify-center gap-y-4 rounded-xl">
         <div className="grid grid-cols-[1fr_2px_70px] gap-x-3 items-center">
-          <h1 className="text-lg  text-white">Thời gian còn lại</h1>
+          <h1 className="text-lg  text-white">Remain time</h1>
           <div className="h-full w-[2px] bg-white"></div>
           <div className="text-lg font-medium text-white text-right">
             {minutes}:{+seconds < 10 ? `0${seconds}` : seconds}
           </div>
         </div>
         <div className="grid grid-cols-[1fr_2px_70px] gap-x-3 items-center">
-          <h1 className="text-lg  text-white">Số câu đã làm</h1>
+          <h1 className="text-lg  text-white">Done</h1>
           <div className="h-full w-[2px] bg-white"></div>
           <div className="text-lg font-medium text-white text-right">
             {questionNumber.length}/{questions?.questions?.length}

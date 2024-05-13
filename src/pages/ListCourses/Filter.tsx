@@ -115,9 +115,9 @@ const Filter = ({ setPage }: any) => {
                 color="#FF6636"
                 focusBorderColor="#FF6636"
               />
-              <InputRightAddon children="tiếng" />
+              <InputRightAddon children="hours" />
             </InputGroup>
-            <span>đến</span>
+            <span>to</span>
             <InputGroup size="md">
               <Input
                 onChange={endTimeOnChange}
@@ -125,7 +125,7 @@ const Filter = ({ setPage }: any) => {
                 color="#FF6636"
                 focusBorderColor="#FF6636"
               />
-              <InputRightAddon children="tiếng" />
+              <InputRightAddon children="hours" />
             </InputGroup>
           </div>
         </AccordionPanel>
@@ -145,11 +145,11 @@ const Filter = ({ setPage }: any) => {
           </Checkbox>
         </AccordionPanel>
       </AccordionItem> */}
-      <AccordionItem>
+      {/* <AccordionItem>
         <h2>
           <AccordionButton>
             <Box as="span" flex="1" textAlign="left" fontWeight={600}>
-              Chủ đề
+              Grades
             </Box>
             <AccordionIcon />
           </AccordionButton>
@@ -169,16 +169,8 @@ const Filter = ({ setPage }: any) => {
             ))}
           </RadioGroup>
         </AccordionPanel>
-      </AccordionItem>
-      <AccordionItem>
-        <h2>
-          <AccordionButton>
-            <Box as="span" flex="1" textAlign="left" fontWeight={600}>
-              Giá
-            </Box>
-            <AccordionIcon />
-          </AccordionButton>
-        </h2>
+      </AccordionItem> */}
+      {/* <AccordionItem>
         <AccordionPanel pb={4} className="flex flex-col">
           <div className="flex flex-col gap-y-3 items-center ">
             <InputGroup size="md">
@@ -190,7 +182,7 @@ const Filter = ({ setPage }: any) => {
               />
               <InputRightAddon children="VND" />
             </InputGroup>
-            <span>đến</span>
+            <span>to</span>
             <InputGroup size="md">
               <Input
                 onChange={endPriceOnChange}
@@ -202,13 +194,13 @@ const Filter = ({ setPage }: any) => {
             </InputGroup>
           </div>
         </AccordionPanel>
-      </AccordionItem>
+      </AccordionItem> */}
 
       <button
         onClick={resetFilter}
         className="mt-3 px-[12px] py-[8px] bg-[#FF6636] text-white text-[14px] font-medium"
       >
-        Đặt lại filter
+        Reset filter
       </button>
     </Accordion>
   );

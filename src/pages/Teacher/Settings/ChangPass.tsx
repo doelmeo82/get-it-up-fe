@@ -137,7 +137,7 @@ const ChangPass = () => {
             color="white"
             type="submit"
           >
-            Cập nhập mật khẩu
+            Update mật khẩu
           </Button>
         </form>
       </div>

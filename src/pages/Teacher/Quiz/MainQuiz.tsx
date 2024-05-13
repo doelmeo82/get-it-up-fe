@@ -1,34 +1,34 @@
-import { useDisclosure } from '@chakra-ui/react';
-import React, { useEffect, useState } from 'react';
-import { FiPlus } from 'react-icons/fi';
-import ModalCreateQuiz from './Modal/ModalCreateQuiz';
-import { useAppDispatch } from '../../../hooks/appHooks';
-import { useSelector } from 'react-redux';
-import { selectListQuizs } from '../../../store/reducers/quizSlice';
-import { getQuiz } from '../../../store/actions/quiz.action';
-import PagiantionNew from '../../../components/Pagination/PagiantionNew';
-import Quizs from './Quizs';
+import { useDisclosure } from "@chakra-ui/react";
+import React, { useEffect, useState } from "react";
+import { FiPlus } from "react-icons/fi";
+import ModalCreateQuiz from "./Modal/ModalCreateQuiz";
+import { useAppDispatch } from "../../../hooks/appHooks";
+import { useSelector } from "react-redux";
+import { selectListQuizs } from "../../../store/reducers/quizSlice";
+import { getQuiz } from "../../../store/actions/quiz.action";
+import PagiantionNew from "../../../components/Pagination/PagiantionNew";
+import Quizs from "./Quizs";
 
 const MainQuiz = () => {
   const { isOpen, onOpen, onClose } = useDisclosure();
-  const [page,setPage] = useState(1);
+  const [page, setPage] = useState(1);
   const dispatch = useAppDispatch();
-  const listquizs:any = useSelector(selectListQuizs);
-  const getListQuizTeacher = async(page:any)=>{
+  const listquizs: any = useSelector(selectListQuizs);
+  const getListQuizTeacher = async (page: any) => {
     const payload = new URLSearchParams({
-      page:page
+      page: page,
     });
     const res = await dispatch(getQuiz(payload));
-    if(res.meta.requestStatus ==='fulfilled'){
+    if (res.meta.requestStatus === "fulfilled") {
       console.log(res);
     }
   };
-  const handleChange = (page:number)=>{
+  const handleChange = (page: number) => {
     setPage(page);
   };
-  useEffect(()=>{
+  useEffect(() => {
     getListQuizTeacher(1);
-  },[]);
+  }, []);
   return (
     <>
       <div className="max-w-[1200px] p-[24px] w-full mx-auto flex flex-col gap-y-4">
@@ -42,7 +42,7 @@ const MainQuiz = () => {
               className="flex gap-x-2 items-center bg-[#FF6636]  text-white p-[10px] rounded-lg"
             >
               <FiPlus />
-              <span>Tạo quizz</span>
+              <span>create quizz</span>
             </button>
           </div>
         </div>
@@ -52,7 +52,10 @@ const MainQuiz = () => {
           </div>
         ) : (
           <>
-            <Quizs listquizs={listquizs} getListQuizTeacher={getListQuizTeacher}/>
+            <Quizs
+              listquizs={listquizs}
+              getListQuizTeacher={getListQuizTeacher}
+            />
             <div>
               <PagiantionNew
                 onPageChange={handleChange}
@@ -66,7 +69,11 @@ const MainQuiz = () => {
         )}
       </div>
       {/* <ModalCreateExam isOpen={isOpen} onClose={onClose} getExams={getExams} /> */}
-      <ModalCreateQuiz isOpen={isOpen} onClose={onClose} getListQuizTeacher={getListQuizTeacher}/>
+      <ModalCreateQuiz
+        isOpen={isOpen}
+        onClose={onClose}
+        getListQuizTeacher={getListQuizTeacher}
+      />
     </>
   );
 };

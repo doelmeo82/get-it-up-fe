@@ -1,33 +1,33 @@
-import React from 'react';
-import { useSelector } from 'react-redux';
-import { selectQuiz, setAddQuiz } from '../../../store/reducers/quizSlice';
-import QuizQuestionCreateItem from './QuizQuestionCreateItem';
-import { useAppDispatch } from '../../../hooks/appHooks';
+import React from "react";
+import { useSelector } from "react-redux";
+import { selectQuiz, setAddQuiz } from "../../../store/reducers/quizSlice";
+import QuizQuestionCreateItem from "./QuizQuestionCreateItem";
+import { useAppDispatch } from "../../../hooks/appHooks";
 interface QuizProps {
-    title: string;
-    answers: Array<string>;
-    correctAnswers: Array<string>;
-    explain: string;
-    questionLevel: string;
-  }
+  title: string;
+  answers: Array<string>;
+  correctAnswers: Array<string>;
+  explain: string;
+  questionLevel: string;
+}
 const Question = () => {
   const dispatch = useAppDispatch();
   const addQuizQuestion = () => {
     dispatch(
       setAddQuiz({
-        title: '',
-        answers: ['', '', '', ''],
+        title: "",
+        answers: ["", "", "", ""],
         correctAnswers: [],
-        explain: '',
-        questionLevel: 'Nhận biết',
+        explain: "",
+        questionLevel: "Nhận biết",
       })
     );
   };
   const quizQuestion = useSelector(selectQuiz);
-  console.log('🚀 ~ Question ~ quizQuestion:', quizQuestion);
+  console.log("🚀 ~ Question ~ quizQuestion:", quizQuestion);
   return (
     <div>
-      <h1 className="text-[18px] font-semibold mb-2">Tạo quizz</h1>
+      <h1 className="text-[18px] font-semibold mb-2">create quizz</h1>
       <div className="flex flex-col gap-y-[24px]">
         {quizQuestion.questions.map((item: QuizProps, index: number) => (
           <QuizQuestionCreateItem

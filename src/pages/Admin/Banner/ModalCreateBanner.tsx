@@ -54,7 +54,7 @@ const ModalCreateBanner = ({ isOpen, onClose }: any) => {
     <Modal isOpen={isOpen} onClose={onClose} isCentered size={"4xl"}>
       <ModalOverlay />
       <ModalContent>
-        <ModalHeader>Tạo Banner</ModalHeader>
+        <ModalHeader>create Banner</ModalHeader>
         <ModalCloseButton />
         <ModalBody>
           <div className="flex flex-col gap-y-3">
@@ -132,7 +132,7 @@ const ModalCreateBanner = ({ isOpen, onClose }: any) => {
           <Button bg="#FF6636" mr={3} onClick={onClose} color="white">
             Đóng
           </Button>
-          <Button variant="ghost">Tạo banner</Button>
+          <Button variant="ghost">create banner</Button>
         </ModalFooter>
       </ModalContent>
     </Modal>

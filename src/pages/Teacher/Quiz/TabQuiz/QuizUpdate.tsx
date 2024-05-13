@@ -1,19 +1,22 @@
-import React, { useEffect } from 'react';
-import { useAppDispatch } from '../../../../hooks/appHooks';
-import { useSelector } from 'react-redux';
-import { selectDetailQuizTemp, setAddQuiz, updateAddQuestion } from '../../../../store/reducers/quizSlice';
-import { getDetailQuiz } from '../../../../store/actions/quiz.action';
-import moment from 'moment';
-import QuizUpdateItem from './QuizUpdateItem';
+import React, { useEffect } from "react";
+import { useAppDispatch } from "../../../../hooks/appHooks";
+import { useSelector } from "react-redux";
+import {
+  selectDetailQuizTemp,
+  setAddQuiz,
+  updateAddQuestion,
+} from "../../../../store/reducers/quizSlice";
+import { getDetailQuiz } from "../../../../store/actions/quiz.action";
+import moment from "moment";
+import QuizUpdateItem from "./QuizUpdateItem";
 
-const QuizUpdate = ({item}:any) => {
+const QuizUpdate = ({ item }: any) => {
   const dispatch = useAppDispatch();
-  const quizs:any = useSelector(selectDetailQuizTemp);
-  const getQuizDetail= async()=>{
+  const quizs: any = useSelector(selectDetailQuizTemp);
+  const getQuizDetail = async () => {
     const res = await dispatch(getDetailQuiz(item?._id));
-    if(res.meta.requestStatus === 'fulfilled'){
-      console.log('🚀 ~ getQuizDetail ~ res:', res);
-        
+    if (res.meta.requestStatus === "fulfilled") {
+      console.log("🚀 ~ getQuizDetail ~ res:", res);
     }
   };
   useEffect(() => {
@@ -22,21 +25,21 @@ const QuizUpdate = ({item}:any) => {
   const addQuiz = () => {
     dispatch(
       updateAddQuestion({
-        title: '',
-        answers: ['', '', '', ''],
+        title: "",
+        answers: ["", "", "", ""],
         correctAnswers: [],
-        explain: '',
-        questionLevel: 'Nhận biết',
+        explain: "",
+        questionLevel: "Nhận biết",
       })
     );
   };
   return (
     <div>
-      <h1 className="text-[20px] font-medium mb-3">Cập nhập câu hỏi quizz</h1>
+      <h1 className="text-[20px] font-medium mb-3">Update câu hỏi quizz</h1>
       <div className="mb-[10px]">
         <span>
-          <span className="font-semibold"> Thời gian tạo:</span>{' '}
-          {moment(quizs?.createdAt).format('DD/MM/YYYY')}
+          <span className="font-semibold"> Thời gian create:</span>{" "}
+          {moment(quizs?.createdAt).format("DD/MM/YYYY")}
         </span>
       </div>
       <div className="flex flex-col gap-y-4">

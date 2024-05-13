@@ -1,4 +1,4 @@
-import React, { useRef, useState } from 'react';
+import React, { useRef, useState } from "react";
 import {
   Modal,
   ModalOverlay,
@@ -8,15 +8,15 @@ import {
   ModalBody,
   ModalCloseButton,
   Button,
-} from '@chakra-ui/react';
-import SunEditor from 'suneditor-react';
-import suneditor from 'suneditor';
-import 'suneditor/dist/css/suneditor.min.css';
-import katex from 'katex';
-import 'katex/dist/katex.min.css';
-import { useAppDispatch } from '../../../../hooks/appHooks';
-import { updateAnswer } from '../../../../store/reducers/examSlice';
-import { buttonList } from '../../../../utils/type';
+} from "@chakra-ui/react";
+import SunEditor from "suneditor-react";
+import suneditor from "suneditor";
+import "suneditor/dist/css/suneditor.min.css";
+import katex from "katex";
+import "katex/dist/katex.min.css";
+import { useAppDispatch } from "../../../../hooks/appHooks";
+import { updateAnswer } from "../../../../store/reducers/examSlice";
+import { buttonList } from "../../../../utils/type";
 
 const ModalEditorEachItem = ({
   isOpen,
@@ -24,7 +24,7 @@ const ModalEditorEachItem = ({
   index,
   indexAnswer,
   answer,
-  typeRedux
+  typeRedux,
 }: any) => {
   /**
    * @type {React.MutableRefObject<SunEditor>} get type definitions for editor
@@ -50,7 +50,7 @@ const ModalEditorEachItem = ({
         questionIndex: indexQuestion,
         answerIndex: indexAnswer,
         value: value,
-        type:typeRedux
+        type: typeRedux,
       })
     );
     onClose();
@@ -59,7 +59,7 @@ const ModalEditorEachItem = ({
     <Modal isOpen={isOpen} onClose={onClose} isCentered size="4xl">
       <ModalOverlay />
       <ModalContent>
-        <ModalHeader>Nhập câu trả lời {indexAnswer+1}</ModalHeader>
+        <ModalHeader>Nhập câu trả lời {indexAnswer + 1}</ModalHeader>
         <ModalCloseButton />
         <ModalBody>
           <SunEditor
@@ -79,7 +79,7 @@ const ModalEditorEachItem = ({
           <Button
             mr={3}
             onClick={onClose}
-            _hover={{ bg: '#ff511c' }}
+            _hover={{ bg: "#ff511c" }}
             bg="#FF6636"
             color="white"
           >
@@ -89,7 +89,7 @@ const ModalEditorEachItem = ({
             onClick={() => updateExam(index, indexAnswer, value)}
             variant="ghost"
           >
-            Tạo câu trả lời
+            create câu trả lời
           </Button>
         </ModalFooter>
       </ModalContent>

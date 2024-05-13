@@ -26,7 +26,7 @@ const TitleDashboard = () => {
           <h1 className="text-[20px] text-[#1D2026] font-normal">
             {getStatus?.total}
           </h1>
-          <span className="text-[12px] text-[#4E5566] font-normal">Course</span>
+          <span className="text-[12px] text-[#4E5566] font-normal">Grade</span>
         </div>
       </div>
       <div className="flex p-[24px] gap-x-[24px] bg-white w-full">
@@ -38,7 +38,7 @@ const TitleDashboard = () => {
             {getStatus?.publicTotal}
           </h1>
           <span className="text-[12px] text-[#4E5566] font-normal">
-            Course được kích hoạt
+            Grade is enabled
           </span>
         </div>
       </div>
@@ -51,7 +51,7 @@ const TitleDashboard = () => {
             {getStatus?.totalStudents}
           </h1>
           <span className="text-[12px] text-[#4E5566] font-normal">
-            Học viên
+            Student
           </span>
         </div>
       </div>
