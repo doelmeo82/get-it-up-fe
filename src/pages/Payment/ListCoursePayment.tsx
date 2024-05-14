@@ -69,11 +69,6 @@ const ListCoursePayment = ({ cartList }: any) => {
                       </div>
                     </div>
                   </Td>
-                  <Td>
-                    <span className="text-[16px] text-[#FF6636] font-medium">
-                      {formatMoney(cart?.course?.price)} VND
-                    </span>
-                  </Td>
                 </Tr>
               ))}
             </Tbody>

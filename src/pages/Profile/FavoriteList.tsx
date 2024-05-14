@@ -148,11 +148,7 @@ const FavoriteList = () => {
                   </div>
                 </div>
               </Td>
-              <Td>
-                <span className="text-[20px] text-[#FF6636] font-medium">
-                  {formatMoney(item?.course?.price)} VND
-                </span>
-              </Td>
+
               <Td>
                 <div className="flex gap-x-2">
                   {!item?.course?.isPaid && (

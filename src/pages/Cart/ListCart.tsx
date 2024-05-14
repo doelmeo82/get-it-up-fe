@@ -154,11 +154,7 @@ const ListCart = () => {
                       </div>
                     </div>
                   </Td>
-                  <Td>
-                    <span className="text-[16px] text-[#FF6636] font-medium">
-                      {formatMoney(cart?.course?.price)} VND
-                    </span>
-                  </Td>
+
                   <Td>
                     <div className="flex gap-x-2">
                       <Button
