@@ -1,5 +1,5 @@
 import React from "react";
-import banner from "../../image/Navbar/main.jpg";
+import banner from "../../image/Navbar/Pink and Blue Cute Playful Creative Portfolio Presentation (2).png";
 import Partner from "./Partner";
 import Courses from "./Courses";
 import Achivement from "./Achivement";

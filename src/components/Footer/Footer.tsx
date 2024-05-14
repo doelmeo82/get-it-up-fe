@@ -11,19 +11,27 @@ const Footer = () => {
         <img src={logowhite} alt="logo-icon" className="w-[250px]" />
         <div className="flex gap-x-3">
           <div className="text-[#0408e7] w-[50px] h-[50px] flex justify-center items-center">
-            <BsFacebook className="text-[26px]" />
+            <a href="https://www.facebook.com/profile.php?id=61559705909070">
+              <BsFacebook className="text-[26px]" />
+            </a>
           </div>
           <div className="text-[#e84bb4] w-[50px] h-[50px] flex justify-center items-center">
             <FaInstagram className="text-[26px]" />
           </div>
           <div className="text-[#45c0de] w-[50px] h-[50px] flex justify-center items-center">
-            <FaTwitter className="text-[26px]" />
+            <a href="https://twitter.com/GetItUpWeb2024">
+              <FaTwitter className="text-[26px]" />
+            </a>
           </div>
           <div className="text-[#ff2626] w-[50px] h-[50px] flex justify-center items-center">
-            <BsYoutube className="text-[26px]" />
+            <a href="https://www.youtube.com/channel/UCFFaJBSURFehVVfqJFfmDmA">
+              <BsYoutube className="text-[26px]" />
+            </a>
           </div>
           <div className="text-[#0a0a0a] w-[50px] h-[50px] flex justify-center items-center">
-            <FaTiktok className="text-[26px]" />
+            <a href="https://www.tiktok.com/@get.it.up4?_t=8mL5NcQmulb&_r=1">
+              <FaTiktok className="text-[26px]" />
+            </a>
           </div>
         </div>
         <div className="flex gap-x-2">
