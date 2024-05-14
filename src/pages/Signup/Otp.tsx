@@ -41,7 +41,7 @@ const Otp = () => {
     if (response.meta.requestStatus === "fulfilled" && response.payload) {
       if (response?.payload?.error) {
         toast({
-          title: "Fail đăng ký",
+          title: "Fail signup",
           description: response?.payload?.message,
           status: "error",
           duration: 9000,
@@ -52,7 +52,7 @@ const Otp = () => {
         // console.log(response);
         LocalStorage.setUserId(selectUserId._id);
         toast({
-          title: "Kích hoạt Success",
+          title: "Activate Success",
           description: response?.payload?.message,
           status: "success",
           duration: 9000,
@@ -70,12 +70,12 @@ const Otp = () => {
     <div className="pt-[140px] pb-[60px] flex justify-center items-center h-full text-[#1D2026]">
       <div>
         <div className="w-[300px] border-b-[1px] border-[#272829] pb-6">
-          <h1 className="font-bold text-[24px] mb-5">Nhập mã Otp để đăng ký</h1>
+          <h1 className="font-bold text-[24px] mb-5">Enter your OTP code</h1>
           <div className="flex flex-col gap-y-3 mb-5">
             <form action="" onSubmit={handleSubmit(onSubmit)}>
               <div className="flex flex-col gap-y-3 mb-3">
                 <div>
-                  <div className="text-[14px] mb-[5px]">Nhập mã OTP</div>
+                  <div className="text-[14px] mb-[5px]">Enter your OTP</div>
                   <input
                     {...register("otp")}
                     type="text"

@@ -1,13 +1,13 @@
-import React from 'react';
-import { useSearchParams } from 'react-router-dom';
-import FormInformation from './FormInformation';
-import { Button } from '@chakra-ui/react';
-import image from '../../image/Login/pexels-photo-11798029.jpeg';
-import { useNavigate } from 'react-router-dom';
+import React from "react";
+import { useSearchParams } from "react-router-dom";
+import FormInformation from "./FormInformation";
+import { Button } from "@chakra-ui/react";
+import image from "../../image/Login/pexels-photo-11798029.jpeg";
+import { useNavigate } from "react-router-dom";
 const Information = () => {
   const navigate = useNavigate();
   const handleSkip = () => {
-    navigate('/');
+    navigate("/");
   };
   return (
     <div className="grid grid-cols-1 lg:grid-cols-2">
@@ -18,7 +18,7 @@ const Information = () => {
         <div>
           <div className="w-[350px] border-b-[1px] border-[#272829] pb-2">
             <h1 className="font-bold text-[24px] mb-5 text-[#FF6636] text-center">
-              Nhập thông tin cơ bản
+              Enter your basic information
             </h1>
             <div className="flex flex-col gap-y-3 mb-5">
               <FormInformation />
@@ -27,13 +27,13 @@ const Information = () => {
           <div className="pt-3">
             <Button
               onClick={handleSkip}
-              _hover={{ bg: '#ff5926' }}
+              _hover={{ bg: "#ff5926" }}
               w="100%"
               bg="#FF6636"
               color="white"
               borderRadius="none"
             >
-              Bỏ qua
+              Skip
             </Button>
           </div>
         </div>

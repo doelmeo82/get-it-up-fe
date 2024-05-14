@@ -234,7 +234,7 @@ const Account = () => {
                   colorScheme="orange"
                   {...register("gender")}
                 >
-                  Famale
+                  Female
                 </Radio>
               </Stack>
             </RadioGroup>

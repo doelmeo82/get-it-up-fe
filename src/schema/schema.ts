@@ -1,102 +1,116 @@
 import * as yup from "yup";
+
 export const loginSchema = yup.object().shape({
   email: yup
     .string()
-    .email("Email không đúng")
-    .required("Yêu cầu Enter your email"),
+    .email("Invalid email")
+    .required("Please enter your email"),
   password: yup
     .string()
-    .min(6, "Mật khẩu phải hơn 6 ký tự")
-    .required("Yêu cầu nhập mật khẩu"),
+    .min(6, "Password must be at least 6 characters")
+    .required("Please enter your password"),
 });
+
 export const loginTeacherSchema = yup.object().shape({
   emailteacher: yup
     .string()
-    .email("Email không đúng")
-    .required("Yêu cầu Enter your email"),
+    .email("Invalid email")
+    .required("Please enter your email"),
   passwordteacher: yup
     .string()
-    .min(6, "Mật khẩu phải hơn 6 ký tự")
-    .required("Yêu cầu nhập mật khẩu"),
+    .min(6, "Password must be at least 6 characters")
+    .required("Please enter your password"),
 });
+
 export const signupSchema = yup.object().shape({
   email: yup
     .string()
-    .email("Email không đúng")
-    .required("Yêu cầu Enter your email"),
-  username: yup.string().required("Yêu cầu nhập username"),
+    .email("Invalid email")
+    .required("Please enter your email"),
+  username: yup.string().required("Please enter your username"),
   password: yup
     .string()
-    .min(6, "Mật khẩu phải hơn 6 ký tự")
-    .required("Yêu cầu nhập mật khẩu"),
+    .min(6, "Password must be at least 6 characters")
+    .required("Please enter your password"),
   confirmPassword: yup
     .string()
-    .oneOf([yup.ref("password")], "Mật khẩu chưa chính xác")
-    .required("Yêu cầu nhập mật khẩu"),
+    .oneOf([yup.ref("password")], "Passwords do not match")
+    .required("Please confirm your password"),
 });
+
 export const otpSignupSchema = yup.object().shape({
-  otp: yup.string().required("Yêu cầu nhập mã OTP để đăng ký"),
+  otp: yup.string().required("Please enter the OTP to register"),
 });
+
 export const emailForgetPasswordScheme = yup.object().shape({
-  emailForgetPassword: yup.string().required("Yêu cầu nhập"),
+  emailForgetPassword: yup.string().required("Please enter your email"),
 });
+
 export const resetPasswordSchema = yup.object().shape({
   newPassword: yup
     .string()
-    .min(6, "Mật khẩu phải hơn 6 ký tự")
-    .required("Yêu cầu nhập mật khẩu"),
+    .min(6, "Password must be at least 6 characters")
+    .required("Please enter your new password"),
   confirmNewPassword: yup
     .string()
-    .oneOf([yup.ref("newPassword")], "Mật khẩu chưa chính xác")
-    .required("Yêu cầu nhập mật khẩu"),
-  otp: yup.string().required("Yêu cầu nhập mã OTP để đổi mật khẩu"),
+    .oneOf([yup.ref("newPassword")], "Passwords do not match")
+    .required("Please confirm your new password"),
+  otp: yup.string().required("Please enter the OTP to reset your password"),
 });
+
 export const changePassSchema = yup.object().shape({
   current: yup
     .string()
-    .min(6, "Mật khẩu phải hơn 6 ký tự")
-    .required("Yêu cầu nhập Current password"),
+    .min(6, "Password must be at least 6 characters")
+    .required("Please enter your current password"),
   new: yup
     .string()
-    .min(6, "Mật khẩu phải hơn 6 ký tự")
-    .required("Yêu cầu nhập New password"),
+    .min(6, "Password must be at least 6 characters")
+    .required("Please enter your new password"),
   newConfirm: yup
     .string()
-    .oneOf([yup.ref("new")], "Mật khẩu chưa chính xác")
-    .required("Yêu cầu nhập New password"),
+    .oneOf([yup.ref("new")], "Passwords do not match")
+    .required("Please confirm your new password"),
 });
+
 export const createTeacher = yup.object().shape({
-  fullname: yup.string().required("Yêu cầu nhập họ và tên"),
-  username: yup.string().required("Yêu cầu nhập username"),
+  fullname: yup.string().required("Please enter your full name"),
+  username: yup.string().required("Please enter your username"),
   email: yup
     .string()
-    .email("Email không đúng")
-    .required("Yêu cầu Enter your email"),
+    .email("Invalid email")
+    .required("Please enter your email"),
   password: yup
     .string()
-    .min(6, "Mật khẩu phải hơn 6 ký tự")
-    .required("Yêu cầu nhập New password"),
+    .min(6, "Password must be at least 6 characters")
+    .required("Please enter your password"),
   confirmPass: yup
     .string()
-    .oneOf([yup.ref("password")], "Mật khẩu chưa chính xác")
-    .required("Yêu cầu nhập New password"),
-  date: yup.date().required("Phải nhập ngày sinh"),
-  gender: yup.string().required("Phải check giới tính"),
+    .oneOf([yup.ref("password")], "Passwords do not match")
+    .required("Please confirm your password"),
+  date: yup.date().required("Please enter your birthdate"),
+  gender: yup.string().required("Please select your gender"),
   subject: yup
     .array()
-    .required("akjsnkjansda")
-    .test("is-not-empty", "Chọn môn học", (value) => value.length > 0),
-  desc: yup.string().required("Yêu cầu nhập mô tả thông tin"),
-  avatar: yup.string().required("Yêu cầu nhập"),
+    .required("Please select subjects")
+    .test(
+      "is-not-empty",
+      "Please select subjects",
+      (value) => value.length > 0
+    ),
+  desc: yup.string().required("Please enter description"),
+  avatar: yup.string().required("Please enter avatar"),
 });
+
 export const inputChatMess = yup.object().shape({
-  inputChat: yup.string().required(),
+  inputChat: yup.string().required("Please enter message"),
 });
+
 export const createBlog = yup.object().shape({
-  title: yup.string().required("Yêu cầu nhập tiêu đề"),
-  previewContent: yup.string().required("Yêu cầu nhập privew"),
+  title: yup.string().required("Please enter title"),
+  previewContent: yup.string().required("Please enter preview content"),
   desc: yup
     .string()
-    .min(200, "Không được ít hơn 200 từ")
-    .required("Yêu cầu nhập Blog"),
+    .min(200, "Description must be at least 200 characters")
+    .required("Please enter blog content"),
 });

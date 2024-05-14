@@ -181,7 +181,7 @@ const FormInformation = () => {
                 Male
               </Radio>
               <Radio {...register("gender")} value="Nữ" colorScheme="orange">
-                Famale
+                Female
               </Radio>
             </Flex>
           </RadioGroup>
@@ -189,7 +189,7 @@ const FormInformation = () => {
             _focus={{ borderColor: "#FF6636", outline: "none" }}
             borderRadius="none"
             height="45px"
-            placeholder="Tỉnh"
+            placeholder="Province / city"
             outline="none"
             bg="white"
             {...register("province")}
@@ -237,7 +237,7 @@ const FormInformation = () => {
               </option>
             ))}
           </Select>
-          <div>
+          {/* <div>
             <h1 className="font-normal placeholder:text-[14px] text-[#FF6636]  mb-2">
               Concerned subjects
             </h1>
@@ -255,9 +255,9 @@ const FormInformation = () => {
                 </Checkbox>
               ))}
             </div>
-          </div>
+          </div> */}
 
-          <Select
+          {/* <Select
             _focus={{ borderColor: "#FF6636", outline: "none" }}
             borderRadius="none"
             height="45px"
@@ -271,7 +271,7 @@ const FormInformation = () => {
                 {item.subjectGroupName}
               </option>
             ))}
-          </Select>
+          </Select> */}
         </div>
         <Button
           _hover={{ bg: "#fa5928" }}
