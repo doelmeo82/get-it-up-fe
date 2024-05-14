@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import TitleAssignmet from "./TitleAssignmet";
-import logo from "../../image/Navbar/logo.svg";
+import logo from "../../image/Navbar/logo_main.png";
 import "katex/dist/katex.min.css";
 import TimeAndQuestions from "./TimeAndQuestions";
 import QuestionNumber from "./QuestionNumber";

@@ -1,67 +1,84 @@
-import React, { useEffect, useState } from "react";
-import TitleAssignmet from "./TitleAssignmet";
-import logo from "../../image/Navbar/logo.svg";
-import "katex/dist/katex.min.css";
-import TimeAndQuestions from "./TimeAndQuestions";
-import QuestionNumber from "./QuestionNumber";
-import { useLocation } from "react-router-dom";
-import { getExamDetail } from "../../store/actions/exam.action";
-import { useAppDispatch } from "../../hooks/appHooks";
-import { useSelector } from "react-redux";
+import React from "react";
 import {
-  postExam,
-  postExamQuestion,
-  selectExamDetail,
-  selectExamPost,
-} from "../../store/reducers/examSlice";
+  Table,
+  TableContainer,
+  Tbody,
+  Td,
+  Th,
+  Thead,
+  Tr,
+} from "@chakra-ui/react";
+import "katex/dist/katex.min.css";
+import { useEffect, useState } from "react";
+import PagiantionNew from "../../components/Pagination/PagiantionNew";
+import { useAppDispatch } from "../../hooks/appHooks";
+import { getListExam } from "../../store/actions/exam.action";
 
 const Assingments = () => {
-  // const [questions, setQuestions] = useState<any>({});
+  const [page, setPage] = useState(1);
+  const handleChange = (page: number) => {
+    setPage(page);
+  };
   const dispatch = useAppDispatch();
-  const questions: any = useSelector(selectExamDetail);
-  const postExamList = useSelector(selectExamPost);
-  const search = useLocation().search;
-  const params = new URLSearchParams(search).get("id");
-  const geExamDetail = async (id: any) => {
-    const res: any = await dispatch(getExamDetail(id));
+  const [examList, setExamList] = useState<any>([]);
+  const getList = async () => {
+    const res: any = await dispatch(getListExam({}));
     if (res.payload && res.meta.requestStatus === "fulfilled") {
-      if (postExamList.answers.length < res.payload?.data.questions?.length) {
-        res.payload?.data.questions.map((item: any, index: any) => {
-          if (index < res.payload?.data.questions.length - 1) {
-            dispatch(
-              postExam({
-                questionId: 0,
-                answer: [0],
-              })
-            );
-          }
-        });
-      }
+      setExamList(res.payload.data);
     }
   };
 
   useEffect(() => {
-    const param = params ?? 1;
-    geExamDetail(param);
+    getList();
   }, []);
   return (
-    <div className="py-[20px] px-[24px] text-[#272829]">
-      <div className="flex lg:flex-row gap-2 flex-col items-center justify-around mb-9">
-        <img src={logo} alt="logo-icon" className="w-[250px]" />
-        <h1 className="uppercase text-[20px] font-semibold">
-          {questions?.title}
-        </h1>
+    <>
+      <div className="py-[100px] px-[24px] text-[#272829]">
+        <h1 className="text-red-400 text-3xl font-semibold">Exam list</h1>
+        <TableContainer>
+          <Table variant="simple">
+            <Thead>
+              <Tr>
+                <Th>ID</Th>
+                <Th>Title</Th>
+                <Th>Time</Th>
+                <Th>Created date</Th>
+                <Th>Action</Th>
+              </Tr>
+            </Thead>
+            <Tbody>
+              {examList?.listData?.map((item: any) => (
+                <>
+                  <Tr key={item._id}>
+                    <Td>#{item._id}</Td>
+                    <Td>{item.title}</Td>
+                    <Td>{item.time}</Td>
+                    <Td>{item.createdAt}</Td>
+                    <Td>
+                      <a
+                        className="hover:bg-blue-400"
+                        href={`http://localhost:3000/courses/16/assignment?id=${item._id}`}
+                      >
+                        Go to exam
+                      </a>
+                    </Td>
+                  </Tr>
+                </>
+              ))}
+            </Tbody>
+          </Table>
+          <div className="mt-4">
+            <PagiantionNew
+              onPageChange={handleChange}
+              totalCount={examList?.total}
+              pageSize={10}
+              siblingCount={1}
+              currentPage={page}
+            />
+          </div>
+        </TableContainer>
       </div>
-      <div className="flex lg:flex-row flex-col-reverse gap-x-3 w-full lg:w-[1100px] mx-auto">
-        <div className="flex-1">
-          <TitleAssignmet questions={questions} />
-        </div>
-        <div className="relative  h-full w-[300px] right-0 lg:right-[150px] flex flex-col gap-y-3">
-          <TimeAndQuestions questions={questions} />
-          <QuestionNumber questions={questions} />
-        </div>
-      </div>
-    </div>
+    </>
   );
 };
 

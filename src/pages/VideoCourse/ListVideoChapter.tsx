@@ -17,7 +17,7 @@ const ListVideoChapter = ({ id, code, lecture, index, slug }: any) => {
   );
   const handleOnClick = () => {
     const lectureType = lecture?.lectureType;
-    if (lecture === "VIDEO") {
+    if (lectureType === "VIDEO") {
       dispatch(updateCommentList([]));
       dispatch(updatePage(1));
       setTimeout(() => {

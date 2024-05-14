@@ -54,6 +54,7 @@ import BlogTeacher from "./pages/Teacher/Blog/BlogTeacher";
 import BlogAdmin from "./pages/Admin/BlogCheck/BlogAdmin";
 import Banner from "./pages/Admin/Banner/Banner";
 import Exam from "./pages/Assingments/Exam";
+import Statistic from "./components/Statistic/Statistic";
 function App() {
   const [loading, setLoading] = useState(true);
   const pathname = useLocation();
@@ -221,7 +222,7 @@ function App() {
                           }
                         />
                         <Route
-                          path="/admin/teacher"
+                          path="/admin/teaches"
                           element={
                             <RequireAuth redirectTo="/teacher">
                               <DashboardAdminTeacher />
@@ -245,10 +246,10 @@ function App() {
                           }
                         />
                         <Route
-                          path="/admin/banner"
+                          path="/admin/statistic"
                           element={
                             <RequireAuth redirectTo="/teacher">
-                              <Banner />
+                              <Statistic />
                             </RequireAuth>
                           }
                         />
@@ -317,7 +318,7 @@ function App() {
                   }
                 />
                 <Route
-                  path="exam"
+                  path="/exam"
                   element={
                     <RequireAuth redirectTo="/login">
                       <Exam />
@@ -328,9 +329,7 @@ function App() {
                   path="courses/:idcourse/assignment"
                   element={
                     <RequireAuth redirectTo="/login">
-                      <RequireVideo redirectTo="/courses">
-                        <Assingments />
-                      </RequireVideo>
+                      <Assingments />
                     </RequireAuth>
                   }
                 />
@@ -338,9 +337,7 @@ function App() {
                   path="courses/:idcourse/result-exam"
                   element={
                     <RequireAuth redirectTo="/login">
-                      <RequireVideo redirectTo="/courses">
-                        <ResultExam />
-                      </RequireVideo>
+                      <ResultExam />
                     </RequireAuth>
                   }
                 />

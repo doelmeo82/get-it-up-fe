@@ -1,27 +1,31 @@
-import axiosClient from './axiosClient';
+import axiosClient from "./axiosClient";
 export const userService = {
   userSetting: (params: any) => {
-    return axiosClient.put('user/info', params);
+    return axiosClient.put("user/info", params);
   },
   getProvince: () => {
-    return axiosClient.get('address/province');
+    return axiosClient.get("address/province");
   },
-  getDistrict: (params:any) => {
+  getDistrict: (params: any) => {
     return axiosClient.get(`address/district?${params.toString()}`);
   },
   getSubjects: () => {
-    return axiosClient.get('subjects');
+    return axiosClient.get("subjects");
   },
   getCategory: () => {
-    return axiosClient.get('category');
+    return axiosClient.get("category");
   },
   getSubjetsGroup: () => {
-    return axiosClient.get('subjects/group');
+    return axiosClient.get("subjects/group");
   },
   getCategoryById: (params: any) => {
     return axiosClient.get(`category/categoryId?${params.toString()}`);
   },
   getUserInfo: () => {
-    return axiosClient.get('user/current-user');
+    return axiosClient.get("user/current-user");
+  },
+
+  getStatistic: () => {
+    return axiosClient.get("user/statistic");
   },
 };

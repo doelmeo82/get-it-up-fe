@@ -1,21 +1,23 @@
-import React, { useEffect } from 'react';
-import { useSelector } from 'react-redux';
-import { selectRanking } from '../../store/reducers/examSlice';
-import { useLocation } from 'react-router-dom';
-import { useAppDispatch } from '../../hooks/appHooks';
-import { getRanking } from '../../store/actions/exam.action';
+import React, { useEffect } from "react";
+import { useSelector } from "react-redux";
+import { selectRanking } from "../../store/reducers/examSlice";
+import { useLocation } from "react-router-dom";
+import { useAppDispatch } from "../../hooks/appHooks";
+import { getRanking } from "../../store/actions/exam.action";
 
 const Ranking = () => {
   const ranks: any = useSelector(selectRanking);
   const search = useLocation().search;
-  const params = new URLSearchParams(search).get('id');
+  const params = new URLSearchParams(search).get("id");
   const dispatch = useAppDispatch();
   const getRankingList = async (id: any) => {
     const payload = new URLSearchParams({
       examId: id,
     });
     const res = await dispatch(getRanking(payload));
-    if (res.payload && res.meta.requestStatus === 'rejected') { /* empty */ }
+    if (res.payload && res.meta.requestStatus === "rejected") {
+      /* empty */
+    }
   };
   useEffect(() => {
     if (params) {
@@ -26,9 +28,7 @@ const Ranking = () => {
     <div className="flex flex-col gap-y-5">
       {ranks?.listData?.length > 0 && (
         <div className="flex flex-col gap-y-3 px-[16px] py-[8px] rounded-lg bg-[#FF6636] text-white">
-          <div className="text-center text-[14px]">
-            Bạn có đủ giỏi để vượt qua{' '}
-          </div>
+          <div className="text-center text-[14px]">Are you better? </div>
           <div className="grid grid-cols-[50px_1fr] gap-x-3">
             <img
               src={ranks?.listData[0]?.user?.avatar}
@@ -40,7 +40,7 @@ const Ranking = () => {
                 {ranks?.listData[0]?.user?.fullname}
               </h1>
               <span className="font-medium">
-                Số điểm {ranks?.listData[0]?.score}/10
+                Grade: {ranks?.listData[0]?.score}/10
               </span>
             </div>
           </div>
@@ -48,7 +48,7 @@ const Ranking = () => {
       )}
       <div className="flex flex-col gap-y-3">
         <h1 className="text-center px-[16px] py-[8px] rounded-lg bg-[#FF6636] text-white">
-          Bảng xếp hạng
+          Leaderboard
         </h1>
         {ranks?.listData?.length > 0 && (
           <div className="px-[16px] py-[10px] rounded-lg bg-zinc-200 max-h-[600px] h-full">
@@ -61,7 +61,7 @@ const Ranking = () => {
                 />
                 <div className="text-[14px]">
                   <h1 className="font-bold">{item?.user?.fullname}</h1>
-                  <span className="font-medium">Số điểm {item?.score}/10</span>
+                  <span className="font-medium">Grade: {item?.score}/10</span>
                 </div>
               </div>
             ))}

@@ -12,6 +12,9 @@ export const examService = {
   deleteExam: (params: any) => {
     return axiosClient.delete(`exam/${params}`);
   },
+  getExamList: (params: any) => {
+    return axiosClient.get(`exam/student/list`);
+  },
   getExamDetail: (params: any) => {
     return axiosClient.get(`exam/${params}`);
   },

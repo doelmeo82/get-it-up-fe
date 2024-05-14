@@ -4,7 +4,7 @@ import { BsBarChartFill } from "react-icons/bs";
 import { AiOutlinePlusCircle, AiOutlineMessage } from "react-icons/ai";
 import { FaLayerGroup } from "react-icons/fa";
 import { FiBook, FiSettings } from "react-icons/fi";
-import logo from "../../image/Navbar/sidebar.svg";
+import logo from "../../image/Navbar/logo_main.png";
 import { TfiWrite } from "react-icons/tfi";
 import { GiTeacher } from "react-icons/gi";
 import { PiStudent } from "react-icons/pi";
@@ -51,7 +51,7 @@ const SidebarAdmin = () => {
           <span>Account các Student</span>
         </div>
         <div
-          onClick={() => handleNavigate("teacher")}
+          onClick={() => handleNavigate("teaches")}
           className={`flex gap-x-2 items-center px-[24px] cursor-pointer py-[15px] ${
             path.pathname.includes("teacher") === true
               ? "bg-[#FF6636] text-white"
@@ -72,7 +72,7 @@ const SidebarAdmin = () => {
           <MdOutlineAssignmentTurnedIn className="text-[18px]" />
           <span>Kiểm duyệt Blog</span>
         </div>
-        <div
+        {/* <div
           onClick={() => handleNavigate("blog")}
           className={`flex gap-x-2 items-center px-[24px] cursor-pointer py-[15px] ${
             path.pathname.includes("blog") === true
@@ -82,9 +82,9 @@ const SidebarAdmin = () => {
         >
           <TfiWrite className="text-[18px]" />
           <span>Blog</span>
-        </div>
+        </div> */}
         <div
-          onClick={() => handleNavigate("banner")}
+          onClick={() => handleNavigate("statistic")}
           className={`flex gap-x-2 items-center px-[24px] cursor-pointer py-[15px] ${
             path.pathname.includes("banner") === true
               ? "bg-[#FF6636] text-white"
@@ -92,7 +92,7 @@ const SidebarAdmin = () => {
           }`}
         >
           <IoCreateOutline className="text-[18px]" />
-          <span>create banner</span>
+          <span>Thống kê đăng nhập</span>
         </div>
         <div
           // onClick={() => handleNavigate("dashboard")}

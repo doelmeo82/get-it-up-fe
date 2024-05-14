@@ -1,5 +1,5 @@
 import React from "react";
-import banner from "../../image/Navbar/content-main.png";
+import banner from "../../image/Navbar/main.jpg";
 import Partner from "./Partner";
 import Courses from "./Courses";
 import Achivement from "./Achivement";
@@ -7,7 +7,7 @@ import View from "./View";
 import Categories from "./Categories";
 const Homepage = () => {
   return (
-    <div className="text-black pt-[72px] bg-[#33CCFF]">
+    <div className="text-black pt-[72px] bg-[rgb(51,204,255)]">
       <div className="relative">
         <img
           src={banner}
