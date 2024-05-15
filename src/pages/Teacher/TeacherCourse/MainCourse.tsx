@@ -50,7 +50,7 @@ const MainCourse = () => {
               onChange={(e) => setSearch(e.target.value)}
               type="text"
               className="w-full outline-none text-[14px] placeholder:text-[#8C94A3] text-[#1D2026]"
-              placeholder="VD: Ngữ Văn"
+              placeholder="VD: Grade 1"
             />
           </div>
         </div>
